@@ -24,36 +24,57 @@ namespace MonopolyGame
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gameboard));
-            groupBox1 = new GroupBox();
             gameBoardImage = new PictureBox();
+            groupBox2 = new GroupBox();
+            label2 = new Label();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)gameBoardImage).BeginInit();
             SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            groupBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            groupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            groupBox1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.Location = new Point(727, 308);
-            groupBox1.MaximumSize = new Size(310, 338);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(310, 338);
-            groupBox1.TabIndex = 1;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Properties";
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // gameBoardImage
             // 
             gameBoardImage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             gameBoardImage.BackgroundImage = (Image)resources.GetObject("gameBoardImage.BackgroundImage");
             gameBoardImage.BackgroundImageLayout = ImageLayout.Stretch;
-            gameBoardImage.Location = new Point(52, 67);
+            gameBoardImage.Location = new Point(1, -1);
             gameBoardImage.MaximumSize = new Size(1000, 1000);
             gameBoardImage.Name = "gameBoardImage";
-            gameBoardImage.Size = new Size(555, 555);
+            gameBoardImage.Size = new Size(647, 647);
             gameBoardImage.TabIndex = 2;
             gameBoardImage.TabStop = false;
+            gameBoardImage.Click += gameBoardImage_Click;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            groupBox2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            groupBox2.BackColor = Color.AliceBlue;
+            groupBox2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox2.Location = new Point(677, 321);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(328, 325);
+            groupBox2.TabIndex = 8;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Properties";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(711, 29);
+            label2.Name = "label2";
+            label2.Size = new Size(82, 28);
+            label2.TabIndex = 10;
+            label2.Text = "Balance:";
+            // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            textBox1.Location = new Point(711, 71);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(294, 35);
+            textBox1.TabIndex = 9;
             // 
             // Gameboard
             // 
@@ -61,17 +82,22 @@ namespace MonopolyGame
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1058, 671);
+            ClientSize = new Size(1058, 681);
+            Controls.Add(groupBox2);
+            Controls.Add(label2);
+            Controls.Add(textBox1);
             Controls.Add(gameBoardImage);
-            Controls.Add(groupBox1);
             Name = "Gameboard";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)gameBoardImage).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-        private GroupBox groupBox1;
         private PictureBox gameBoardImage;
+        private GroupBox groupBox2;
+        private Label label2;
+        private TextBox textBox1;
     }
 }
