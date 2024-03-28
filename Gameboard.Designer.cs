@@ -37,7 +37,7 @@ namespace MonopolyGame
             gameBoardImage.BackgroundImage = (Image)resources.GetObject("gameBoardImage.BackgroundImage");
             gameBoardImage.BackgroundImageLayout = ImageLayout.Stretch;
             gameBoardImage.Location = new Point(1, -1);
-            gameBoardImage.MaximumSize = new Size(1000, 1000);
+            gameBoardImage.MaximumSize = new Size(1200, 1200);
             gameBoardImage.Name = "gameBoardImage";
             gameBoardImage.Size = new Size(647, 647);
             gameBoardImage.TabIndex = 2;
@@ -59,9 +59,9 @@ namespace MonopolyGame
             // 
             // label2
             // 
-            label2.AutoSize = true;
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(711, 29);
+            label2.Location = new Point(677, 83);
             label2.Name = "label2";
             label2.Size = new Size(82, 28);
             label2.TabIndex = 10;
@@ -70,11 +70,11 @@ namespace MonopolyGame
             // textBox1
             // 
             textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            textBox1.Location = new Point(711, 71);
+            textBox1.Location = new Point(677, 114);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(294, 35);
-            textBox1.TabIndex = 9;
+            textBox1.Size = new Size(328, 45);
+            textBox1.TabIndex = 11;
             // 
             // Gameboard
             // 
@@ -83,9 +83,9 @@ namespace MonopolyGame
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1058, 681);
+            Controls.Add(textBox1);
             Controls.Add(groupBox2);
             Controls.Add(label2);
-            Controls.Add(textBox1);
             Controls.Add(gameBoardImage);
             Name = "Gameboard";
             Text = "Form1";
