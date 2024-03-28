@@ -27,7 +27,7 @@ namespace MonopolyGame
             gameBoardImage = new PictureBox();
             propertiesGroupBox = new GroupBox();
             label2 = new Label();
-            textBox1 = new TextBox();
+            balanceTextBox = new TextBox();
             buyButton = new Button();
             label1 = new Label();
             sellButton = new Button();
@@ -85,15 +85,19 @@ namespace MonopolyGame
             label2.Text = "Balance:";
             label2.Click += label2_Click_1;
             // 
-            // textBox1
+            // balanceTextBox
             // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            textBox1.Location = new Point(939, 72);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(294, 45);
-            textBox1.TabIndex = 11;
-            textBox1.TextChanged += textBox1_TextChanged_1;
+            balanceTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            balanceTextBox.Enabled = false;
+            balanceTextBox.ForeColor = SystemColors.WindowText;
+            balanceTextBox.Location = new Point(939, 63);
+            balanceTextBox.Multiline = true;
+            balanceTextBox.Name = "balanceTextBox";
+            balanceTextBox.Size = new Size(294, 45);
+            balanceTextBox.TabIndex = 11;
+            balanceTextBox.Text = "\r\n";
+            balanceTextBox.TextAlign = HorizontalAlignment.Center;
+            balanceTextBox.TextChanged += textBox1_TextChanged_1;
             // 
             // buyButton
             // 
@@ -227,7 +231,7 @@ namespace MonopolyGame
             Controls.Add(sellButton);
             Controls.Add(label1);
             Controls.Add(buyButton);
-            Controls.Add(textBox1);
+            Controls.Add(balanceTextBox);
             Controls.Add(propertiesGroupBox);
             Controls.Add(label2);
             Controls.Add(gameBoardImage);
@@ -246,7 +250,7 @@ namespace MonopolyGame
         private PictureBox gameBoardImage;
         private GroupBox propertiesGroupBox;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox balanceTextBox;
         private Button buyButton;
         private Label label1;
         private Button sellButton;
