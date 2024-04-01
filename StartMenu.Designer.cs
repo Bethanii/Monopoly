@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button18 = new Button();
+            startGameButton = new Button();
             button17 = new Button();
             button9 = new Button();
             button10 = new Button();
@@ -56,7 +56,7 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(button18);
+            panel1.Controls.Add(startGameButton);
             panel1.Controls.Add(button17);
             panel1.Controls.Add(button9);
             panel1.Controls.Add(button10);
@@ -84,19 +84,20 @@
             panel1.Size = new Size(360, 560);
             panel1.TabIndex = 0;
             // 
-            // button18
+            // startGameButton
             // 
-            button18.BackColor = Color.Navy;
-            button18.Font = new Font("Sitka Banner", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            button18.ForeColor = Color.Gold;
-            button18.Location = new Point(95, 493);
-            button18.Margin = new Padding(0);
-            button18.Name = "button18";
-            button18.Size = new Size(155, 40);
-            button18.TabIndex = 22;
-            button18.Text = "Start Game";
-            button18.TextAlign = ContentAlignment.TopCenter;
-            button18.UseVisualStyleBackColor = false;
+            startGameButton.BackColor = Color.Navy;
+            startGameButton.Font = new Font("Sitka Banner", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            startGameButton.ForeColor = Color.Gold;
+            startGameButton.Location = new Point(95, 493);
+            startGameButton.Margin = new Padding(0);
+            startGameButton.Name = "startGameButton";
+            startGameButton.Size = new Size(155, 40);
+            startGameButton.TabIndex = 22;
+            startGameButton.Text = "Start Game";
+            startGameButton.TextAlign = ContentAlignment.TopCenter;
+            startGameButton.UseVisualStyleBackColor = false;
+            startGameButton.Click += startGameButton_Click;
             // 
             // button17
             // 
@@ -346,7 +347,6 @@
             ShowInTaskbar = false;
             SizeGripStyle = SizeGripStyle.Hide;
             Text = "Monopoly";
-            Load += StartMenu_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -375,7 +375,7 @@
         private Button button14;
         private Button button15;
         private Button button16;
-        private Button button18;
+        private Button startGameButton;
         private Button button17;
     }
 }

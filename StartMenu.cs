@@ -17,11 +17,6 @@ namespace MonopolyGame
             InitializeComponent();
         }
 
-        private void StartMenu_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -30,6 +25,13 @@ namespace MonopolyGame
         private void button16_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void startGameButton_Click(object sender, EventArgs e)
+        {
+            Gameboard gameBoard = new Gameboard();
+            this.Hide();
+            gameBoard.Show();
         }
     }
 }
