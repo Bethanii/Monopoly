@@ -1,3 +1,5 @@
+using MonopolyGame.Properties;
+
 namespace MonopolyGame
 {
     public partial class Gameboard : Form
@@ -74,9 +76,15 @@ namespace MonopolyGame
         {
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
+        private void rollDiceButton_Click(object sender, EventArgs e)
         {
+            Random random = new Random();
 
+            int dice1 = random.Next(1, 7);
+            int dice2 = random.Next(1, 7);
+
+            diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
+            diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
         }
     }
 }

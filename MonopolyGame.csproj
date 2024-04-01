@@ -9,6 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\dice_1.png" />
+    <None Remove="images\dice_2.png" />
+    <None Remove="images\dice_3.png" />
+    <None Remove="images\dice_4.png" />
+    <None Remove="images\dice_5.png" />
+    <None Remove="images\dice_6.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="images\dice\dice_1.png" />
+    <EmbeddedResource Include="images\dice\dice_2.png" />
+    <EmbeddedResource Include="images\dice\dice_3.png" />
+    <EmbeddedResource Include="images\dice\dice_4.png" />
+    <EmbeddedResource Include="images\dice\dice_5.png" />
+    <EmbeddedResource Include="images\dice\dice_6.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

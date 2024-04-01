@@ -142,4 +142,22 @@
   <data name="battleShip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\pieces\battleShip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+	<data name="dice_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\dice\dice_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="dice_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\dice\dice_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="dice_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\dice\dice_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="dice_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\dice\dice_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="dice_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\dice\dice_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="dice_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\images\dice\dice_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
 </root>

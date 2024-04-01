@@ -216,7 +216,8 @@ namespace MonopolyGame
             rollDiceButton.TabIndex = 21;
             rollDiceButton.Text = "Roll Dice";
             rollDiceButton.UseVisualStyleBackColor = false;
-            rollDiceButton.Click += button1_Click_2;
+            rollDiceButton.Click += rollDiceButton_Click;
+            this.rollDiceButton.Click += new System.EventHandler(this.rollDiceButton_Click);
             // 
             // pictureBox1
             // 
