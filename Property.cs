@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,22 +79,16 @@ namespace MonopolyGame
                 {
                     case 0:
                         return wholeGroupRent;
-                        break;
                     case 1:
                         return oneHouseRent;
-                        break;
                     case 2:
                         return twoHouseRent;
-                        break;
                     case 3:
                         return threeHouseRent;
-                        break;
                     case 4:
                         return fourHouseRent;
-                        break;
                     default:
                         return wholeGroupRent;
-                        break;
                 }
             }
             else

@@ -6,8 +6,8 @@ namespace Monopoly_Start
 {
     class Program
     {
-
-        static void Main(string[] args)
+        //removed main left temp method so other code would work.
+        private static void Temp(string[] args)
         {
             string method;
             Console.WriteLine("1 = chest 0 = chance");

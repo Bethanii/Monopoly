@@ -74,9 +74,14 @@ namespace MonopolyGame
         {
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
+        private void rollDiceButton_Click(object sender, EventArgs e)
         {
+            Gameplay gameplay = new Gameplay();
 
+            (int dice1, int dice2, int total) = gameplay.getDiceRollCount();
+
+            diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
+            diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
         }
     }
 }
