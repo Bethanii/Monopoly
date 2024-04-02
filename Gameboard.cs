@@ -5,21 +5,46 @@ namespace MonopolyGame
         public Gameboard()
         {
             InitializeComponent();
+            SetColumnStylesForTableLayoutPanel();
+            SetPictureBoxProperties();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void SetColumnStylesForTableLayoutPanel()
         {
+            tableLayoutPanel1.ColumnStyles.Clear();
+            tableLayoutPanel2.ColumnStyles.Clear();
 
+            int numberOfColumns = 11; 
+            float columnWidth = tableLayoutPanel1.Width / numberOfColumns; 
+
+            for (int i = 0; i < numberOfColumns; i++)
+            {
+                tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / numberOfColumns));
+            }
+
+            for (int i = 0; i < numberOfColumns; i++)
+            {
+                tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / numberOfColumns));
+            }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void SetPictureBoxProperties()
         {
+            foreach (Control control in tableLayoutPanel1.Controls)
+            {
+                if (control is PictureBox pictureBox)
+                {
+                    pictureBox.Dock = DockStyle.Fill;
+                }
+            }
 
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            foreach (Control control in tableLayoutPanel2.Controls)
+            {
+                if (control is PictureBox pictureBox)
+                {
+                    pictureBox.Dock = DockStyle.Fill;
+                }
+            }
         }
 
         private void gameBoardImage_Click(object sender, EventArgs e)
@@ -27,28 +52,9 @@ namespace MonopolyGame
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -82,6 +88,21 @@ namespace MonopolyGame
 
             diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
             diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox22_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
