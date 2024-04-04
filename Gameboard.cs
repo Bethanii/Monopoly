@@ -47,39 +47,6 @@ namespace MonopolyGame
             }
         }
 
-        private void gameBoardImage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-        }
-
-        private void diceRoll2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void diceRoll1_Click(object sender, EventArgs e)
-        {
-        }
-
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
             Gameplay gameplay = new Gameplay();
@@ -88,36 +55,6 @@ namespace MonopolyGame
 
             diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
             diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox22_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox32_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox30_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

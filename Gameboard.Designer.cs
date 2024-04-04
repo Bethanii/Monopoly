@@ -126,7 +126,6 @@ namespace MonopolyGame
             balanceLabel.Size = new Size(91, 28);
             balanceLabel.TabIndex = 10;
             balanceLabel.Text = "Balance:";
-            balanceLabel.Click += label2_Click_1;
             // 
             // balanceTextBox
             // 
@@ -140,7 +139,6 @@ namespace MonopolyGame
             balanceTextBox.TabIndex = 11;
             balanceTextBox.Text = "\r\n";
             balanceTextBox.TextAlign = HorizontalAlignment.Center;
-            balanceTextBox.TextChanged += textBox1_TextChanged_1;
             // 
             // buyButton
             // 
@@ -153,7 +151,6 @@ namespace MonopolyGame
             buyButton.TabIndex = 12;
             buyButton.Text = "Buy";
             buyButton.UseVisualStyleBackColor = false;
-            buyButton.Click += button1_Click;
             // 
             // sellButton
             // 
@@ -166,7 +163,6 @@ namespace MonopolyGame
             sellButton.TabIndex = 15;
             sellButton.Text = "Sell";
             sellButton.UseVisualStyleBackColor = false;
-            sellButton.Click += button1_Click_1;
             // 
             // nextTurnButton
             // 
@@ -203,7 +199,6 @@ namespace MonopolyGame
             diceRoll1.Size = new Size(83, 79);
             diceRoll1.TabIndex = 18;
             diceRoll1.TabStop = false;
-            diceRoll1.Click += diceRoll1_Click;
             // 
             // diceRoll2
             // 
@@ -215,7 +210,6 @@ namespace MonopolyGame
             diceRoll2.Size = new Size(83, 79);
             diceRoll2.TabIndex = 19;
             diceRoll2.TabStop = false;
-            diceRoll2.Click += diceRoll2_Click;
             // 
             // diceGroupBox
             // 
@@ -258,7 +252,6 @@ namespace MonopolyGame
             gameBoardImage.Size = new Size(592, 576);
             gameBoardImage.TabIndex = 2;
             gameBoardImage.TabStop = false;
-            gameBoardImage.Click += gameBoardImage_Click;
             // 
             // panel1
             // 
@@ -304,7 +297,6 @@ namespace MonopolyGame
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(440, 84);
             tableLayoutPanel1.TabIndex = 33;
-            tableLayoutPanel1.Paint += tableLayoutPanel1_Paint_1;
             // 
             // mediteraneanAve
             // 
@@ -345,7 +337,6 @@ namespace MonopolyGame
             goSpace.SizeMode = PictureBoxSizeMode.StretchImage;
             goSpace.TabIndex = 30;
             goSpace.TabStop = false;
-            goSpace.Click += pictureBox30_Click;
             // 
             // readingRailroad
             // 
@@ -386,7 +377,6 @@ namespace MonopolyGame
             orientalAve.SizeMode = PictureBoxSizeMode.StretchImage;
             orientalAve.TabIndex = 28;
             orientalAve.TabStop = false;
-            orientalAve.Click += pictureBox32_Click;
             // 
             // chance2
             // 
@@ -455,7 +445,6 @@ namespace MonopolyGame
             kentuckyAve.SizeMode = PictureBoxSizeMode.StretchImage;
             kentuckyAve.TabIndex = 22;
             kentuckyAve.TabStop = false;
-            kentuckyAve.Click += pictureBox22_Click;
             // 
             // freeParking
             // 
