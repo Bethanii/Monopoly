@@ -14,8 +14,8 @@ namespace MonopolyGame
             tableLayoutPanel1.ColumnStyles.Clear();
             tableLayoutPanel2.ColumnStyles.Clear();
 
-            int numberOfColumns = 11; 
-            float columnWidth = tableLayoutPanel1.Width / numberOfColumns; 
+            int numberOfColumns = 11;
+            float columnWidth = tableLayoutPanel1.Width / numberOfColumns;
 
             for (int i = 0; i < numberOfColumns; i++)
             {
@@ -101,6 +101,21 @@ namespace MonopolyGame
         }
 
         private void pictureBox22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox32_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox30_Click(object sender, EventArgs e)
         {
 
         }
