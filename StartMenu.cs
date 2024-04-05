@@ -32,9 +32,11 @@ namespace MonopolyGame
 
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void startGameButton_Click(object sender, EventArgs e)
         {
-
+            Gameboard gameBoard = new Gameboard();
+            this.Hide();
+            gameBoard.Show();
         }
     }
 }
