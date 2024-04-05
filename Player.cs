@@ -8,7 +8,7 @@ namespace MonopolyGame
 {
     internal class Player
     {
-        private string name;
+        private String name;
         private string piece;
         private string color;
         private int boardPosition;
