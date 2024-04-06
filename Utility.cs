@@ -16,7 +16,7 @@ namespace MonopolyGame
             this.type = "utility";
         }
 
-        public int getRent()
+        public int getRent(int roll)
         {
             int utilitiesOwned = 0;
             int rent = 0;
@@ -25,15 +25,16 @@ namespace MonopolyGame
                 if (property.getType() == "utility")
                 {
                     utilitiesOwned++;
-                }
+               }
             }
+
             if (utilitiesOwned == 1)
             {
-                //set rent to dice roll for turn multiplied by 4
+                rent = roll * 4;
             }
             else if(utilitiesOwned == 2)
             {
-                //set rent to dice roll for turn multiplied by 10
+                rent = roll * 10;
             }
             
             return rent;
