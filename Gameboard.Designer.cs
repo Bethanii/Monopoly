@@ -472,7 +472,6 @@ namespace MonopolyGame
             connecticutAve.Size = new Size(105, 94);
             connecticutAve.TabIndex = 38;
             connecticutAve.TabStop = false;
-            connecticutAve.Click += connecticutAve_Click;
             // 
             // rightPanel
             // 

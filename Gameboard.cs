@@ -14,7 +14,6 @@ namespace MonopolyGame
             InitializeSpacesArray();
             InitializeDogPictureBox();
             StartOnGoSpace();
-            //   UpdateDogPosition();
         }
 
         private void UpdateDogPosition()
@@ -104,8 +103,6 @@ namespace MonopolyGame
                freeParkingSpace, chance1, indianaAve, illinoisAve, boRailroad, atlanticAve, ventorAve, waterWorks, marvinGardens,
                goToJailSpace, pacificAve, northCarolinaAve, communityChest1, pennsylvaniaAve, shortLine, chance2, parkPlace, luxuryTax, boardwalk
             };
-
-            //   currentSpaceIndex = Array.IndexOf(spaces, goSpace);
         }
 
         private void InitializeDogPictureBox()
@@ -136,18 +133,12 @@ namespace MonopolyGame
         {
             currentSpaceIndex += total;
 
-            if (currentSpaceIndex >= spaces.Length)
-            {
-                currentSpaceIndex %= spaces.Length;
-            }
-
             PictureBox currentSpace = spaces[currentSpaceIndex];
 
             int targetX = (currentSpace.Width - dogPictureBox.Width) / 2;
             int targetY = (currentSpace.Height - dogPictureBox.Height) / 2;
 
             dogPictureBox.Location = new Point(targetX, targetY);
-
             currentSpace.Controls.Add(dogPictureBox);
         }
 
@@ -160,30 +151,7 @@ namespace MonopolyGame
             diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
             diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
 
-            currentSpaceIndex += total;
-
-            if (currentSpaceIndex >= spaces.Length)
-            {
-                currentSpaceIndex %= spaces.Length;
-            }
-
             MoveDog(total);
         }
-
-
-        private void connecticutAve_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /*    private void rollDiceButton_Click(object sender, EventArgs e)
-            {
-                Gameplay gameplay = new Gameplay();
-
-                (int dice1, int dice2, int total) = gameplay.getDiceRollCount();
-
-                diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
-                diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
-            } */
     }
 }
