@@ -13,8 +13,20 @@ namespace MonopolyGame
             SetPictureBoxProperties();
             InitializeSpacesArray();
             InitializeDogPictureBox();
-            StartOnFreeParking();
+            StartOnGoSpace();
+            //   UpdateDogPosition();
         }
+
+        private void UpdateDogPosition()
+        {
+            Point goSpaceLocation = tableLayoutPanel1.PointToClient(goSpace.Parent.PointToScreen(goSpace.Location));
+
+            int x = goSpace.Location.X - goSpaceLocation.X;
+            int y = goSpace.Location.Y - goSpaceLocation.Y;
+
+            dogPictureBox.Location = new Point(x, y);
+        }
+
 
         private void SetColumnStylesForTableLayoutPanel()
         {
@@ -23,7 +35,7 @@ namespace MonopolyGame
             leftPanel.RowStyles.Clear();
             rightPanel.RowStyles.Clear();
 
-            int numberOfColumns = 9;
+            int numberOfColumns = 11;
             float columnWidth = bottomPanel.Width / numberOfColumns;
             float rowHeight = leftPanel.Height / numberOfColumns;
 
@@ -87,8 +99,13 @@ namespace MonopolyGame
         {
             spaces = new PictureBox[]
             {
-                chance1, indianaAve, illinoisAve, boRailroad, atlanticAve, ventorAve, waterWorks, marvinGardens
+               goSpace, mediterraneanAve, communityChest2, balticAve, incomeTax, readingRailroad, orientalAve, chance3, vermontAve, connecticutAve,
+               inJailSpace, stCharlesPlace, electricCompany, statesAve, virginiaAve, pennsylvaniaRailroad, stJamesPlace, communityChest3, tennesseeAve, newYorkAve,
+               freeParkingSpace, chance1, indianaAve, illinoisAve, boRailroad, atlanticAve, ventorAve, waterWorks, marvinGardens,
+               goToJailSpace, pacificAve, northCarolinaAve, communityChest1, pennsylvaniaAve, shortLine, chance2, parkPlace, luxuryTax, boardwalk
             };
+
+            //   currentSpaceIndex = Array.IndexOf(spaces, goSpace);
         }
 
         private void InitializeDogPictureBox()
@@ -102,27 +119,18 @@ namespace MonopolyGame
             UpdateDogPosition();
         }
 
-        private void StartOnFreeParking()
+        private void StartOnGoSpace()
         {
-            Point freeParkingPosition = topPanel.PointToScreen(chance1.Location);
-            freeParkingPosition = dogPictureBox.Parent.PointToClient(freeParkingPosition);
-            dogPictureBox.Location = freeParkingPosition;
-            dogPictureBox.BringToFront();
+            PictureBox goSpacePictureBox = goSpace;
+
+            int targetX = (goSpacePictureBox.Width - dogPictureBox.Width) / 2;
+            int targetY = (goSpacePictureBox.Height - dogPictureBox.Height) / 2;
+
+            dogPictureBox.Location = new Point(targetX, targetY);
+
+            goSpacePictureBox.Controls.Add(dogPictureBox);
         }
 
-        private void UpdateDogPosition()
-        {
-            /*    Point freeParkingPosition = tableLayoutPanel2.PointToScreen(freeParking.Location);
-                freeParkingPosition = dogPictureBox.Parent.PointToClient(freeParkingPosition);
-                dogPictureBox.Location = freeParkingPosition;
-
-                dogPictureBox.Parent.Controls.SetChildIndex(dogPictureBox, 0); */
-
-            Point freeParkingPosition = topPanel.PointToScreen(chance1.Location);
-            freeParkingPosition = dogPictureBox.Parent.PointToClient(freeParkingPosition);
-            dogPictureBox.Location = freeParkingPosition;
-            dogPictureBox.BringToFront();
-        }
 
         private void MoveDog(int total)
         {
@@ -133,11 +141,14 @@ namespace MonopolyGame
                 currentSpaceIndex %= spaces.Length;
             }
 
-            Point targetPosition = topPanel.PointToScreen(spaces[currentSpaceIndex].Location);
-            targetPosition = dogPictureBox.Parent.PointToClient(targetPosition);
-            dogPictureBox.Location = targetPosition;
+            PictureBox currentSpace = spaces[currentSpaceIndex];
 
-            dogPictureBox.BringToFront();
+            int targetX = (currentSpace.Width - dogPictureBox.Width) / 2;
+            int targetY = (currentSpace.Height - dogPictureBox.Height) / 2;
+
+            dogPictureBox.Location = new Point(targetX, targetY);
+
+            currentSpace.Controls.Add(dogPictureBox);
         }
 
 
@@ -159,34 +170,11 @@ namespace MonopolyGame
             MoveDog(total);
         }
 
-        private void leftPanel_Paint(object sender, PaintEventArgs e)
+
+        private void connecticutAve_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void statesAve_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /*       private void SetColumnStylesForTableLayoutPanel()
-       {
-           tableLayoutPanel3.ColumnStyles.Clear();
-           tableLayoutPanel2.ColumnStyles.Clear();
-
-           int numberOfColumns = 11;
-           float columnWidth = tableLayoutPanel3.Width / numberOfColumns;
-
-           for (int i = 0; i < numberOfColumns; i++)
-           {
-               tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / numberOfColumns));
-           }
-
-           for (int i = 0; i < numberOfColumns; i++)
-           {
-               tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / numberOfColumns));
-           }
-       } */
 
         /*    private void rollDiceButton_Click(object sender, EventArgs e)
             {
