@@ -75,12 +75,12 @@ namespace MonopolyGame
             topPanel = new TableLayoutPanel();
             kentuckyAve = new PictureBox();
             illinoisAve = new PictureBox();
-            chance1 = new PictureBox();
             indianaAve = new PictureBox();
             boRailroad = new PictureBox();
             ventorAve = new PictureBox();
             atlanticAve = new PictureBox();
             marvinGardens = new PictureBox();
+            chance1 = new PictureBox();
             pictureBox1 = new PictureBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             waterWorks = new PictureBox();
@@ -128,12 +128,12 @@ namespace MonopolyGame
             topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kentuckyAve).BeginInit();
             ((System.ComponentModel.ISupportInitialize)illinoisAve).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)chance1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)indianaAve).BeginInit();
             ((System.ComponentModel.ISupportInitialize)boRailroad).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ventorAve).BeginInit();
             ((System.ComponentModel.ISupportInitialize)atlanticAve).BeginInit();
             ((System.ComponentModel.ISupportInitialize)marvinGardens).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chance1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -319,9 +319,9 @@ namespace MonopolyGame
             // 
             goSpace.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             goSpace.BackColor = Color.Red;
-            goSpace.Location = new Point(456, 457);
+            goSpace.Location = new Point(456, 460);
             goSpace.Name = "goSpace";
-            goSpace.Size = new Size(135, 115);
+            goSpace.Size = new Size(135, 112);
             goSpace.TabIndex = 41;
             goSpace.TabStop = false;
             // 
@@ -329,9 +329,9 @@ namespace MonopolyGame
             // 
             goToJailSpace.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             goToJailSpace.BackColor = Color.Red;
-            goToJailSpace.Location = new Point(491, -3);
+            goToJailSpace.Location = new Point(469, -3);
             goToJailSpace.Name = "goToJailSpace";
-            goToJailSpace.Size = new Size(103, 104);
+            goToJailSpace.Size = new Size(125, 107);
             goToJailSpace.TabIndex = 38;
             goToJailSpace.TabStop = false;
             // 
@@ -350,7 +350,7 @@ namespace MonopolyGame
             freeParkingSpace.BackColor = Color.Red;
             freeParkingSpace.Location = new Point(-1, 0);
             freeParkingSpace.Name = "freeParkingSpace";
-            freeParkingSpace.Size = new Size(103, 104);
+            freeParkingSpace.Size = new Size(126, 104);
             freeParkingSpace.TabIndex = 39;
             freeParkingSpace.TabStop = false;
             // 
@@ -358,14 +358,14 @@ namespace MonopolyGame
             // 
             bottomPanel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             bottomPanel.ColumnCount = 9;
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 74.242424F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.757576F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.901638F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.098362F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
             bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 31F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 38F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
             bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 31F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 57F));
             bottomPanel.Controls.Add(orientalAve, 3, 0);
             bottomPanel.Controls.Add(balticAve, 6, 0);
@@ -396,36 +396,36 @@ namespace MonopolyGame
             // orientalAve
             // 
             orientalAve.BackColor = Color.Magenta;
-            orientalAve.Location = new Point(82, 3);
+            orientalAve.Location = new Point(100, 3);
             orientalAve.Name = "orientalAve";
-            orientalAve.Size = new Size(32, 94);
+            orientalAve.Size = new Size(28, 94);
             orientalAve.TabIndex = 42;
             orientalAve.TabStop = false;
             // 
             // balticAve
             // 
             balticAve.BackColor = Color.Yellow;
-            balticAve.Location = new Point(186, 3);
+            balticAve.Location = new Point(199, 3);
             balticAve.Name = "balticAve";
-            balticAve.Size = new Size(28, 94);
+            balticAve.Size = new Size(25, 94);
             balticAve.TabIndex = 38;
             balticAve.TabStop = false;
             // 
             // readingRailroad
             // 
             readingRailroad.BackColor = Color.Yellow;
-            readingRailroad.Location = new Point(120, 3);
+            readingRailroad.Location = new Point(134, 3);
             readingRailroad.Name = "readingRailroad";
-            readingRailroad.Size = new Size(26, 94);
+            readingRailroad.Size = new Size(25, 94);
             readingRailroad.TabIndex = 38;
             readingRailroad.TabStop = false;
             // 
             // chance3
             // 
             chance3.BackColor = Color.Yellow;
-            chance3.Location = new Point(51, 3);
+            chance3.Location = new Point(64, 3);
             chance3.Name = "chance3";
-            chance3.Size = new Size(25, 94);
+            chance3.Size = new Size(30, 94);
             chance3.TabIndex = 38;
             chance3.TabStop = false;
             // 
@@ -434,34 +434,34 @@ namespace MonopolyGame
             connecticutAve.BackColor = Color.Yellow;
             connecticutAve.Location = new Point(3, 3);
             connecticutAve.Name = "connecticutAve";
-            connecticutAve.Size = new Size(25, 94);
+            connecticutAve.Size = new Size(22, 94);
             connecticutAve.TabIndex = 38;
             connecticutAve.TabStop = false;
             // 
             // erg
             // 
             erg.BackColor = Color.Magenta;
-            erg.Location = new Point(220, 3);
+            erg.Location = new Point(230, 3);
             erg.Name = "erg";
-            erg.Size = new Size(39, 94);
+            erg.Size = new Size(29, 94);
             erg.TabIndex = 38;
             erg.TabStop = false;
             // 
             // incomeTax
             // 
             incomeTax.BackColor = Color.Magenta;
-            incomeTax.Location = new Point(152, 3);
+            incomeTax.Location = new Point(165, 3);
             incomeTax.Name = "incomeTax";
-            incomeTax.Size = new Size(27, 94);
+            incomeTax.Size = new Size(28, 94);
             incomeTax.TabIndex = 38;
             incomeTax.TabStop = false;
             // 
             // vermontAve
             // 
             vermontAve.BackColor = Color.Magenta;
-            vermontAve.Location = new Point(39, 3);
+            vermontAve.Location = new Point(31, 3);
             vermontAve.Name = "vermontAve";
-            vermontAve.Size = new Size(6, 94);
+            vermontAve.Size = new Size(27, 94);
             vermontAve.TabIndex = 39;
             vermontAve.TabStop = false;
             // 
@@ -488,61 +488,61 @@ namespace MonopolyGame
             rightPanel.Controls.Add(pacificAve, 0, 0);
             rightPanel.Controls.Add(northCarolinaAve, 0, 1);
             rightPanel.Controls.Add(boardwalk, 0, 8);
-            rightPanel.Location = new Point(453, 100);
+            rightPanel.Location = new Point(453, 114);
             rightPanel.Name = "rightPanel";
             rightPanel.RowCount = 9;
             rightPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 51.31579F));
             rightPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 48.68421F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
             rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 43F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
-            rightPanel.Size = new Size(108, 372);
+            rightPanel.Size = new Size(108, 337);
             rightPanel.TabIndex = 35;
             // 
             // parkPlace
             // 
             parkPlace.BackColor = Color.Lime;
-            parkPlace.Location = new Point(3, 235);
+            parkPlace.Location = new Point(3, 230);
             parkPlace.Name = "parkPlace";
-            parkPlace.Size = new Size(102, 44);
+            parkPlace.Size = new Size(102, 26);
             parkPlace.TabIndex = 42;
             parkPlace.TabStop = false;
             // 
             // luxuryTax
             // 
             luxuryTax.BackColor = Color.MediumSlateBlue;
-            luxuryTax.Location = new Point(3, 285);
+            luxuryTax.Location = new Point(3, 262);
             luxuryTax.Name = "luxuryTax";
-            luxuryTax.Size = new Size(102, 44);
+            luxuryTax.Size = new Size(102, 29);
             luxuryTax.TabIndex = 36;
             luxuryTax.TabStop = false;
             // 
             // chance2
             // 
             chance2.BackColor = Color.MediumSlateBlue;
-            chance2.Location = new Point(3, 187);
+            chance2.Location = new Point(3, 192);
             chance2.Name = "chance2";
-            chance2.Size = new Size(102, 42);
+            chance2.Size = new Size(102, 32);
             chance2.TabIndex = 37;
             chance2.TabStop = false;
             // 
             // pennsylvaniaAve
             // 
             pennsylvaniaAve.BackColor = Color.MediumSlateBlue;
-            pennsylvaniaAve.Location = new Point(3, 102);
+            pennsylvaniaAve.Location = new Point(3, 106);
             pennsylvaniaAve.Name = "pennsylvaniaAve";
-            pennsylvaniaAve.Size = new Size(102, 36);
+            pennsylvaniaAve.Size = new Size(102, 35);
             pennsylvaniaAve.TabIndex = 38;
             pennsylvaniaAve.TabStop = false;
             // 
             // shortLine
             // 
             shortLine.BackColor = Color.Lime;
-            shortLine.Location = new Point(3, 144);
+            shortLine.Location = new Point(3, 147);
             shortLine.Name = "shortLine";
             shortLine.Size = new Size(102, 37);
             shortLine.TabIndex = 38;
@@ -551,9 +551,9 @@ namespace MonopolyGame
             // communityChest1
             // 
             communityChest1.BackColor = Color.Lime;
-            communityChest1.Location = new Point(3, 63);
+            communityChest1.Location = new Point(3, 72);
             communityChest1.Name = "communityChest1";
-            communityChest1.Size = new Size(102, 33);
+            communityChest1.Size = new Size(102, 28);
             communityChest1.TabIndex = 39;
             communityChest1.TabStop = false;
             // 
@@ -562,25 +562,25 @@ namespace MonopolyGame
             pacificAve.BackColor = Color.Lime;
             pacificAve.Location = new Point(3, 3);
             pacificAve.Name = "pacificAve";
-            pacificAve.Size = new Size(102, 25);
+            pacificAve.Size = new Size(102, 29);
             pacificAve.TabIndex = 40;
             pacificAve.TabStop = false;
             // 
             // northCarolinaAve
             // 
             northCarolinaAve.BackColor = Color.MediumSlateBlue;
-            northCarolinaAve.Location = new Point(3, 34);
+            northCarolinaAve.Location = new Point(3, 38);
             northCarolinaAve.Name = "northCarolinaAve";
-            northCarolinaAve.Size = new Size(102, 23);
+            northCarolinaAve.Size = new Size(102, 28);
             northCarolinaAve.TabIndex = 39;
             northCarolinaAve.TabStop = false;
             // 
             // boardwalk
             // 
             boardwalk.BackColor = Color.Lime;
-            boardwalk.Location = new Point(3, 335);
+            boardwalk.Location = new Point(3, 297);
             boardwalk.Name = "boardwalk";
-            boardwalk.Size = new Size(102, 34);
+            boardwalk.Size = new Size(102, 37);
             boardwalk.TabIndex = 38;
             boardwalk.TabStop = false;
             // 
@@ -598,26 +598,26 @@ namespace MonopolyGame
             leftPanel.Controls.Add(tennesseeAve, 0, 1);
             leftPanel.Controls.Add(pennsylvaniaRailroad, 0, 4);
             leftPanel.Controls.Add(electricCompany, 0, 7);
-            leftPanel.Location = new Point(18, 103);
+            leftPanel.Location = new Point(18, 114);
             leftPanel.Name = "leftPanel";
             leftPanel.RowCount = 9;
             leftPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 47F));
-            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
-            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 46F));
+            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
+            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
+            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
             leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
             leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
             leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
             leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
             leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
-            leftPanel.Size = new Size(107, 369);
+            leftPanel.Size = new Size(107, 340);
             leftPanel.TabIndex = 34;
             leftPanel.Paint += leftPanel_Paint;
             // 
             // stCharlesPlace
             // 
             stCharlesPlace.BackColor = Color.Cyan;
-            stCharlesPlace.Location = new Point(3, 336);
+            stCharlesPlace.Location = new Point(3, 307);
             stCharlesPlace.Name = "stCharlesPlace";
             stCharlesPlace.Size = new Size(101, 30);
             stCharlesPlace.TabIndex = 42;
@@ -626,7 +626,7 @@ namespace MonopolyGame
             // virginiaAve
             // 
             virginiaAve.BackColor = Color.NavajoWhite;
-            virginiaAve.Location = new Point(3, 211);
+            virginiaAve.Location = new Point(3, 182);
             virginiaAve.Name = "virginiaAve";
             virginiaAve.Size = new Size(101, 36);
             virginiaAve.TabIndex = 37;
@@ -637,32 +637,32 @@ namespace MonopolyGame
             newYorkAve.BackColor = Color.Cyan;
             newYorkAve.Location = new Point(3, 3);
             newYorkAve.Name = "newYorkAve";
-            newYorkAve.Size = new Size(101, 21);
+            newYorkAve.Size = new Size(101, 26);
             newYorkAve.TabIndex = 0;
             newYorkAve.TabStop = false;
             // 
             // stJamesPlace
             // 
             stJamesPlace.BackColor = Color.NavajoWhite;
-            stJamesPlace.Location = new Point(3, 121);
+            stJamesPlace.Location = new Point(3, 104);
             stJamesPlace.Name = "stJamesPlace";
-            stJamesPlace.Size = new Size(101, 40);
+            stJamesPlace.Size = new Size(101, 28);
             stJamesPlace.TabIndex = 36;
             stJamesPlace.TabStop = false;
             // 
             // communityChest2
             // 
             communityChest2.BackColor = Color.Cyan;
-            communityChest2.Location = new Point(3, 77);
+            communityChest2.Location = new Point(3, 68);
             communityChest2.Name = "communityChest2";
-            communityChest2.Size = new Size(101, 38);
+            communityChest2.Size = new Size(101, 30);
             communityChest2.TabIndex = 2;
             communityChest2.TabStop = false;
             // 
             // statesAve
             // 
             statesAve.BackColor = Color.Cyan;
-            statesAve.Location = new Point(3, 253);
+            statesAve.Location = new Point(3, 224);
             statesAve.Name = "statesAve";
             statesAve.Size = new Size(101, 35);
             statesAve.TabIndex = 38;
@@ -672,16 +672,16 @@ namespace MonopolyGame
             // tennesseeAve
             // 
             tennesseeAve.BackColor = Color.NavajoWhite;
-            tennesseeAve.Location = new Point(3, 30);
+            tennesseeAve.Location = new Point(3, 35);
             tennesseeAve.Name = "tennesseeAve";
-            tennesseeAve.Size = new Size(101, 41);
+            tennesseeAve.Size = new Size(101, 27);
             tennesseeAve.TabIndex = 1;
             tennesseeAve.TabStop = false;
             // 
             // pennsylvaniaRailroad
             // 
             pennsylvaniaRailroad.BackColor = Color.Cyan;
-            pennsylvaniaRailroad.Location = new Point(3, 167);
+            pennsylvaniaRailroad.Location = new Point(3, 138);
             pennsylvaniaRailroad.Name = "pennsylvaniaRailroad";
             pennsylvaniaRailroad.Size = new Size(101, 38);
             pennsylvaniaRailroad.TabIndex = 35;
@@ -690,7 +690,7 @@ namespace MonopolyGame
             // electricCompany
             // 
             electricCompany.BackColor = Color.NavajoWhite;
-            electricCompany.Location = new Point(3, 294);
+            electricCompany.Location = new Point(3, 265);
             electricCompany.Name = "electricCompany";
             electricCompany.Size = new Size(101, 36);
             electricCompany.TabIndex = 42;
@@ -702,8 +702,8 @@ namespace MonopolyGame
             topPanel.BackColor = SystemColors.ActiveCaptionText;
             topPanel.ColumnCount = 9;
             topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 67F));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 55F));
+            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 85F));
+            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 37F));
             topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
             topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 42F));
             topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
@@ -711,7 +711,6 @@ namespace MonopolyGame
             topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 37F));
             topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 43F));
             topPanel.Controls.Add(kentuckyAve, 0, 0);
-            topPanel.Controls.Add(waterWorks, 7, 0);
             topPanel.Controls.Add(illinoisAve, 3, 0);
             topPanel.Controls.Add(indianaAve, 2, 0);
             topPanel.Controls.Add(boRailroad, 4, 0);
@@ -719,6 +718,7 @@ namespace MonopolyGame
             topPanel.Controls.Add(atlanticAve, 5, 0);
             topPanel.Controls.Add(marvinGardens, 8, 0);
             topPanel.Controls.Add(chance1, 1, 0);
+            topPanel.Controls.Add(waterWorks, 7, 0);
             topPanel.Location = new Point(447, 29);
             topPanel.MaximumSize = new Size(950, 150);
             topPanel.MinimumSize = new Size(320, 100);
@@ -748,22 +748,12 @@ namespace MonopolyGame
             illinoisAve.TabIndex = 28;
             illinoisAve.TabStop = false;
             // 
-            // chance1
-            // 
-            chance1.BackColor = Color.IndianRed;
-            chance1.Location = new Point(-43, 3);
-            chance1.Name = "chance1";
-            chance1.Size = new Size(61, 94);
-            chance1.SizeMode = PictureBoxSizeMode.StretchImage;
-            chance1.TabIndex = 23;
-            chance1.TabStop = false;
-            // 
             // indianaAve
             // 
             indianaAve.BackColor = Color.DarkTurquoise;
-            indianaAve.Location = new Point(24, 3);
+            indianaAve.Location = new Point(42, 3);
             indianaAve.Name = "indianaAve";
-            indianaAve.Size = new Size(43, 94);
+            indianaAve.Size = new Size(31, 94);
             indianaAve.SizeMode = PictureBoxSizeMode.StretchImage;
             indianaAve.TabIndex = 22;
             indianaAve.TabStop = false;
@@ -807,6 +797,16 @@ namespace MonopolyGame
             marvinGardens.SizeMode = PictureBoxSizeMode.StretchImage;
             marvinGardens.TabIndex = 30;
             marvinGardens.TabStop = false;
+            // 
+            // chance1
+            // 
+            chance1.BackColor = Color.IndianRed;
+            chance1.Location = new Point(-43, 3);
+            chance1.Name = "chance1";
+            chance1.Size = new Size(79, 94);
+            chance1.SizeMode = PictureBoxSizeMode.StretchImage;
+            chance1.TabIndex = 23;
+            chance1.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -889,12 +889,12 @@ namespace MonopolyGame
             topPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)kentuckyAve).EndInit();
             ((System.ComponentModel.ISupportInitialize)illinoisAve).EndInit();
-            ((System.ComponentModel.ISupportInitialize)chance1).EndInit();
             ((System.ComponentModel.ISupportInitialize)indianaAve).EndInit();
             ((System.ComponentModel.ISupportInitialize)boRailroad).EndInit();
             ((System.ComponentModel.ISupportInitialize)ventorAve).EndInit();
             ((System.ComponentModel.ISupportInitialize)atlanticAve).EndInit();
             ((System.ComponentModel.ISupportInitialize)marvinGardens).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chance1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
