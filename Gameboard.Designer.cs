@@ -23,7 +23,7 @@ namespace MonopolyGame
 
         private void InitializeComponent()
         {
-            PictureBox atlanticAve;
+            PictureBox waterWorks;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gameboard));
             propertiesGroupBox = new GroupBox();
             balanceLabel = new Label();
@@ -38,91 +38,114 @@ namespace MonopolyGame
             rollDiceButton = new Button();
             gameBoardImage = new PictureBox();
             panel1 = new Panel();
-            tableLayoutPanel4 = new TableLayoutPanel();
+            goSpace = new PictureBox();
+            goToJailSpace = new PictureBox();
+            inJailSpace = new PictureBox();
+            freeParkingSpace = new PictureBox();
+            bottomPanel = new TableLayoutPanel();
+            orientalAve = new PictureBox();
+            balticAve = new PictureBox();
+            readingRailroad = new PictureBox();
+            chance3 = new PictureBox();
+            connecticutAve = new PictureBox();
+            erg = new PictureBox();
+            incomeTax = new PictureBox();
+            vermontAve = new PictureBox();
+            mediterraneanAve = new PictureBox();
+            rightPanel = new TableLayoutPanel();
+            parkPlace = new PictureBox();
+            luxuryTax = new PictureBox();
+            chance2 = new PictureBox();
+            pennsylvaniaAve = new PictureBox();
+            shortLine = new PictureBox();
+            communityChest1 = new PictureBox();
+            pacificAve = new PictureBox();
+            northCarolinaAve = new PictureBox();
+            boardwalk = new PictureBox();
+            leftPanel = new TableLayoutPanel();
             stCharlesPlace = new PictureBox();
-            electricCompany = new PictureBox();
             virginiaAve = new PictureBox();
-            communityChest2 = new PictureBox();
-            tennesseeAve = new PictureBox();
             newYorkAve = new PictureBox();
             stJamesPlace = new PictureBox();
-            pennsylvaniaRailroad = new PictureBox();
+            communityChest2 = new PictureBox();
             statesAve = new PictureBox();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            pictureBox2 = new PictureBox();
-            mediteraneanAve = new PictureBox();
-            inJail = new PictureBox();
-            connecticutAve = new PictureBox();
-            goSpace = new PictureBox();
-            readingRailroad = new PictureBox();
-            incomeTax = new PictureBox();
-            balticAve = new PictureBox();
-            orientalAve = new PictureBox();
-            chance2 = new PictureBox();
-            communityChest = new PictureBox();
-            pictureBox1 = new PictureBox();
-            boRailroad = new PictureBox();
-            illinoisAve = new PictureBox();
-            indianaAve = new PictureBox();
+            tennesseeAve = new PictureBox();
+            pennsylvaniaRailroad = new PictureBox();
+            electricCompany = new PictureBox();
+            topPanel = new TableLayoutPanel();
             kentuckyAve = new PictureBox();
-            freeParking = new PictureBox();
+            illinoisAve = new PictureBox();
             chance1 = new PictureBox();
+            indianaAve = new PictureBox();
+            boRailroad = new PictureBox();
             ventorAve = new PictureBox();
-            marvinGardens = new PictureBox();
-            goToJail = new PictureBox();
-            tableLayoutPanel2 = new TableLayoutPanel();
             atlanticAve = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)atlanticAve).BeginInit();
+            marvinGardens = new PictureBox();
+            pictureBox1 = new PictureBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            waterWorks = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)waterWorks).BeginInit();
             ((System.ComponentModel.ISupportInitialize)getOutOfJailFreeCards).BeginInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll2).BeginInit();
             diceGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gameBoardImage).BeginInit();
             panel1.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)goSpace).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)goToJailSpace).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)inJailSpace).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)freeParkingSpace).BeginInit();
+            bottomPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)orientalAve).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)balticAve).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)readingRailroad).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chance3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)connecticutAve).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)erg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)incomeTax).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)vermontAve).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)mediterraneanAve).BeginInit();
+            rightPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)parkPlace).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)luxuryTax).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chance2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pennsylvaniaAve).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)shortLine).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)communityChest1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pacificAve).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)northCarolinaAve).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)boardwalk).BeginInit();
+            leftPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)stCharlesPlace).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)electricCompany).BeginInit();
             ((System.ComponentModel.ISupportInitialize)virginiaAve).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)communityChest2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)tennesseeAve).BeginInit();
             ((System.ComponentModel.ISupportInitialize)newYorkAve).BeginInit();
             ((System.ComponentModel.ISupportInitialize)stJamesPlace).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pennsylvaniaRailroad).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)communityChest2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)statesAve).BeginInit();
-            tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)mediteraneanAve).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)inJail).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)connecticutAve).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)goSpace).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)readingRailroad).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)incomeTax).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)balticAve).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)orientalAve).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)chance2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)communityChest).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)boRailroad).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)illinoisAve).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)indianaAve).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tennesseeAve).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pennsylvaniaRailroad).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)electricCompany).BeginInit();
+            topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kentuckyAve).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)freeParking).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)illinoisAve).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chance1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)indianaAve).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)boRailroad).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ventorAve).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)atlanticAve).BeginInit();
             ((System.ComponentModel.ISupportInitialize)marvinGardens).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)goToJail).BeginInit();
-            tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // atlanticAve
+            // waterWorks
             // 
-            atlanticAve.BackColor = Color.IndianRed;
-            atlanticAve.Location = new Point(281, 3);
-            atlanticAve.Name = "atlanticAve";
-            atlanticAve.Size = new Size(29, 94);
-            atlanticAve.SizeMode = PictureBoxSizeMode.StretchImage;
-            atlanticAve.TabIndex = 29;
-            atlanticAve.TabStop = false;
+            waterWorks.BackColor = Color.IndianRed;
+            waterWorks.Location = new Point(243, 3);
+            waterWorks.Name = "waterWorks";
+            waterWorks.Size = new Size(28, 94);
+            waterWorks.SizeMode = PictureBoxSizeMode.StretchImage;
+            waterWorks.TabIndex = 29;
+            waterWorks.TabStop = false;
             // 
             // propertiesGroupBox
             // 
@@ -279,268 +302,511 @@ namespace MonopolyGame
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panel1.Controls.Add(tableLayoutPanel4);
-            panel1.Controls.Add(tableLayoutPanel3);
+            panel1.Controls.Add(goSpace);
+            panel1.Controls.Add(goToJailSpace);
+            panel1.Controls.Add(inJailSpace);
+            panel1.Controls.Add(freeParkingSpace);
+            panel1.Controls.Add(bottomPanel);
+            panel1.Controls.Add(rightPanel);
+            panel1.Controls.Add(leftPanel);
             panel1.Controls.Add(gameBoardImage);
             panel1.Location = new Point(292, 32);
             panel1.Name = "panel1";
             panel1.Size = new Size(594, 575);
             panel1.TabIndex = 23;
             // 
-            // tableLayoutPanel4
+            // goSpace
             // 
-            tableLayoutPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            tableLayoutPanel4.ColumnCount = 1;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Controls.Add(stCharlesPlace, 0, 8);
-            tableLayoutPanel4.Controls.Add(electricCompany, 0, 7);
-            tableLayoutPanel4.Controls.Add(virginiaAve, 0, 5);
-            tableLayoutPanel4.Controls.Add(communityChest2, 0, 2);
-            tableLayoutPanel4.Controls.Add(tennesseeAve, 0, 1);
-            tableLayoutPanel4.Controls.Add(newYorkAve, 0, 0);
-            tableLayoutPanel4.Controls.Add(stJamesPlace, 0, 3);
-            tableLayoutPanel4.Controls.Add(pennsylvaniaRailroad, 0, 4);
-            tableLayoutPanel4.Controls.Add(statesAve, 0, 6);
-            tableLayoutPanel4.Location = new Point(18, 92);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 9;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 43F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 46F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 49F));
-            tableLayoutPanel4.Size = new Size(102, 405);
-            tableLayoutPanel4.TabIndex = 34;
+            goSpace.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            goSpace.BackColor = Color.Red;
+            goSpace.Location = new Point(456, 457);
+            goSpace.Name = "goSpace";
+            goSpace.Size = new Size(135, 115);
+            goSpace.TabIndex = 41;
+            goSpace.TabStop = false;
+            // 
+            // goToJailSpace
+            // 
+            goToJailSpace.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            goToJailSpace.BackColor = Color.Red;
+            goToJailSpace.Location = new Point(491, -3);
+            goToJailSpace.Name = "goToJailSpace";
+            goToJailSpace.Size = new Size(103, 104);
+            goToJailSpace.TabIndex = 38;
+            goToJailSpace.TabStop = false;
+            // 
+            // inJailSpace
+            // 
+            inJailSpace.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            inJailSpace.BackColor = Color.Red;
+            inJailSpace.Location = new Point(-1, 460);
+            inJailSpace.Name = "inJailSpace";
+            inJailSpace.Size = new Size(123, 116);
+            inJailSpace.TabIndex = 40;
+            inJailSpace.TabStop = false;
+            // 
+            // freeParkingSpace
+            // 
+            freeParkingSpace.BackColor = Color.Red;
+            freeParkingSpace.Location = new Point(-1, 0);
+            freeParkingSpace.Name = "freeParkingSpace";
+            freeParkingSpace.Size = new Size(103, 104);
+            freeParkingSpace.TabIndex = 39;
+            freeParkingSpace.TabStop = false;
+            // 
+            // bottomPanel
+            // 
+            bottomPanel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            bottomPanel.ColumnCount = 9;
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 74.242424F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.757576F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 31F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 38F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 57F));
+            bottomPanel.Controls.Add(orientalAve, 3, 0);
+            bottomPanel.Controls.Add(balticAve, 6, 0);
+            bottomPanel.Controls.Add(readingRailroad, 4, 0);
+            bottomPanel.Controls.Add(chance3, 2, 0);
+            bottomPanel.Controls.Add(connecticutAve, 0, 0);
+            bottomPanel.Controls.Add(erg, 7, 0);
+            bottomPanel.Controls.Add(incomeTax, 5, 0);
+            bottomPanel.Controls.Add(vermontAve, 1, 0);
+            bottomPanel.Controls.Add(mediterraneanAve, 8, 0);
+            bottomPanel.Location = new Point(155, 476);
+            bottomPanel.MaximumSize = new Size(950, 150);
+            bottomPanel.MinimumSize = new Size(320, 100);
+            bottomPanel.Name = "bottomPanel";
+            bottomPanel.RowCount = 1;
+            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            bottomPanel.Size = new Size(320, 100);
+            bottomPanel.TabIndex = 37;
+            // 
+            // orientalAve
+            // 
+            orientalAve.BackColor = Color.Magenta;
+            orientalAve.Location = new Point(82, 3);
+            orientalAve.Name = "orientalAve";
+            orientalAve.Size = new Size(32, 94);
+            orientalAve.TabIndex = 42;
+            orientalAve.TabStop = false;
+            // 
+            // balticAve
+            // 
+            balticAve.BackColor = Color.Yellow;
+            balticAve.Location = new Point(186, 3);
+            balticAve.Name = "balticAve";
+            balticAve.Size = new Size(28, 94);
+            balticAve.TabIndex = 38;
+            balticAve.TabStop = false;
+            // 
+            // readingRailroad
+            // 
+            readingRailroad.BackColor = Color.Yellow;
+            readingRailroad.Location = new Point(120, 3);
+            readingRailroad.Name = "readingRailroad";
+            readingRailroad.Size = new Size(26, 94);
+            readingRailroad.TabIndex = 38;
+            readingRailroad.TabStop = false;
+            // 
+            // chance3
+            // 
+            chance3.BackColor = Color.Yellow;
+            chance3.Location = new Point(51, 3);
+            chance3.Name = "chance3";
+            chance3.Size = new Size(25, 94);
+            chance3.TabIndex = 38;
+            chance3.TabStop = false;
+            // 
+            // connecticutAve
+            // 
+            connecticutAve.BackColor = Color.Yellow;
+            connecticutAve.Location = new Point(3, 3);
+            connecticutAve.Name = "connecticutAve";
+            connecticutAve.Size = new Size(25, 94);
+            connecticutAve.TabIndex = 38;
+            connecticutAve.TabStop = false;
+            // 
+            // erg
+            // 
+            erg.BackColor = Color.Magenta;
+            erg.Location = new Point(220, 3);
+            erg.Name = "erg";
+            erg.Size = new Size(39, 94);
+            erg.TabIndex = 38;
+            erg.TabStop = false;
+            // 
+            // incomeTax
+            // 
+            incomeTax.BackColor = Color.Magenta;
+            incomeTax.Location = new Point(152, 3);
+            incomeTax.Name = "incomeTax";
+            incomeTax.Size = new Size(27, 94);
+            incomeTax.TabIndex = 38;
+            incomeTax.TabStop = false;
+            // 
+            // vermontAve
+            // 
+            vermontAve.BackColor = Color.Magenta;
+            vermontAve.Location = new Point(39, 3);
+            vermontAve.Name = "vermontAve";
+            vermontAve.Size = new Size(6, 94);
+            vermontAve.TabIndex = 39;
+            vermontAve.TabStop = false;
+            // 
+            // mediterraneanAve
+            // 
+            mediterraneanAve.BackColor = Color.Yellow;
+            mediterraneanAve.Location = new Point(265, 3);
+            mediterraneanAve.Name = "mediterraneanAve";
+            mediterraneanAve.Size = new Size(36, 94);
+            mediterraneanAve.TabIndex = 38;
+            mediterraneanAve.TabStop = false;
+            // 
+            // rightPanel
+            // 
+            rightPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            rightPanel.ColumnCount = 1;
+            rightPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            rightPanel.Controls.Add(parkPlace, 0, 6);
+            rightPanel.Controls.Add(luxuryTax, 0, 7);
+            rightPanel.Controls.Add(chance2, 0, 5);
+            rightPanel.Controls.Add(pennsylvaniaAve, 0, 3);
+            rightPanel.Controls.Add(shortLine, 0, 4);
+            rightPanel.Controls.Add(communityChest1, 0, 2);
+            rightPanel.Controls.Add(pacificAve, 0, 0);
+            rightPanel.Controls.Add(northCarolinaAve, 0, 1);
+            rightPanel.Controls.Add(boardwalk, 0, 8);
+            rightPanel.Location = new Point(453, 100);
+            rightPanel.Name = "rightPanel";
+            rightPanel.RowCount = 9;
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 51.31579F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 48.68421F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 43F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
+            rightPanel.Size = new Size(108, 372);
+            rightPanel.TabIndex = 35;
+            // 
+            // parkPlace
+            // 
+            parkPlace.BackColor = Color.Lime;
+            parkPlace.Location = new Point(3, 235);
+            parkPlace.Name = "parkPlace";
+            parkPlace.Size = new Size(102, 44);
+            parkPlace.TabIndex = 42;
+            parkPlace.TabStop = false;
+            // 
+            // luxuryTax
+            // 
+            luxuryTax.BackColor = Color.MediumSlateBlue;
+            luxuryTax.Location = new Point(3, 285);
+            luxuryTax.Name = "luxuryTax";
+            luxuryTax.Size = new Size(102, 44);
+            luxuryTax.TabIndex = 36;
+            luxuryTax.TabStop = false;
+            // 
+            // chance2
+            // 
+            chance2.BackColor = Color.MediumSlateBlue;
+            chance2.Location = new Point(3, 187);
+            chance2.Name = "chance2";
+            chance2.Size = new Size(102, 42);
+            chance2.TabIndex = 37;
+            chance2.TabStop = false;
+            // 
+            // pennsylvaniaAve
+            // 
+            pennsylvaniaAve.BackColor = Color.MediumSlateBlue;
+            pennsylvaniaAve.Location = new Point(3, 102);
+            pennsylvaniaAve.Name = "pennsylvaniaAve";
+            pennsylvaniaAve.Size = new Size(102, 36);
+            pennsylvaniaAve.TabIndex = 38;
+            pennsylvaniaAve.TabStop = false;
+            // 
+            // shortLine
+            // 
+            shortLine.BackColor = Color.Lime;
+            shortLine.Location = new Point(3, 144);
+            shortLine.Name = "shortLine";
+            shortLine.Size = new Size(102, 37);
+            shortLine.TabIndex = 38;
+            shortLine.TabStop = false;
+            // 
+            // communityChest1
+            // 
+            communityChest1.BackColor = Color.Lime;
+            communityChest1.Location = new Point(3, 63);
+            communityChest1.Name = "communityChest1";
+            communityChest1.Size = new Size(102, 33);
+            communityChest1.TabIndex = 39;
+            communityChest1.TabStop = false;
+            // 
+            // pacificAve
+            // 
+            pacificAve.BackColor = Color.Lime;
+            pacificAve.Location = new Point(3, 3);
+            pacificAve.Name = "pacificAve";
+            pacificAve.Size = new Size(102, 25);
+            pacificAve.TabIndex = 40;
+            pacificAve.TabStop = false;
+            // 
+            // northCarolinaAve
+            // 
+            northCarolinaAve.BackColor = Color.MediumSlateBlue;
+            northCarolinaAve.Location = new Point(3, 34);
+            northCarolinaAve.Name = "northCarolinaAve";
+            northCarolinaAve.Size = new Size(102, 23);
+            northCarolinaAve.TabIndex = 39;
+            northCarolinaAve.TabStop = false;
+            // 
+            // boardwalk
+            // 
+            boardwalk.BackColor = Color.Lime;
+            boardwalk.Location = new Point(3, 335);
+            boardwalk.Name = "boardwalk";
+            boardwalk.Size = new Size(102, 34);
+            boardwalk.TabIndex = 38;
+            boardwalk.TabStop = false;
+            // 
+            // leftPanel
+            // 
+            leftPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            leftPanel.ColumnCount = 1;
+            leftPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            leftPanel.Controls.Add(stCharlesPlace, 0, 8);
+            leftPanel.Controls.Add(virginiaAve, 0, 5);
+            leftPanel.Controls.Add(newYorkAve, 0, 0);
+            leftPanel.Controls.Add(stJamesPlace, 0, 3);
+            leftPanel.Controls.Add(communityChest2, 0, 2);
+            leftPanel.Controls.Add(statesAve, 0, 6);
+            leftPanel.Controls.Add(tennesseeAve, 0, 1);
+            leftPanel.Controls.Add(pennsylvaniaRailroad, 0, 4);
+            leftPanel.Controls.Add(electricCompany, 0, 7);
+            leftPanel.Location = new Point(18, 103);
+            leftPanel.Name = "leftPanel";
+            leftPanel.RowCount = 9;
+            leftPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 47F));
+            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 46F));
+            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
+            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
+            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
+            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
+            leftPanel.Size = new Size(107, 369);
+            leftPanel.TabIndex = 34;
+            leftPanel.Paint += leftPanel_Paint;
             // 
             // stCharlesPlace
             // 
             stCharlesPlace.BackColor = Color.Cyan;
-            stCharlesPlace.Location = new Point(3, 359);
+            stCharlesPlace.Location = new Point(3, 336);
             stCharlesPlace.Name = "stCharlesPlace";
-            stCharlesPlace.Size = new Size(96, 43);
-            stCharlesPlace.TabIndex = 40;
+            stCharlesPlace.Size = new Size(101, 30);
+            stCharlesPlace.TabIndex = 42;
             stCharlesPlace.TabStop = false;
-            // 
-            // electricCompany
-            // 
-            electricCompany.BackColor = Color.NavajoWhite;
-            electricCompany.Location = new Point(3, 318);
-            electricCompany.Name = "electricCompany";
-            electricCompany.Size = new Size(96, 35);
-            electricCompany.TabIndex = 39;
-            electricCompany.TabStop = false;
             // 
             // virginiaAve
             // 
             virginiaAve.BackColor = Color.NavajoWhite;
-            virginiaAve.Location = new Point(3, 233);
+            virginiaAve.Location = new Point(3, 211);
             virginiaAve.Name = "virginiaAve";
-            virginiaAve.Size = new Size(96, 33);
+            virginiaAve.Size = new Size(101, 36);
             virginiaAve.TabIndex = 37;
             virginiaAve.TabStop = false;
-            // 
-            // communityChest2
-            // 
-            communityChest2.BackColor = Color.Cyan;
-            communityChest2.Location = new Point(3, 102);
-            communityChest2.Name = "communityChest2";
-            communityChest2.Size = new Size(96, 36);
-            communityChest2.TabIndex = 2;
-            communityChest2.TabStop = false;
-            // 
-            // tennesseeAve
-            // 
-            tennesseeAve.BackColor = Color.NavajoWhite;
-            tennesseeAve.Location = new Point(3, 59);
-            tennesseeAve.Name = "tennesseeAve";
-            tennesseeAve.Size = new Size(96, 37);
-            tennesseeAve.TabIndex = 1;
-            tennesseeAve.TabStop = false;
             // 
             // newYorkAve
             // 
             newYorkAve.BackColor = Color.Cyan;
             newYorkAve.Location = new Point(3, 3);
             newYorkAve.Name = "newYorkAve";
-            newYorkAve.Size = new Size(96, 50);
+            newYorkAve.Size = new Size(101, 21);
             newYorkAve.TabIndex = 0;
             newYorkAve.TabStop = false;
             // 
             // stJamesPlace
             // 
             stJamesPlace.BackColor = Color.NavajoWhite;
-            stJamesPlace.Location = new Point(3, 144);
+            stJamesPlace.Location = new Point(3, 121);
             stJamesPlace.Name = "stJamesPlace";
-            stJamesPlace.Size = new Size(96, 39);
+            stJamesPlace.Size = new Size(101, 40);
             stJamesPlace.TabIndex = 36;
             stJamesPlace.TabStop = false;
             // 
-            // pennsylvaniaRailroad
+            // communityChest2
             // 
-            pennsylvaniaRailroad.BackColor = Color.Cyan;
-            pennsylvaniaRailroad.Location = new Point(3, 189);
-            pennsylvaniaRailroad.Name = "pennsylvaniaRailroad";
-            pennsylvaniaRailroad.Size = new Size(96, 38);
-            pennsylvaniaRailroad.TabIndex = 35;
-            pennsylvaniaRailroad.TabStop = false;
+            communityChest2.BackColor = Color.Cyan;
+            communityChest2.Location = new Point(3, 77);
+            communityChest2.Name = "communityChest2";
+            communityChest2.Size = new Size(101, 38);
+            communityChest2.TabIndex = 2;
+            communityChest2.TabStop = false;
             // 
             // statesAve
             // 
             statesAve.BackColor = Color.Cyan;
-            statesAve.Location = new Point(3, 272);
+            statesAve.Location = new Point(3, 253);
             statesAve.Name = "statesAve";
-            statesAve.Size = new Size(96, 40);
+            statesAve.Size = new Size(101, 35);
             statesAve.TabIndex = 38;
             statesAve.TabStop = false;
+            statesAve.Click += statesAve_Click;
             // 
-            // tableLayoutPanel3
+            // tennesseeAve
             // 
-            tableLayoutPanel3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel3.BackColor = SystemColors.ActiveCaptionText;
-            tableLayoutPanel3.ColumnCount = 11;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 53F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 37F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 47F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 47F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 44F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 49F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 52F));
-            tableLayoutPanel3.Controls.Add(pictureBox2, 0, 0);
-            tableLayoutPanel3.Controls.Add(mediteraneanAve, 9, 0);
-            tableLayoutPanel3.Controls.Add(inJail, 0, 0);
-            tableLayoutPanel3.Controls.Add(connecticutAve, 0, 0);
-            tableLayoutPanel3.Controls.Add(goSpace, 10, 0);
-            tableLayoutPanel3.Controls.Add(readingRailroad, 4, 0);
-            tableLayoutPanel3.Controls.Add(incomeTax, 5, 0);
-            tableLayoutPanel3.Controls.Add(balticAve, 6, 0);
-            tableLayoutPanel3.Controls.Add(orientalAve, 3, 0);
-            tableLayoutPanel3.Controls.Add(chance2, 2, 0);
-            tableLayoutPanel3.Controls.Add(communityChest, 8, 0);
-            tableLayoutPanel3.Location = new Point(79, 491);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 1;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new Size(440, 84);
-            tableLayoutPanel3.TabIndex = 33;
+            tennesseeAve.BackColor = Color.NavajoWhite;
+            tennesseeAve.Location = new Point(3, 30);
+            tennesseeAve.Name = "tennesseeAve";
+            tennesseeAve.Size = new Size(101, 41);
+            tennesseeAve.TabIndex = 1;
+            tennesseeAve.TabStop = false;
             // 
-            // pictureBox2
+            // pennsylvaniaRailroad
             // 
-            pictureBox2.BackColor = Color.MediumVioletRed;
-            pictureBox2.Location = new Point(42, 3);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(31, 78);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 36;
-            pictureBox2.TabStop = false;
+            pennsylvaniaRailroad.BackColor = Color.Cyan;
+            pennsylvaniaRailroad.Location = new Point(3, 167);
+            pennsylvaniaRailroad.Name = "pennsylvaniaRailroad";
+            pennsylvaniaRailroad.Size = new Size(101, 38);
+            pennsylvaniaRailroad.TabIndex = 35;
+            pennsylvaniaRailroad.TabStop = false;
             // 
-            // mediteraneanAve
+            // electricCompany
             // 
-            mediteraneanAve.BackColor = Color.DarkTurquoise;
-            mediteraneanAve.Location = new Point(342, 3);
-            mediteraneanAve.Name = "mediteraneanAve";
-            mediteraneanAve.Size = new Size(43, 78);
-            mediteraneanAve.SizeMode = PictureBoxSizeMode.StretchImage;
-            mediteraneanAve.TabIndex = 35;
-            mediteraneanAve.TabStop = false;
+            electricCompany.BackColor = Color.NavajoWhite;
+            electricCompany.Location = new Point(3, 294);
+            electricCompany.Name = "electricCompany";
+            electricCompany.Size = new Size(101, 36);
+            electricCompany.TabIndex = 42;
+            electricCompany.TabStop = false;
             // 
-            // inJail
+            // topPanel
             // 
-            inJail.BackColor = Color.HotPink;
-            inJail.Location = new Point(3, 3);
-            inJail.Name = "inJail";
-            inJail.Size = new Size(1, 78);
-            inJail.SizeMode = PictureBoxSizeMode.StretchImage;
-            inJail.TabIndex = 34;
-            inJail.TabStop = false;
+            topPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            topPanel.BackColor = SystemColors.ActiveCaptionText;
+            topPanel.ColumnCount = 9;
+            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 67F));
+            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 55F));
+            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 42F));
+            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
+            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 37F));
+            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 37F));
+            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 43F));
+            topPanel.Controls.Add(kentuckyAve, 0, 0);
+            topPanel.Controls.Add(waterWorks, 7, 0);
+            topPanel.Controls.Add(illinoisAve, 3, 0);
+            topPanel.Controls.Add(indianaAve, 2, 0);
+            topPanel.Controls.Add(boRailroad, 4, 0);
+            topPanel.Controls.Add(ventorAve, 6, 0);
+            topPanel.Controls.Add(atlanticAve, 5, 0);
+            topPanel.Controls.Add(marvinGardens, 8, 0);
+            topPanel.Controls.Add(chance1, 1, 0);
+            topPanel.Location = new Point(447, 29);
+            topPanel.MaximumSize = new Size(950, 150);
+            topPanel.MinimumSize = new Size(320, 100);
+            topPanel.Name = "topPanel";
+            topPanel.RowCount = 1;
+            topPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            topPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            topPanel.Size = new Size(320, 100);
+            topPanel.TabIndex = 30;
             // 
-            // connecticutAve
+            // kentuckyAve
             // 
-            connecticutAve.BackColor = Color.DarkTurquoise;
-            connecticutAve.Location = new Point(-11, 3);
-            connecticutAve.Name = "connecticutAve";
-            connecticutAve.Size = new Size(1, 78);
-            connecticutAve.SizeMode = PictureBoxSizeMode.StretchImage;
-            connecticutAve.TabIndex = 33;
-            connecticutAve.TabStop = false;
+            kentuckyAve.BackColor = Color.DarkTurquoise;
+            kentuckyAve.Location = new Point(3, 3);
+            kentuckyAve.Name = "kentuckyAve";
+            kentuckyAve.Size = new Size(1, 94);
+            kentuckyAve.TabIndex = 39;
+            kentuckyAve.TabStop = false;
             // 
-            // goSpace
+            // illinoisAve
             // 
-            goSpace.BackColor = Color.Violet;
-            goSpace.Location = new Point(391, 3);
-            goSpace.Name = "goSpace";
-            goSpace.Size = new Size(43, 78);
-            goSpace.SizeMode = PictureBoxSizeMode.StretchImage;
-            goSpace.TabIndex = 30;
-            goSpace.TabStop = false;
+            illinoisAve.BackColor = Color.IndianRed;
+            illinoisAve.Location = new Point(79, 3);
+            illinoisAve.Name = "illinoisAve";
+            illinoisAve.Size = new Size(39, 94);
+            illinoisAve.SizeMode = PictureBoxSizeMode.StretchImage;
+            illinoisAve.TabIndex = 28;
+            illinoisAve.TabStop = false;
             // 
-            // readingRailroad
+            // chance1
             // 
-            readingRailroad.BackColor = Color.HotPink;
-            readingRailroad.Location = new Point(171, 3);
-            readingRailroad.Name = "readingRailroad";
-            readingRailroad.Size = new Size(34, 78);
-            readingRailroad.SizeMode = PictureBoxSizeMode.StretchImage;
-            readingRailroad.TabIndex = 25;
-            readingRailroad.TabStop = false;
+            chance1.BackColor = Color.IndianRed;
+            chance1.Location = new Point(-43, 3);
+            chance1.Name = "chance1";
+            chance1.Size = new Size(61, 94);
+            chance1.SizeMode = PictureBoxSizeMode.StretchImage;
+            chance1.TabIndex = 23;
+            chance1.TabStop = false;
             // 
-            // incomeTax
+            // indianaAve
             // 
-            incomeTax.BackColor = Color.IndianRed;
-            incomeTax.Location = new Point(211, 3);
-            incomeTax.Name = "incomeTax";
-            incomeTax.Size = new Size(41, 78);
-            incomeTax.SizeMode = PictureBoxSizeMode.StretchImage;
-            incomeTax.TabIndex = 27;
-            incomeTax.TabStop = false;
+            indianaAve.BackColor = Color.DarkTurquoise;
+            indianaAve.Location = new Point(24, 3);
+            indianaAve.Name = "indianaAve";
+            indianaAve.Size = new Size(43, 94);
+            indianaAve.SizeMode = PictureBoxSizeMode.StretchImage;
+            indianaAve.TabIndex = 22;
+            indianaAve.TabStop = false;
             // 
-            // balticAve
+            // boRailroad
             // 
-            balticAve.BackColor = Color.MediumVioletRed;
-            balticAve.Location = new Point(258, 3);
-            balticAve.Name = "balticAve";
-            balticAve.Size = new Size(34, 78);
-            balticAve.SizeMode = PictureBoxSizeMode.StretchImage;
-            balticAve.TabIndex = 26;
-            balticAve.TabStop = false;
+            boRailroad.BackColor = Color.DarkTurquoise;
+            boRailroad.Location = new Point(124, 3);
+            boRailroad.Name = "boRailroad";
+            boRailroad.Size = new Size(36, 94);
+            boRailroad.SizeMode = PictureBoxSizeMode.StretchImage;
+            boRailroad.TabIndex = 25;
+            boRailroad.TabStop = false;
             // 
-            // orientalAve
+            // ventorAve
             // 
-            orientalAve.BackColor = Color.IndianRed;
-            orientalAve.Location = new Point(126, 3);
-            orientalAve.Name = "orientalAve";
-            orientalAve.Size = new Size(39, 78);
-            orientalAve.SizeMode = PictureBoxSizeMode.StretchImage;
-            orientalAve.TabIndex = 28;
-            orientalAve.TabStop = false;
+            ventorAve.BackColor = Color.DarkTurquoise;
+            ventorAve.Location = new Point(206, 3);
+            ventorAve.Name = "ventorAve";
+            ventorAve.Size = new Size(31, 94);
+            ventorAve.SizeMode = PictureBoxSizeMode.StretchImage;
+            ventorAve.TabIndex = 26;
+            ventorAve.TabStop = false;
             // 
-            // chance2
+            // atlanticAve
             // 
-            chance2.BackColor = Color.LightYellow;
-            chance2.Location = new Point(79, 3);
-            chance2.Name = "chance2";
-            chance2.Size = new Size(41, 78);
-            chance2.SizeMode = PictureBoxSizeMode.StretchImage;
-            chance2.TabIndex = 23;
-            chance2.TabStop = false;
+            atlanticAve.BackColor = Color.IndianRed;
+            atlanticAve.Location = new Point(166, 3);
+            atlanticAve.Name = "atlanticAve";
+            atlanticAve.Size = new Size(34, 94);
+            atlanticAve.SizeMode = PictureBoxSizeMode.StretchImage;
+            atlanticAve.TabIndex = 27;
+            atlanticAve.TabStop = false;
             // 
-            // communityChest
+            // marvinGardens
             // 
-            communityChest.BackColor = Color.IndianRed;
-            communityChest.Location = new Point(298, 3);
-            communityChest.Name = "communityChest";
-            communityChest.Size = new Size(38, 78);
-            communityChest.SizeMode = PictureBoxSizeMode.StretchImage;
-            communityChest.TabIndex = 29;
-            communityChest.TabStop = false;
+            marvinGardens.BackColor = Color.DarkTurquoise;
+            marvinGardens.Location = new Point(280, 3);
+            marvinGardens.Name = "marvinGardens";
+            marvinGardens.Size = new Size(37, 94);
+            marvinGardens.SizeMode = PictureBoxSizeMode.StretchImage;
+            marvinGardens.TabIndex = 30;
+            marvinGardens.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -550,129 +816,12 @@ namespace MonopolyGame
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // boRailroad
+            // tableLayoutPanel1
             // 
-            boRailroad.BackColor = Color.DarkTurquoise;
-            boRailroad.Location = new Point(233, 3);
-            boRailroad.Name = "boRailroad";
-            boRailroad.Size = new Size(42, 94);
-            boRailroad.SizeMode = PictureBoxSizeMode.StretchImage;
-            boRailroad.TabIndex = 26;
-            boRailroad.TabStop = false;
-            // 
-            // illinoisAve
-            // 
-            illinoisAve.BackColor = Color.IndianRed;
-            illinoisAve.Location = new Point(187, 3);
-            illinoisAve.Name = "illinoisAve";
-            illinoisAve.Size = new Size(40, 94);
-            illinoisAve.SizeMode = PictureBoxSizeMode.StretchImage;
-            illinoisAve.TabIndex = 27;
-            illinoisAve.TabStop = false;
-            // 
-            // indianaAve
-            // 
-            indianaAve.BackColor = Color.DarkTurquoise;
-            indianaAve.Location = new Point(143, 3);
-            indianaAve.Name = "indianaAve";
-            indianaAve.Size = new Size(38, 94);
-            indianaAve.SizeMode = PictureBoxSizeMode.StretchImage;
-            indianaAve.TabIndex = 25;
-            indianaAve.TabStop = false;
-            // 
-            // kentuckyAve
-            // 
-            kentuckyAve.BackColor = Color.DarkTurquoise;
-            kentuckyAve.Location = new Point(44, 3);
-            kentuckyAve.Name = "kentuckyAve";
-            kentuckyAve.Size = new Size(46, 94);
-            kentuckyAve.SizeMode = PictureBoxSizeMode.StretchImage;
-            kentuckyAve.TabIndex = 22;
-            kentuckyAve.TabStop = false;
-            // 
-            // freeParking
-            // 
-            freeParking.BackColor = Color.IndianRed;
-            freeParking.Location = new Point(-61, 3);
-            freeParking.Name = "freeParking";
-            freeParking.Size = new Size(99, 94);
-            freeParking.SizeMode = PictureBoxSizeMode.StretchImage;
-            freeParking.TabIndex = 23;
-            freeParking.TabStop = false;
-            // 
-            // chance1
-            // 
-            chance1.BackColor = Color.IndianRed;
-            chance1.Location = new Point(96, 3);
-            chance1.Name = "chance1";
-            chance1.Size = new Size(41, 94);
-            chance1.SizeMode = PictureBoxSizeMode.StretchImage;
-            chance1.TabIndex = 28;
-            chance1.TabStop = false;
-            // 
-            // ventorAve
-            // 
-            ventorAve.BackColor = Color.DarkTurquoise;
-            ventorAve.Location = new Point(316, 3);
-            ventorAve.Name = "ventorAve";
-            ventorAve.Size = new Size(40, 94);
-            ventorAve.SizeMode = PictureBoxSizeMode.StretchImage;
-            ventorAve.TabIndex = 30;
-            ventorAve.TabStop = false;
-            // 
-            // marvinGardens
-            // 
-            marvinGardens.BackColor = Color.IndianRed;
-            marvinGardens.Location = new Point(363, 3);
-            marvinGardens.Name = "marvinGardens";
-            marvinGardens.Size = new Size(30, 94);
-            marvinGardens.SizeMode = PictureBoxSizeMode.StretchImage;
-            marvinGardens.TabIndex = 31;
-            marvinGardens.TabStop = false;
-            // 
-            // goToJail
-            // 
-            goToJail.BackColor = Color.DarkTurquoise;
-            goToJail.Location = new Point(399, 3);
-            goToJail.Name = "goToJail";
-            goToJail.Size = new Size(35, 94);
-            goToJail.SizeMode = PictureBoxSizeMode.StretchImage;
-            goToJail.TabIndex = 32;
-            goToJail.TabStop = false;
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel2.BackColor = SystemColors.ActiveCaptionText;
-            tableLayoutPanel2.ColumnCount = 11;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 105F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 52F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 47F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 44F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 46F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 48F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 47F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 41F));
-            tableLayoutPanel2.Controls.Add(goToJail, 10, 0);
-            tableLayoutPanel2.Controls.Add(atlanticAve, 7, 0);
-            tableLayoutPanel2.Controls.Add(chance1, 3, 0);
-            tableLayoutPanel2.Controls.Add(freeParking, 1, 0);
-            tableLayoutPanel2.Controls.Add(kentuckyAve, 2, 0);
-            tableLayoutPanel2.Controls.Add(indianaAve, 4, 0);
-            tableLayoutPanel2.Controls.Add(boRailroad, 6, 0);
-            tableLayoutPanel2.Controls.Add(illinoisAve, 5, 0);
-            tableLayoutPanel2.Controls.Add(marvinGardens, 9, 0);
-            tableLayoutPanel2.Controls.Add(ventorAve, 8, 0);
-            tableLayoutPanel2.Location = new Point(371, 29);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(437, 100);
-            tableLayoutPanel2.TabIndex = 30;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.Size = new Size(200, 100);
+            tableLayoutPanel1.TabIndex = 0;
             // 
             // Gameboard
             // 
@@ -683,7 +832,7 @@ namespace MonopolyGame
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1245, 637);
-            Controls.Add(tableLayoutPanel2);
+            Controls.Add(topPanel);
             Controls.Add(panel1);
             Controls.Add(rollDiceButton);
             Controls.Add(diceGroupBox);
@@ -696,46 +845,57 @@ namespace MonopolyGame
             Controls.Add(balanceLabel);
             Name = "Gameboard";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)atlanticAve).EndInit();
+            ((System.ComponentModel.ISupportInitialize)waterWorks).EndInit();
             ((System.ComponentModel.ISupportInitialize)getOutOfJailFreeCards).EndInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll1).EndInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll2).EndInit();
             diceGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gameBoardImage).EndInit();
             panel1.ResumeLayout(false);
-            tableLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)goSpace).EndInit();
+            ((System.ComponentModel.ISupportInitialize)goToJailSpace).EndInit();
+            ((System.ComponentModel.ISupportInitialize)inJailSpace).EndInit();
+            ((System.ComponentModel.ISupportInitialize)freeParkingSpace).EndInit();
+            bottomPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)orientalAve).EndInit();
+            ((System.ComponentModel.ISupportInitialize)balticAve).EndInit();
+            ((System.ComponentModel.ISupportInitialize)readingRailroad).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chance3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)connecticutAve).EndInit();
+            ((System.ComponentModel.ISupportInitialize)erg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)incomeTax).EndInit();
+            ((System.ComponentModel.ISupportInitialize)vermontAve).EndInit();
+            ((System.ComponentModel.ISupportInitialize)mediterraneanAve).EndInit();
+            rightPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)parkPlace).EndInit();
+            ((System.ComponentModel.ISupportInitialize)luxuryTax).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chance2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pennsylvaniaAve).EndInit();
+            ((System.ComponentModel.ISupportInitialize)shortLine).EndInit();
+            ((System.ComponentModel.ISupportInitialize)communityChest1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pacificAve).EndInit();
+            ((System.ComponentModel.ISupportInitialize)northCarolinaAve).EndInit();
+            ((System.ComponentModel.ISupportInitialize)boardwalk).EndInit();
+            leftPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)stCharlesPlace).EndInit();
-            ((System.ComponentModel.ISupportInitialize)electricCompany).EndInit();
             ((System.ComponentModel.ISupportInitialize)virginiaAve).EndInit();
-            ((System.ComponentModel.ISupportInitialize)communityChest2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)tennesseeAve).EndInit();
             ((System.ComponentModel.ISupportInitialize)newYorkAve).EndInit();
             ((System.ComponentModel.ISupportInitialize)stJamesPlace).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pennsylvaniaRailroad).EndInit();
+            ((System.ComponentModel.ISupportInitialize)communityChest2).EndInit();
             ((System.ComponentModel.ISupportInitialize)statesAve).EndInit();
-            tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)mediteraneanAve).EndInit();
-            ((System.ComponentModel.ISupportInitialize)inJail).EndInit();
-            ((System.ComponentModel.ISupportInitialize)connecticutAve).EndInit();
-            ((System.ComponentModel.ISupportInitialize)goSpace).EndInit();
-            ((System.ComponentModel.ISupportInitialize)readingRailroad).EndInit();
-            ((System.ComponentModel.ISupportInitialize)incomeTax).EndInit();
-            ((System.ComponentModel.ISupportInitialize)balticAve).EndInit();
-            ((System.ComponentModel.ISupportInitialize)orientalAve).EndInit();
-            ((System.ComponentModel.ISupportInitialize)chance2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)communityChest).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)boRailroad).EndInit();
-            ((System.ComponentModel.ISupportInitialize)illinoisAve).EndInit();
-            ((System.ComponentModel.ISupportInitialize)indianaAve).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tennesseeAve).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pennsylvaniaRailroad).EndInit();
+            ((System.ComponentModel.ISupportInitialize)electricCompany).EndInit();
+            topPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)kentuckyAve).EndInit();
-            ((System.ComponentModel.ISupportInitialize)freeParking).EndInit();
+            ((System.ComponentModel.ISupportInitialize)illinoisAve).EndInit();
             ((System.ComponentModel.ISupportInitialize)chance1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)indianaAve).EndInit();
+            ((System.ComponentModel.ISupportInitialize)boRailroad).EndInit();
             ((System.ComponentModel.ISupportInitialize)ventorAve).EndInit();
+            ((System.ComponentModel.ISupportInitialize)atlanticAve).EndInit();
             ((System.ComponentModel.ISupportInitialize)marvinGardens).EndInit();
-            ((System.ComponentModel.ISupportInitialize)goToJail).EndInit();
-            tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -756,37 +916,51 @@ namespace MonopolyGame
         private Panel panel1;
         private PictureBox pictureBox1;
         private PictureBox statesAve;
-        private PictureBox electricCompany;
-        private PictureBox stCharlesPlace;
-        private TableLayoutPanel tableLayoutPanel3;
-        private PictureBox goSpace;
-        private PictureBox communityChest;
-        private PictureBox chance2;
-        private PictureBox readingRailroad;
-        private PictureBox incomeTax;
-        private PictureBox balticAve;
-        private PictureBox orientalAve;
-        private PictureBox boRailroad;
-        private PictureBox illinoisAve;
-        private PictureBox indianaAve;
-        private PictureBox kentuckyAve;
-        private PictureBox freeParking;
-        private PictureBox chance1;
-        private PictureBox atlanticAve;
         private PictureBox ventorAve;
+        private PictureBox atlanticAve;
+        private PictureBox boRailroad;
+        private PictureBox indianaAve;
+        private PictureBox chance1;
+        private PictureBox illinoisAve;
+        private PictureBox waterWorks;
         private PictureBox marvinGardens;
-        private PictureBox goToJail;
-        private TableLayoutPanel tableLayoutPanel2;
-        private PictureBox connecticutAve;
-        private PictureBox inJail;
-        private PictureBox mediteraneanAve;
-        private TableLayoutPanel tableLayoutPanel4;
+        private TableLayoutPanel topPanel;
+        private TableLayoutPanel leftPanel;
         private PictureBox virginiaAve;
         private PictureBox pennsylvaniaRailroad;
         private PictureBox communityChest2;
         private PictureBox tennesseeAve;
         private PictureBox newYorkAve;
         private PictureBox stJamesPlace;
-        private PictureBox pictureBox2;
+        private TableLayoutPanel tableLayoutPanel1;
+        private PictureBox luxuryTax;
+        private TableLayoutPanel rightPanel;
+        private PictureBox chance2;
+        private PictureBox pennsylvaniaAve;
+        private PictureBox northCarolinaAve;
+        private PictureBox shortLine;
+        private PictureBox communityChest1;
+        private PictureBox pacificAve;
+        private PictureBox boardwalk;
+        private TableLayoutPanel bottomPanel;
+        private PictureBox erg;
+        private PictureBox incomeTax;
+        private PictureBox chance3;
+        private PictureBox connecticutAbe;
+        private PictureBox mediterraneanAve;
+        private PictureBox balticAve;
+        private PictureBox readingRailroad;
+        private PictureBox vermontAve;
+        private PictureBox connecticutAve;
+        private PictureBox pictureBox16;
+        private PictureBox goToJailSpace;
+        private PictureBox inJailSpace;
+        private PictureBox freeParkingSpace;
+        private PictureBox kentuckyAve;
+        private PictureBox goSpace;
+        private PictureBox orientalAve;
+        private PictureBox electricCompany;
+        private PictureBox stCharlesPlace;
+        private PictureBox parkPlace;
     }
 }

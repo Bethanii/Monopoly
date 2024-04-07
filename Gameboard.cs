@@ -2,6 +2,10 @@ namespace MonopolyGame
 {
     public partial class Gameboard : Form
     {
+        private PictureBox[] spaces;
+        private PictureBox dogPictureBox;
+        private int currentSpaceIndex = 0;
+
         public Gameboard()
         {
             InitializeComponent();
@@ -10,57 +14,43 @@ namespace MonopolyGame
             InitializeSpacesArray();
             InitializeDogPictureBox();
             StartOnFreeParking();
-            //      UpdateDogPosition();
         }
-
-        /*       private void SetColumnStylesForTableLayoutPanel()
-               {
-                   tableLayoutPanel3.ColumnStyles.Clear();
-                   tableLayoutPanel2.ColumnStyles.Clear();
-
-                   int numberOfColumns = 11;
-                   float columnWidth = tableLayoutPanel3.Width / numberOfColumns;
-
-                   for (int i = 0; i < numberOfColumns; i++)
-                   {
-                       tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / numberOfColumns));
-                   }
-
-                   for (int i = 0; i < numberOfColumns; i++)
-                   {
-                       tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / numberOfColumns));
-                   }
-               } */
 
         private void SetColumnStylesForTableLayoutPanel()
         {
-            tableLayoutPanel3.ColumnStyles.Clear();
-            tableLayoutPanel2.ColumnStyles.Clear();
-            tableLayoutPanel4.RowStyles.Clear();
+            bottomPanel.ColumnStyles.Clear();
+            topPanel.ColumnStyles.Clear();
+            leftPanel.RowStyles.Clear();
+            rightPanel.RowStyles.Clear();
 
-            int numberOfColumns = 11;
-            float columnWidth = tableLayoutPanel3.Width / numberOfColumns;
-            float rowHeight = tableLayoutPanel4.Height / numberOfColumns;
+            int numberOfColumns = 9;
+            float columnWidth = bottomPanel.Width / numberOfColumns;
+            float rowHeight = leftPanel.Height / numberOfColumns;
 
             for (int i = 0; i < numberOfColumns; i++)
             {
-                tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / numberOfColumns));
+                bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / numberOfColumns));
             }
 
             for (int i = 0; i < numberOfColumns; i++)
             {
-                tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / numberOfColumns));
+                topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / numberOfColumns));
             }
 
             for (int i = 0; i < numberOfColumns; i++)
             {
-                tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / numberOfColumns));
+                leftPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / numberOfColumns));
+            }
+
+            for (int i = 0; i < numberOfColumns; i++)
+            {
+                rightPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / numberOfColumns));
             }
         }
 
         private void SetPictureBoxProperties()
         {
-            foreach (Control control in tableLayoutPanel3.Controls)
+            foreach (Control control in bottomPanel.Controls)
             {
                 if (control is PictureBox pictureBox)
                 {
@@ -68,7 +58,7 @@ namespace MonopolyGame
                 }
             }
 
-            foreach (Control control in tableLayoutPanel2.Controls)
+            foreach (Control control in topPanel.Controls)
             {
                 if (control is PictureBox pictureBox)
                 {
@@ -76,7 +66,15 @@ namespace MonopolyGame
                 }
             }
 
-            foreach (Control control in tableLayoutPanel4.Controls)
+            foreach (Control control in leftPanel.Controls)
+            {
+                if (control is PictureBox pictureBox)
+                {
+                    pictureBox.Dock = DockStyle.Fill;
+                }
+            }
+
+            foreach (Control control in rightPanel.Controls)
             {
                 if (control is PictureBox pictureBox)
                 {
@@ -85,25 +83,11 @@ namespace MonopolyGame
             }
         }
 
-        /*    private void rollDiceButton_Click(object sender, EventArgs e)
-            {
-                Gameplay gameplay = new Gameplay();
-
-                (int dice1, int dice2, int total) = gameplay.getDiceRollCount();
-
-                diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
-                diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
-            } */
-
-        private PictureBox[] spaces;
-        private PictureBox dogPictureBox;
-        private int currentSpaceIndex = 0;
-
         private void InitializeSpacesArray()
         {
             spaces = new PictureBox[]
             {
-                freeParking, kentuckyAve, chance1, indianaAve, illinoisAve, boRailroad, atlanticAve, ventorAve, marvinGardens, goToJail
+                chance1, indianaAve, illinoisAve, boRailroad, atlanticAve, ventorAve, waterWorks, marvinGardens
             };
         }
 
@@ -120,7 +104,7 @@ namespace MonopolyGame
 
         private void StartOnFreeParking()
         {
-            Point freeParkingPosition = tableLayoutPanel2.PointToScreen(freeParking.Location);
+            Point freeParkingPosition = topPanel.PointToScreen(chance1.Location);
             freeParkingPosition = dogPictureBox.Parent.PointToClient(freeParkingPosition);
             dogPictureBox.Location = freeParkingPosition;
             dogPictureBox.BringToFront();
@@ -134,7 +118,7 @@ namespace MonopolyGame
 
                 dogPictureBox.Parent.Controls.SetChildIndex(dogPictureBox, 0); */
 
-            Point freeParkingPosition = tableLayoutPanel2.PointToScreen(freeParking.Location);
+            Point freeParkingPosition = topPanel.PointToScreen(chance1.Location);
             freeParkingPosition = dogPictureBox.Parent.PointToClient(freeParkingPosition);
             dogPictureBox.Location = freeParkingPosition;
             dogPictureBox.BringToFront();
@@ -149,7 +133,7 @@ namespace MonopolyGame
                 currentSpaceIndex %= spaces.Length;
             }
 
-            Point targetPosition = tableLayoutPanel2.PointToScreen(spaces[currentSpaceIndex].Location);
+            Point targetPosition = topPanel.PointToScreen(spaces[currentSpaceIndex].Location);
             targetPosition = dogPictureBox.Parent.PointToClient(targetPosition);
             dogPictureBox.Location = targetPosition;
 
@@ -174,5 +158,44 @@ namespace MonopolyGame
 
             MoveDog(total);
         }
+
+        private void leftPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void statesAve_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /*       private void SetColumnStylesForTableLayoutPanel()
+       {
+           tableLayoutPanel3.ColumnStyles.Clear();
+           tableLayoutPanel2.ColumnStyles.Clear();
+
+           int numberOfColumns = 11;
+           float columnWidth = tableLayoutPanel3.Width / numberOfColumns;
+
+           for (int i = 0; i < numberOfColumns; i++)
+           {
+               tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / numberOfColumns));
+           }
+
+           for (int i = 0; i < numberOfColumns; i++)
+           {
+               tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / numberOfColumns));
+           }
+       } */
+
+        /*    private void rollDiceButton_Click(object sender, EventArgs e)
+            {
+                Gameplay gameplay = new Gameplay();
+
+                (int dice1, int dice2, int total) = gameplay.getDiceRollCount();
+
+                diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
+                diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
+            } */
     }
 }
