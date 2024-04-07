@@ -124,7 +124,6 @@ namespace MonopolyGame
             int targetY = (goSpacePictureBox.Height - dogPictureBox.Height) / 2;
 
             dogPictureBox.Location = new Point(targetX, targetY);
-
             goSpacePictureBox.Controls.Add(dogPictureBox);
         }
 
@@ -132,6 +131,7 @@ namespace MonopolyGame
         private void MoveDog(int total)
         {
             currentSpaceIndex += total;
+            currentSpaceIndex %= spaces.Length;
 
             PictureBox currentSpace = spaces[currentSpaceIndex];
 
