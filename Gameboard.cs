@@ -5,32 +5,19 @@ namespace MonopolyGame
     public partial class Gameboard : Form
     {
         private PictureBox[] spaces;
-        private PictureBox dogPictureBox;
         private int currentSpaceIndex = 0;
-
-        public Gameboard()
+        private PictureBox pictureBox;
+        public Gameboard(string selectedPieceName)
         {
             InitializeComponent();
-            InitializeSpacesArray();
-            InitializeDogPictureBox();
-            SetupPanelsOnGameBoardImage();
-            SetColumnStylesForTableLayoutPanel();
-            SetPictureBoxProperties();
-            StartOnGoSpace();
+            this.pictureBox = getPictureBox(selectedPieceName);
+            initializeSpacesArray();
+            setupPanelsOnGameBoardImage();
+            setColumnStylesForTableLayoutPanel();
+            setPictureBoxProperties();
         }
 
-        private void UpdateDogPosition()
-        {
-            Point goSpaceLocation = tableLayoutPanel1.PointToClient(goSpace.Parent.PointToScreen(goSpace.Location));
-
-            int x = goSpace.Location.X - goSpaceLocation.X;
-            int y = goSpace.Location.Y - goSpaceLocation.Y;
-
-            dogPictureBox.Location = new Point(x, y);
-        }
-
-
-        private void SetColumnStylesForTableLayoutPanel()
+        private void setColumnStylesForTableLayoutPanel()
         {
             bottomPanel.ColumnStyles.Clear();
             topPanel.ColumnStyles.Clear();
@@ -63,7 +50,7 @@ namespace MonopolyGame
             }
         }
 
-        private void SetPictureBoxProperties()
+        private void setPictureBoxProperties()
         {
             foreach (Control control in bottomPanel.Controls)
             {
@@ -98,7 +85,7 @@ namespace MonopolyGame
             }
         }
 
-        private void InitializeSpacesArray()
+        private void initializeSpacesArray()
         {
             spaces = new PictureBox[]
             {
@@ -109,48 +96,104 @@ namespace MonopolyGame
             };
         }
 
-        private void InitializeDogPictureBox()
+        private PictureBox createPictureBox(Image characterImage)
         {
-            dogPictureBox = new PictureBox();
-            dogPictureBox.BackColor = Color.White;
-            dogPictureBox.Size = new Size(50, 50);
-            dogPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            dogPictureBox.Image = Properties.Resources.dog;
-            Controls.Add(dogPictureBox);
-            UpdateDogPosition();
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.BackColor = Color.White;
+            pictureBox.Size = new Size(50, 50);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.Image = characterImage;
+            Controls.Add(pictureBox);
+            return pictureBox;
         }
 
+        private PictureBox getPictureBox(string pictureName)
+        {
+            PictureBox picture = new PictureBox();
+            Image character;
 
-        private void StartOnGoSpace()
+            switch (pictureName.ToLower())
+            {
+                case "hatbutton":
+                    character = Properties.Resources.hat;
+                    pictureBox = createPictureBox(character);
+                    startOnGoSpace(pictureBox);
+                    break;
+
+                case "carbutton":
+                    character = Properties.Resources.raceCar;
+                    pictureBox = createPictureBox(character);
+                    startOnGoSpace(pictureBox);
+                    break;
+
+                case "thimblebutton":
+                    character = Properties.Resources.thimble;
+                    pictureBox = createPictureBox(character);
+                    startOnGoSpace(pictureBox);
+                    break;
+
+                case "shoebutton":
+                    character = Properties.Resources.shoe;
+                    pictureBox = createPictureBox(character);
+                    startOnGoSpace(pictureBox);
+                    break;
+
+                case "wheelbarrowbutton":
+                    character = Properties.Resources.wheelbarrow;
+                    pictureBox = createPictureBox(character);
+                    startOnGoSpace(pictureBox);
+                    break;
+
+                case "ironbutton":
+                    character = Properties.Resources.iron;
+                    pictureBox = createPictureBox(character);
+                    startOnGoSpace(pictureBox);
+                    break;
+
+                case "shipbutton":
+                    character = Properties.Resources.battleShip;
+                    pictureBox = createPictureBox(character);
+                    startOnGoSpace(pictureBox);
+                    break;
+
+                case "dogbutton":
+                    character = Properties.Resources.dog;
+                    pictureBox = createPictureBox(character);
+                    startOnGoSpace(pictureBox);
+                    break;
+            }
+            return pictureBox;
+        }
+
+        private void startOnGoSpace(PictureBox pictureBox)
         {
             PictureBox goSpacePictureBox = goSpace;
 
-            int targetX = (goSpacePictureBox.Width - dogPictureBox.Width) / 2;
-            int targetY = (goSpacePictureBox.Height - dogPictureBox.Height) / 2;
+            int targetX = (goSpacePictureBox.Width - pictureBox.Width) / 2;
+            int targetY = (goSpacePictureBox.Height - pictureBox.Height) / 2;
 
-            dogPictureBox.Location = new Point(targetX, targetY);
-            goSpacePictureBox.Controls.Add(dogPictureBox);
+            pictureBox.Location = new Point(targetX, targetY);
+            goSpacePictureBox.Controls.Add(pictureBox);
 
-            dogPictureBox.BringToFront();
+            pictureBox.BringToFront();
         }
 
-
-        private void MoveDog(int total)
+        private void movePiece(int total)
         {
             currentSpaceIndex += total;
             currentSpaceIndex %= spaces.Length;
 
             PictureBox currentSpace = spaces[currentSpaceIndex];
 
-            int targetX = (currentSpace.Width - dogPictureBox.Width) / 2;
-            int targetY = (currentSpace.Height - dogPictureBox.Height) / 2;
+            int targetX = (currentSpace.Width - this.pictureBox.Width) / 2;
+            int targetY = (currentSpace.Height - this.pictureBox.Height) / 2;
 
-            dogPictureBox.Location = new Point(targetX, targetY);
-            currentSpace.Controls.Add(dogPictureBox);
+            this.pictureBox.Location = new Point(targetX, targetY);
+            currentSpace.Controls.Add(this.pictureBox);
         }
 
 
-        private void SetupPanelsOnGameBoardImage()
+        private void setupPanelsOnGameBoardImage()
         {
             bottomPanel.Parent = gameBoardImage;
             topPanel.Parent = gameBoardImage;
@@ -167,8 +210,7 @@ namespace MonopolyGame
             diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
             diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
 
-            //MoveDog(total);
-            MoveDog(1);
+            movePiece(total);
         }
     }
 }

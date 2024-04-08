@@ -33,7 +33,7 @@ namespace MonopolyGame
             carButton.Click += PieceSelection_Click;
             shoeButton.Click += PieceSelection_Click;
             thimbleButton.Click += PieceSelection_Click;
-            wheelbarrelButton.Click += PieceSelection_Click;
+            wheelbarrowButton.Click += PieceSelection_Click;
         }
 
         private void PieceSelection_Click(object sender, EventArgs e)
@@ -52,9 +52,16 @@ namespace MonopolyGame
 
         private void startGameButton_Click(object sender, EventArgs e)
         {
-            Gameboard gameBoard = new Gameboard();
-            this.Hide();
-            gameBoard.Show();
+            if (selectedButton != null)
+            {
+                Gameboard gameBoard = new Gameboard(selectedButton.Name.ToLower());
+                this.Hide();
+                gameBoard.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select a game piece", "No Piece Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

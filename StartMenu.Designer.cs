@@ -33,7 +33,7 @@
             button17 = new Button();
             carButton = new Button();
             shoeButton = new Button();
-            wheelbarrelButton = new Button();
+            wheelbarrowButton = new Button();
             thimbleButton = new Button();
             ironButton = new Button();
             hatButton = new Button();
@@ -60,7 +60,7 @@
             panel1.Controls.Add(button17);
             panel1.Controls.Add(carButton);
             panel1.Controls.Add(shoeButton);
-            panel1.Controls.Add(wheelbarrelButton);
+            panel1.Controls.Add(wheelbarrowButton);
             panel1.Controls.Add(thimbleButton);
             panel1.Controls.Add(ironButton);
             panel1.Controls.Add(hatButton);
@@ -142,20 +142,20 @@
             shoeButton.TabIndex = 19;
             shoeButton.UseVisualStyleBackColor = false;
             // 
-            // wheelbarrelButton
+            // wheelbarrowButton
             // 
-            wheelbarrelButton.BackColor = Color.WhiteSmoke;
-            wheelbarrelButton.BackgroundImage = Properties.Resources.wheelbarrow;
-            wheelbarrelButton.BackgroundImageLayout = ImageLayout.Center;
-            wheelbarrelButton.FlatAppearance.BorderColor = Color.Blue;
-            wheelbarrelButton.FlatAppearance.BorderSize = 0;
-            wheelbarrelButton.FlatStyle = FlatStyle.Flat;
-            wheelbarrelButton.Location = new Point(251, 393);
-            wheelbarrelButton.Name = "wheelbarrelButton";
-            wheelbarrelButton.RightToLeft = RightToLeft.No;
-            wheelbarrelButton.Size = new Size(40, 40);
-            wheelbarrelButton.TabIndex = 18;
-            wheelbarrelButton.UseVisualStyleBackColor = false;
+            wheelbarrowButton.BackColor = Color.WhiteSmoke;
+            wheelbarrowButton.BackgroundImage = Properties.Resources.wheelbarrow;
+            wheelbarrowButton.BackgroundImageLayout = ImageLayout.Center;
+            wheelbarrowButton.FlatAppearance.BorderColor = Color.Blue;
+            wheelbarrowButton.FlatAppearance.BorderSize = 0;
+            wheelbarrowButton.FlatStyle = FlatStyle.Flat;
+            wheelbarrowButton.Location = new Point(251, 393);
+            wheelbarrowButton.Name = "wheelbarrowButton";
+            wheelbarrowButton.RightToLeft = RightToLeft.No;
+            wheelbarrowButton.Size = new Size(40, 40);
+            wheelbarrowButton.TabIndex = 18;
+            wheelbarrowButton.UseVisualStyleBackColor = false;
             // 
             // thimbleButton
             // 
@@ -175,10 +175,10 @@
             // 
             ironButton.BackColor = Color.White;
             ironButton.BackgroundImage = Properties.Resources.iron;
-            ironButton.Location = new Point(251, 331);
             ironButton.FlatAppearance.BorderColor = Color.Blue;
             ironButton.FlatAppearance.BorderSize = 0;
             ironButton.FlatStyle = FlatStyle.Flat;
+            ironButton.Location = new Point(251, 331);
             ironButton.Name = "ironButton";
             ironButton.RightToLeft = RightToLeft.No;
             ironButton.Size = new Size(40, 40);
@@ -392,7 +392,7 @@
         private Label label3;
         private Button carButton;
         private Button shoeButton;
-        private Button wheelbarrelButton;
+        private Button wheelbarrowButton;
         private Button thimbleButton;
         private Button ironButton;
         private Button hatButton;
