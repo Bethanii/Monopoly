@@ -25,7 +25,7 @@ namespace MonopolyGame
             rightPanel.RowStyles.Clear();
 
             int numberOfColumns = 11;
-            int numberOfRows = 11;
+            int numberOfRows = 9;
             float columnWidth = bottomPanel.Width / numberOfColumns;
             float rowHeight = leftPanel.Height / numberOfColumns;
 
