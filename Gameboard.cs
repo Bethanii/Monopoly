@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace MonopolyGame
 {
     public partial class Gameboard : Form
@@ -9,10 +11,11 @@ namespace MonopolyGame
         public Gameboard()
         {
             InitializeComponent();
-            SetColumnStylesForTableLayoutPanel();
-            SetPictureBoxProperties();
             InitializeSpacesArray();
             InitializeDogPictureBox();
+            SetupPanelsOnGameBoardImage();
+            SetColumnStylesForTableLayoutPanel();
+            SetPictureBoxProperties();
             StartOnGoSpace();
         }
 
@@ -35,6 +38,7 @@ namespace MonopolyGame
             rightPanel.RowStyles.Clear();
 
             int numberOfColumns = 11;
+            int numberOfRows = 11;
             float columnWidth = bottomPanel.Width / numberOfColumns;
             float rowHeight = leftPanel.Height / numberOfColumns;
 
@@ -50,12 +54,12 @@ namespace MonopolyGame
 
             for (int i = 0; i < numberOfColumns; i++)
             {
-                leftPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / numberOfColumns));
+                leftPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / numberOfRows));
             }
 
             for (int i = 0; i < numberOfColumns; i++)
             {
-                rightPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / numberOfColumns));
+                rightPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / numberOfRows));
             }
         }
 
@@ -100,8 +104,8 @@ namespace MonopolyGame
             {
                goSpace, mediterraneanAve, communityChest2, balticAve, incomeTax, readingRailroad, orientalAve, chance3, vermontAve, connecticutAve,
                inJailSpace, stCharlesPlace, electricCompany, statesAve, virginiaAve, pennsylvaniaRailroad, stJamesPlace, communityChest3, tennesseeAve, newYorkAve,
-               freeParkingSpace, chance1, indianaAve, illinoisAve, boRailroad, atlanticAve, ventorAve, waterWorks, marvinGardens,
-               goToJailSpace, pacificAve, northCarolinaAve, communityChest1, pennsylvaniaAve, shortLine, chance2, parkPlace, luxuryTax, boardwalk
+               freeParkingSpace, kentuckyAve, chance1, indianaAve, illinoisAve, boRailroad, atlanticAve, ventorAve, waterWorks,
+               marvinGardens, goToJailSpace, pacificAve, northCarolinaAve, communityChest1, pennsylvaniaAve, shortLine, chance2, parkPlace, luxuryTax, boardwalk
             };
         }
 
@@ -116,6 +120,7 @@ namespace MonopolyGame
             UpdateDogPosition();
         }
 
+
         private void StartOnGoSpace()
         {
             PictureBox goSpacePictureBox = goSpace;
@@ -125,6 +130,8 @@ namespace MonopolyGame
 
             dogPictureBox.Location = new Point(targetX, targetY);
             goSpacePictureBox.Controls.Add(dogPictureBox);
+
+            dogPictureBox.BringToFront();
         }
 
 
@@ -143,6 +150,15 @@ namespace MonopolyGame
         }
 
 
+        private void SetupPanelsOnGameBoardImage()
+        {
+            bottomPanel.Parent = gameBoardImage;
+            topPanel.Parent = gameBoardImage;
+            leftPanel.Parent = gameBoardImage;
+            rightPanel.Parent = gameBoardImage;
+        }
+
+
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
             Gameplay gameplay = new Gameplay();
@@ -151,7 +167,8 @@ namespace MonopolyGame
             diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
             diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
 
-            MoveDog(total);
+            //MoveDog(total);
+            MoveDog(1);
         }
     }
 }
