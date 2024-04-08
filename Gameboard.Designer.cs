@@ -64,12 +64,12 @@ namespace MonopolyGame
             rightPanel = new TableLayoutPanel();
             parkPlace = new PictureBox();
             chance2 = new PictureBox();
+            luxuryTax = new PictureBox();
             pennsylvaniaAve = new PictureBox();
             shortLine = new PictureBox();
             communityChest1 = new PictureBox();
             pacificAve = new PictureBox();
             northCarolinaAve = new PictureBox();
-            luxuryTax = new PictureBox();
             boardwalk = new PictureBox();
             leftPanel = new TableLayoutPanel();
             stCharlesPlace = new PictureBox();
@@ -134,12 +134,12 @@ namespace MonopolyGame
             rightPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)parkPlace).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chance2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)luxuryTax).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pennsylvaniaAve).BeginInit();
             ((System.ComponentModel.ISupportInitialize)shortLine).BeginInit();
             ((System.ComponentModel.ISupportInitialize)communityChest1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pacificAve).BeginInit();
             ((System.ComponentModel.ISupportInitialize)northCarolinaAve).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)luxuryTax).BeginInit();
             ((System.ComponentModel.ISupportInitialize)boardwalk).BeginInit();
             leftPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)stCharlesPlace).BeginInit();
@@ -668,6 +668,15 @@ namespace MonopolyGame
             chance2.TabIndex = 37;
             chance2.TabStop = false;
             // 
+            // luxuryTax
+            // 
+            luxuryTax.BackColor = Color.Transparent;
+            luxuryTax.Location = new Point(3, 298);
+            luxuryTax.Name = "luxuryTax";
+            luxuryTax.Size = new Size(102, 29);
+            luxuryTax.TabIndex = 36;
+            luxuryTax.TabStop = false;
+            // 
             // pennsylvaniaAve
             // 
             pennsylvaniaAve.BackColor = Color.Transparent;
@@ -712,15 +721,6 @@ namespace MonopolyGame
             northCarolinaAve.Size = new Size(102, 45);
             northCarolinaAve.TabIndex = 39;
             northCarolinaAve.TabStop = false;
-            // 
-            // luxuryTax
-            // 
-            luxuryTax.BackColor = Color.Transparent;
-            luxuryTax.Location = new Point(3, 298);
-            luxuryTax.Name = "luxuryTax";
-            luxuryTax.Size = new Size(96, 29);
-            luxuryTax.TabIndex = 36;
-            luxuryTax.TabStop = false;
             // 
             // boardwalk
             // 
@@ -1140,12 +1140,12 @@ namespace MonopolyGame
             rightPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)parkPlace).EndInit();
             ((System.ComponentModel.ISupportInitialize)chance2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)luxuryTax).EndInit();
             ((System.ComponentModel.ISupportInitialize)pennsylvaniaAve).EndInit();
             ((System.ComponentModel.ISupportInitialize)shortLine).EndInit();
             ((System.ComponentModel.ISupportInitialize)communityChest1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pacificAve).EndInit();
             ((System.ComponentModel.ISupportInitialize)northCarolinaAve).EndInit();
-            ((System.ComponentModel.ISupportInitialize)luxuryTax).EndInit();
             ((System.ComponentModel.ISupportInitialize)boardwalk).EndInit();
             leftPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)stCharlesPlace).EndInit();
