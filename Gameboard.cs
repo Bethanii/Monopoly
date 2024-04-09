@@ -12,17 +12,6 @@ namespace MonopolyGame
         private Dictionary<Player, PictureBox> playerPieces = new Dictionary<Player, PictureBox>();
         private Dictionary<int, Property> boardPositionToPropertyMap;
 
-
-        public Gameboard(string selectedPieceName)
-        {
-            InitializeComponent();
-            this.pictureBox = getPictureBox(selectedPieceName);
-            initializeSpacesArray();
-            setupPanelsOnGameBoardImage();
-            setColumnStylesForTableLayoutPanel();
-            setPictureBoxProperties();
-        }
-
         public Gameboard(List<Player> players)
         {
             InitializeComponent();
@@ -33,6 +22,15 @@ namespace MonopolyGame
             setPictureBoxProperties();
             setupPlayersOnBoard();
             InitializeProperties();
+            clearPropertyPanel();
+        }
+
+        private void clearPropertyPanel()
+        {
+            if (propertyPanel.Parent != null)
+            {
+                propertyPanel.Parent.Controls.Remove(propertyPanel);
+            }
         }
 
         private void setupPlayersOnBoard()
@@ -240,6 +238,7 @@ namespace MonopolyGame
 
                 Player currentPlayer = players[currentPlayerIndex];
                 //  movePiece(total, currentPlayer);
+                // moving one increment for testing 
                 movePiece(1, currentPlayer);
             }
         }
@@ -264,16 +263,44 @@ namespace MonopolyGame
                     {
                         propertyPanel.BackColor = GetColorFromColorGroup(currentProperty.getColorGroup());
                         propertyNameLabel.Text = currentProperty.getName();
-
                         propertyPanel.BringToFront();
+                        boardPositionToPropertyMap[currentBoardPosition] = currentProperty;
+
+                        currentPlayer.addProperties(currentProperty);
+
+                        Panel newPropertyPanel = duplicatePropertyPanel(currentProperty);
+                        int newY = propertiesGroupBox.Controls.Count * (propertyPanel.Height + 10); 
+                        newPropertyPanel.Location = new Point(propertyPanel.Location.X, newY);
+                        propertiesGroupBox.Controls.Add(newPropertyPanel);
+                        newPropertyPanel.BringToFront();
                     }
                     else
                     {
-                        MessageBox.Show("This property is already owned.", "Purchase Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("This property is already owned.", "Property Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
         }
+
+
+        private Panel duplicatePropertyPanel(Property property)
+        {
+            Panel duplicatedPanel = new Panel();
+            duplicatedPanel.BackColor = propertyPanel.BackColor;
+            duplicatedPanel.BorderStyle = propertyPanel.BorderStyle;
+            duplicatedPanel.Size = propertyPanel.Size;
+            duplicatedPanel.Font = propertyPanel.Font;
+
+            Label propertyNameLabel = new Label();
+            propertyNameLabel.Text = property.getName();
+            propertyNameLabel.Location = propertyNameLabel.Location;
+            propertyNameLabel.Font = this.propertyNameLabel.Font;
+
+            duplicatedPanel.Controls.Add(propertyNameLabel);
+
+            return duplicatedPanel;
+        }
+
 
         private Color GetColorFromColorGroup(string colorGroup)
         {
@@ -307,6 +334,7 @@ namespace MonopolyGame
 
             Property balticAvenue = new Property("Baltic Avenue", "Brown", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3);
             boardPositionToPropertyMap.Add(balticAvenue.getBoardPosition(), balticAvenue);
+
 
 
             //------------- Light Blue------------------
@@ -381,7 +409,6 @@ namespace MonopolyGame
 
             Property boardwalk = new Property("Boardwalk", "Dark Blue", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39);
             boardPositionToPropertyMap.Add(boardwalk.getBoardPosition(), boardwalk);
-
         }
     }
 }

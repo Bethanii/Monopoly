@@ -1150,6 +1150,7 @@ namespace MonopolyGame
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1245, 637);
+            Controls.Add(propertiesGroupBox);
             Controls.Add(playerLabel);
             Controls.Add(panel1);
             Controls.Add(rollDiceButton);
@@ -1159,7 +1160,6 @@ namespace MonopolyGame
             Controls.Add(sellButton);
             Controls.Add(buyButton);
             Controls.Add(balanceTextBox);
-            Controls.Add(propertiesGroupBox);
             Controls.Add(balanceLabel);
             Name = "Gameboard";
             Text = "Monopoly";
