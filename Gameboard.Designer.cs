@@ -246,6 +246,7 @@ namespace MonopolyGame
             nextTurnButton.TabIndex = 16;
             nextTurnButton.Text = "Next Turn";
             nextTurnButton.UseVisualStyleBackColor = false;
+            nextTurnButton.Click += nextTurnButton_Click;
             // 
             // getOutOfJailFreeCards
             // 
@@ -1106,7 +1107,7 @@ namespace MonopolyGame
             Controls.Add(propertiesGroupBox);
             Controls.Add(balanceLabel);
             Name = "Gameboard";
-            Text = "Form1";
+            Text = "Monopoly";
             ((System.ComponentModel.ISupportInitialize)getOutOfJailFreeCards).EndInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll1).EndInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll2).EndInit();

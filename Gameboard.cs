@@ -7,6 +7,11 @@ namespace MonopolyGame
         private PictureBox[] spaces;
         private int currentSpaceIndex = 0;
         private PictureBox pictureBox;
+        private List<Player> players;
+        private int currentPlayerIndex = 0;
+        private Dictionary<Player, PictureBox> playerPieces = new Dictionary<Player, PictureBox>();
+
+
         public Gameboard(string selectedPieceName)
         {
             InitializeComponent();
@@ -17,6 +22,26 @@ namespace MonopolyGame
             setPictureBoxProperties();
         }
 
+        public Gameboard(List<Player> players)
+        {
+            InitializeComponent();
+            this.players = players;
+            initializeSpacesArray();
+            setupPanelsOnGameBoardImage();
+            setColumnStylesForTableLayoutPanel();
+            setPictureBoxProperties();
+            setupPlayersOnBoard();
+        }
+
+        private void setupPlayersOnBoard()
+        {
+            foreach (var player in players)
+            {
+                PictureBox playerPictureBox = getPictureBox(player.getPiece());
+                startOnGoSpace(playerPictureBox);
+                playerPieces[player] = playerPictureBox; 
+            }
+        }
         private void setColumnStylesForTableLayoutPanel()
         {
             bottomPanel.ColumnStyles.Clear();
@@ -178,18 +203,18 @@ namespace MonopolyGame
             pictureBox.BringToFront();
         }
 
-        private void movePiece(int total)
+        private void movePiece(int total, PictureBox pieceToMove)
         {
             currentSpaceIndex += total;
             currentSpaceIndex %= spaces.Length;
 
             PictureBox currentSpace = spaces[currentSpaceIndex];
 
-            int targetX = (currentSpace.Width - this.pictureBox.Width) / 2;
-            int targetY = (currentSpace.Height - this.pictureBox.Height) / 2;
+            int targetX = (currentSpace.Width - pieceToMove.Width) / 2;
+            int targetY = (currentSpace.Height - pieceToMove.Height) / 2;
 
-            this.pictureBox.Location = new Point(targetX, targetY);
-            currentSpace.Controls.Add(this.pictureBox);
+            pieceToMove.Location = new Point(targetX, targetY);
+            currentSpace.Controls.Add(pieceToMove);
         }
 
 
@@ -201,7 +226,6 @@ namespace MonopolyGame
             rightPanel.Parent = gameBoardImage;
         }
 
-
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
             Gameplay gameplay = new Gameplay();
@@ -210,7 +234,17 @@ namespace MonopolyGame
             diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
             diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
 
-            movePiece(total);
+            if (players.Count > 0) 
+            {
+                Player currentPlayer = players[currentPlayerIndex];
+                PictureBox currentPlayerPiece = playerPieces[currentPlayer];
+                movePiece(total, currentPlayerPiece);
+            }
+        }
+
+        private void nextTurnButton_Click(object sender, EventArgs e)
+        {
+            currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
         }
     }
 }

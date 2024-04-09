@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame
 {
-    internal class Property
+    public class Property
     {
         private String name;
         private Player owner;
