@@ -89,6 +89,7 @@ namespace MonopolyGame
                     return;
                 }
 
+                //setting as static for now
                 string defaultColor = "Red";
                 int defaultBoardPosition = 0;
                 int defaultMoneyBalance = 1500;
