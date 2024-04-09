@@ -287,7 +287,8 @@ namespace MonopolyGame
             propertyNameLabel.AutoSize = true;
             propertyNameLabel.MaximumSize = new Size(duplicatedPanel.Width - 10, 0);
             propertyNameLabel.Location = new Point(5, 5);
-            propertyNameLabel.Font = new Font(propertyNameLabel.Font, FontStyle.Bold); // Set font to bold
+            propertyNameLabel.Font = new Font(propertyNameLabel.Font.FontFamily, propertyNameLabel.Font.Size + 2, propertyNameLabel.Font.Style);
+            propertyNameLabel.Font = new Font(propertyNameLabel.Font, FontStyle.Bold); 
             duplicatedPanel.BackColor = GetColorFromColorGroup(property.getColorGroup());
 
             duplicatedPanel.Paint += (sender, e) =>
