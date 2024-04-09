@@ -18,5 +18,20 @@ namespace MonopolyGame
 
             return (dice1, dice2, total);
         }
+
+        public void movePiece(Player currentPlayer, int total, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces)
+        {
+            int newBoardPosition = (currentPlayer.getBoardPosition() + total) % spaces.Length;
+            currentPlayer.setBoardPosition(newBoardPosition);
+
+            PictureBox pieceToMove = playerPieces[currentPlayer];
+            PictureBox currentSpace = spaces[newBoardPosition];
+
+            int targetX = (currentSpace.Width - pieceToMove.Width) / 2;
+            int targetY = (currentSpace.Height - pieceToMove.Height) / 2;
+
+            pieceToMove.Location = new System.Drawing.Point(targetX, targetY);
+            currentSpace.Controls.Add(pieceToMove);
+        }
     }
 }

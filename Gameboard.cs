@@ -11,17 +11,7 @@ namespace MonopolyGame
         private int currentPlayerIndex = 0;
         private Dictionary<Player, PictureBox> playerPieces = new Dictionary<Player, PictureBox>();
         private Dictionary<int, Property> boardPositionToPropertyMap;
-
-
-        public Gameboard(string selectedPieceName)
-        {
-            InitializeComponent();
-            this.pictureBox = getPictureBox(selectedPieceName);
-            initializeSpacesArray();
-            setupPanelsOnGameBoardImage();
-            setColumnStylesForTableLayoutPanel();
-            setPictureBoxProperties();
-        }
+        Gameplay gameplay = new Gameplay();
 
         public Gameboard(List<Player> players)
         {
@@ -32,7 +22,16 @@ namespace MonopolyGame
             setColumnStylesForTableLayoutPanel();
             setPictureBoxProperties();
             setupPlayersOnBoard();
-            InitializeProperties();
+            initializeProperties();
+            clearPropertyPanel();
+        }
+
+        private void clearPropertyPanel()
+        {
+            if (propertyPanel.Parent != null)
+            {
+                propertyPanel.Parent.Controls.Remove(propertyPanel);
+            }
         }
 
         private void setupPlayersOnBoard()
@@ -70,7 +69,6 @@ namespace MonopolyGame
             {
                 leftPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / numberOfRows));
             }
-
             for (int i = 0; i < numberOfColumns; i++)
             {
                 rightPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / numberOfRows));
@@ -205,21 +203,6 @@ namespace MonopolyGame
             pictureBox.BringToFront();
         }
 
-        private void movePiece(int total, Player currentPlayer)
-        {
-            int newBoardPosition = (currentPlayer.getBoardPosition() + total) % spaces.Length;
-            currentPlayer.setBoardPosition(newBoardPosition);
-
-            PictureBox pieceToMove = playerPieces[currentPlayer];
-            PictureBox currentSpace = spaces[newBoardPosition];
-
-            int targetX = (currentSpace.Width - pieceToMove.Width) / 2;
-            int targetY = (currentSpace.Height - pieceToMove.Height) / 2;
-
-            pieceToMove.Location = new Point(targetX, targetY);
-            currentSpace.Controls.Add(pieceToMove);
-        }
-
         private void setupPanelsOnGameBoardImage()
         {
             bottomPanel.Parent = gameBoardImage;
@@ -239,8 +222,23 @@ namespace MonopolyGame
                 diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
 
                 Player currentPlayer = players[currentPlayerIndex];
-                //  movePiece(total, currentPlayer);
-                movePiece(1, currentPlayer);
+                gameplay.movePiece(currentPlayer, total, playerPieces, spaces);
+            }
+        }
+
+        private void updateCurrentPlayerProperties()
+        {
+            propertiesGroupBox.Controls.Clear();
+            Player currentPlayer = players[currentPlayerIndex];
+            int newY = 35;
+
+            foreach (Property property in currentPlayer.getProperties())
+            {
+                Panel newPropertyPanel = duplicatePropertyPanel(property);
+                newPropertyPanel.Location = new Point(propertyPanel.Location.X, newY);
+                propertiesGroupBox.Controls.Add(newPropertyPanel);
+                newPropertyPanel.BringToFront();
+                newY += newPropertyPanel.Height + 10;
             }
         }
 
@@ -249,6 +247,8 @@ namespace MonopolyGame
             currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
             string nextPlayerName = players[currentPlayerIndex].getName();
             playerLabel.Text = "Player: " + nextPlayerName;
+
+            updateCurrentPlayerProperties();
         }
 
         private void buyButton_Click(object sender, EventArgs e)
@@ -262,17 +262,42 @@ namespace MonopolyGame
                 {
                     if (currentProperty.getOwner() == null)
                     {
-                        propertyPanel.BackColor = GetColorFromColorGroup(currentProperty.getColorGroup());
                         propertyNameLabel.Text = currentProperty.getName();
-
                         propertyPanel.BringToFront();
+                        boardPositionToPropertyMap[currentBoardPosition] = currentProperty;
+                        currentPlayer.addProperties(currentProperty);
+                        updateCurrentPlayerProperties();
                     }
                     else
                     {
-                        MessageBox.Show("This property is already owned.", "Purchase Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("This property is already owned.", "Property Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
+        }
+
+        private Panel duplicatePropertyPanel(Property property)
+        {
+            Panel duplicatedPanel = new Panel();
+            duplicatedPanel.Size = propertyPanel.Size;
+            duplicatedPanel.Font = propertyPanel.Font;
+
+            Label propertyNameLabel = new Label();
+            propertyNameLabel.Text = property.getName();
+            propertyNameLabel.AutoSize = true;
+            propertyNameLabel.MaximumSize = new Size(duplicatedPanel.Width - 10, 0);
+            propertyNameLabel.Location = new Point(5, 5);
+            propertyNameLabel.Font = new Font(propertyNameLabel.Font.FontFamily, propertyNameLabel.Font.Size + 2, propertyNameLabel.Font.Style);
+            propertyNameLabel.Font = new Font(propertyNameLabel.Font, FontStyle.Bold); 
+            duplicatedPanel.BackColor = GetColorFromColorGroup(property.getColorGroup());
+
+            duplicatedPanel.Paint += (sender, e) =>
+            {
+                e.Graphics.DrawRectangle(new Pen(Color.Black, 4), new Rectangle(0, 0, duplicatedPanel.Width - 1, duplicatedPanel.Height - 1));
+            };
+
+            duplicatedPanel.Controls.Add(propertyNameLabel);
+            return duplicatedPanel;
         }
 
         private Color GetColorFromColorGroup(string colorGroup)
@@ -296,7 +321,7 @@ namespace MonopolyGame
             return Color.White;
         }
 
-        private void InitializeProperties()
+        private void initializeProperties()
         {
             boardPositionToPropertyMap = new Dictionary<int, Property>();
 
@@ -307,6 +332,7 @@ namespace MonopolyGame
 
             Property balticAvenue = new Property("Baltic Avenue", "Brown", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3);
             boardPositionToPropertyMap.Add(balticAvenue.getBoardPosition(), balticAvenue);
+
 
 
             //------------- Light Blue------------------
@@ -381,7 +407,6 @@ namespace MonopolyGame
 
             Property boardwalk = new Property("Boardwalk", "Dark Blue", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39);
             boardPositionToPropertyMap.Add(boardwalk.getBoardPosition(), boardwalk);
-
         }
     }
 }
