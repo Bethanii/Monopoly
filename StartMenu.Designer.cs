@@ -345,7 +345,6 @@
             label1.TabIndex = 1;
             label1.Text = "Select Your Player Name";
             label1.TextAlign = ContentAlignment.TopCenter;
-            label1.Click += label1_Click;
             // 
             // playerNameTextBox
             // 

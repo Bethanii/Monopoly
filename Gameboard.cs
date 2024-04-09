@@ -39,7 +39,7 @@ namespace MonopolyGame
             {
                 PictureBox playerPictureBox = getPictureBox(player.getPiece());
                 startOnGoSpace(playerPictureBox);
-                playerPieces[player] = playerPictureBox; 
+                playerPieces[player] = playerPictureBox;
             }
         }
         private void setColumnStylesForTableLayoutPanel()
@@ -234,7 +234,7 @@ namespace MonopolyGame
             diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
             diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
 
-            if (players.Count > 0) 
+            if (players.Count > 0)
             {
                 Player currentPlayer = players[currentPlayerIndex];
                 PictureBox currentPlayerPiece = playerPieces[currentPlayer];
@@ -245,6 +245,8 @@ namespace MonopolyGame
         private void nextTurnButton_Click(object sender, EventArgs e)
         {
             currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
+            string nextPlayerName = players[currentPlayerIndex].getName();
+            playerLabel.Text = "Player: " + nextPlayerName;
         }
     }
 }
