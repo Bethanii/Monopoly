@@ -101,6 +101,7 @@ namespace MonopolyGame
             tableLayoutPanel6 = new TableLayoutPanel();
             pictureBox24 = new PictureBox();
             pictureBox25 = new PictureBox();
+            playerLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)getOutOfJailFreeCards).BeginInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll2).BeginInit();
@@ -178,7 +179,7 @@ namespace MonopolyGame
             propertiesGroupBox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             propertiesGroupBox.BackColor = Color.AliceBlue;
             propertiesGroupBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            propertiesGroupBox.Location = new Point(939, 146);
+            propertiesGroupBox.Location = new Point(939, 185);
             propertiesGroupBox.Name = "propertiesGroupBox";
             propertiesGroupBox.Size = new Size(294, 422);
             propertiesGroupBox.TabIndex = 8;
@@ -191,7 +192,7 @@ namespace MonopolyGame
             balanceLabel.BackColor = Color.Transparent;
             balanceLabel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             balanceLabel.ForeColor = SystemColors.ButtonHighlight;
-            balanceLabel.Location = new Point(939, 32);
+            balanceLabel.Location = new Point(939, 78);
             balanceLabel.Name = "balanceLabel";
             balanceLabel.Size = new Size(91, 28);
             balanceLabel.TabIndex = 10;
@@ -202,7 +203,7 @@ namespace MonopolyGame
             balanceTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             balanceTextBox.Enabled = false;
             balanceTextBox.ForeColor = SystemColors.WindowText;
-            balanceTextBox.Location = new Point(939, 63);
+            balanceTextBox.Location = new Point(939, 109);
             balanceTextBox.Multiline = true;
             balanceTextBox.Name = "balanceTextBox";
             balanceTextBox.Size = new Size(294, 45);
@@ -246,6 +247,7 @@ namespace MonopolyGame
             nextTurnButton.TabIndex = 16;
             nextTurnButton.Text = "Next Turn";
             nextTurnButton.UseVisualStyleBackColor = false;
+            nextTurnButton.Click += nextTurnButton_Click;
             // 
             // getOutOfJailFreeCards
             // 
@@ -1086,6 +1088,19 @@ namespace MonopolyGame
             pictureBox25.TabIndex = 38;
             pictureBox25.TabStop = false;
             // 
+            // playerLabel
+            // 
+            playerLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            playerLabel.BackColor = Color.Transparent;
+            playerLabel.FlatStyle = FlatStyle.Flat;
+            playerLabel.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            playerLabel.ForeColor = SystemColors.ButtonHighlight;
+            playerLabel.Location = new Point(939, 32);
+            playerLabel.Name = "playerLabel";
+            playerLabel.Size = new Size(214, 44);
+            playerLabel.TabIndex = 24;
+            playerLabel.Text = "Player: ";
+            // 
             // Gameboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1095,6 +1110,7 @@ namespace MonopolyGame
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1245, 637);
+            Controls.Add(playerLabel);
             Controls.Add(panel1);
             Controls.Add(rollDiceButton);
             Controls.Add(diceGroupBox);
@@ -1106,7 +1122,7 @@ namespace MonopolyGame
             Controls.Add(propertiesGroupBox);
             Controls.Add(balanceLabel);
             Name = "Gameboard";
-            Text = "Form1";
+            Text = "Monopoly";
             ((System.ComponentModel.ISupportInitialize)getOutOfJailFreeCards).EndInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll1).EndInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll2).EndInit();
@@ -1222,7 +1238,6 @@ namespace MonopolyGame
         private PictureBox readingRailroad;
         private PictureBox vermontAve;
         private PictureBox connecticutAve;
-        private PictureBox pictureBox16;
         private PictureBox orientalAve;
         private PictureBox electricCompany;
         private PictureBox stCharlesPlace;
@@ -1260,5 +1275,6 @@ namespace MonopolyGame
         private PictureBox pictureBox24;
         private PictureBox pictureBox25;
         private PictureBox boardwalk;
+        private Label playerLabel;
     }
 }

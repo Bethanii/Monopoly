@@ -30,7 +30,7 @@
         {
             panel1 = new Panel();
             startGameButton = new Button();
-            button17 = new Button();
+            addNewPlayerButton = new Button();
             carButton = new Button();
             shoeButton = new Button();
             wheelbarrowButton = new Button();
@@ -50,14 +50,14 @@
             button1 = new Button();
             label2 = new Label();
             label1 = new Label();
-            textBox1 = new TextBox();
+            playerNameTextBox = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Controls.Add(startGameButton);
-            panel1.Controls.Add(button17);
+            panel1.Controls.Add(addNewPlayerButton);
             panel1.Controls.Add(carButton);
             panel1.Controls.Add(shoeButton);
             panel1.Controls.Add(wheelbarrowButton);
@@ -77,7 +77,7 @@
             panel1.Controls.Add(button1);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(playerNameTextBox);
             panel1.Location = new Point(10, 10);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
@@ -99,19 +99,20 @@
             startGameButton.UseVisualStyleBackColor = false;
             startGameButton.Click += startGameButton_Click;
             // 
-            // button17
+            // addNewPlayerButton
             // 
-            button17.BackColor = Color.Navy;
-            button17.Font = new Font("Sitka Banner", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point);
-            button17.ForeColor = Color.Goldenrod;
-            button17.Location = new Point(57, 447);
-            button17.Margin = new Padding(0);
-            button17.Name = "button17";
-            button17.Size = new Size(233, 40);
-            button17.TabIndex = 21;
-            button17.Text = "Add Another Player";
-            button17.TextAlign = ContentAlignment.TopCenter;
-            button17.UseVisualStyleBackColor = false;
+            addNewPlayerButton.BackColor = Color.Navy;
+            addNewPlayerButton.Font = new Font("Sitka Banner", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point);
+            addNewPlayerButton.ForeColor = Color.Goldenrod;
+            addNewPlayerButton.Location = new Point(57, 447);
+            addNewPlayerButton.Margin = new Padding(0);
+            addNewPlayerButton.Name = "addNewPlayerButton";
+            addNewPlayerButton.Size = new Size(233, 40);
+            addNewPlayerButton.TabIndex = 21;
+            addNewPlayerButton.Text = "Add Another Player";
+            addNewPlayerButton.TextAlign = ContentAlignment.TopCenter;
+            addNewPlayerButton.UseVisualStyleBackColor = false;
+            addNewPlayerButton.Click += addAnotherPlayerButton_Click;
             // 
             // carButton
             // 
@@ -344,16 +345,15 @@
             label1.TabIndex = 1;
             label1.Text = "Select Your Player Name";
             label1.TextAlign = ContentAlignment.TopCenter;
-            label1.Click += label1_Click;
             // 
-            // textBox1
+            // playerNameTextBox
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Sitka Banner", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            textBox1.Location = new Point(82, 71);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(180, 38);
-            textBox1.TabIndex = 0;
+            playerNameTextBox.BorderStyle = BorderStyle.FixedSingle;
+            playerNameTextBox.Font = new Font("Sitka Banner", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            playerNameTextBox.Location = new Point(82, 71);
+            playerNameTextBox.Name = "playerNameTextBox";
+            playerNameTextBox.Size = new Size(180, 38);
+            playerNameTextBox.TabIndex = 0;
             // 
             // StartMenu
             // 
@@ -379,7 +379,7 @@
 
         private Panel panel1;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox playerNameTextBox;
         private Label label2;
         private Button button8;
         private Button button7;
@@ -399,6 +399,6 @@
         private Button dogButton;
         private Button shipButton;
         private Button startGameButton;
-        private Button button17;
+        private Button addNewPlayerButton;
     }
 }

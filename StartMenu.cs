@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace MonopolyGame
 {
     public partial class StartMenu : Form
     {
         private Button selectedButton;
+        private List<Player> players = new List<Player>();
+        private List<string> selectedPieces = new List<string>();
+        private const int MaxPlayers = 8;
         public StartMenu()
         {
             InitializeComponent();
@@ -26,17 +30,17 @@ namespace MonopolyGame
 
         private void InitializePieceSelection()
         {
-            shipButton.Click += PieceSelection_Click;
-            dogButton.Click += PieceSelection_Click;
-            hatButton.Click += PieceSelection_Click;
-            ironButton.Click += PieceSelection_Click;
-            carButton.Click += PieceSelection_Click;
-            shoeButton.Click += PieceSelection_Click;
-            thimbleButton.Click += PieceSelection_Click;
-            wheelbarrowButton.Click += PieceSelection_Click;
+            shipButton.Click += pieceSelection_Click;
+            dogButton.Click += pieceSelection_Click;
+            hatButton.Click += pieceSelection_Click;
+            ironButton.Click += pieceSelection_Click;
+            carButton.Click += pieceSelection_Click;
+            shoeButton.Click += pieceSelection_Click;
+            thimbleButton.Click += pieceSelection_Click;
+            wheelbarrowButton.Click += pieceSelection_Click;
         }
 
-        private void PieceSelection_Click(object sender, EventArgs e)
+        private void pieceSelection_Click(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
 
@@ -52,11 +56,52 @@ namespace MonopolyGame
 
         private void startGameButton_Click(object sender, EventArgs e)
         {
-            if (selectedButton != null)
+            AddPlayer();
+
+            if (players.Count > 0)
             {
-                Gameboard gameBoard = new Gameboard(selectedButton.Name.ToLower());
+                Gameboard gameBoard = new Gameboard(players);
                 this.Hide();
                 gameBoard.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please add at least one player to start the game.", "No Players Added", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void addAnotherPlayerButton_Click(object sender, EventArgs e)
+        {
+            AddPlayer();
+            InitializePieceSelection();
+        }
+
+
+        private void AddPlayer()
+        {
+            if (selectedButton != null) 
+            {
+                string playerName = playerNameTextBox.Text.Trim();
+
+                if (string.IsNullOrEmpty(playerName))
+                {
+                    MessageBox.Show("Please enter a valid name", "Invalid Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                //setting as static for now
+                string defaultColor = "Red";
+                int defaultBoardPosition = 0;
+                int defaultMoneyBalance = 1500;
+                int defaultInJailCounter = 0;
+
+                Player newPlayer = new Player(playerName, selectedButton.Name.ToLower(), defaultColor, defaultBoardPosition, defaultMoneyBalance, defaultInJailCounter);
+                players.Add(newPlayer);
+                selectedPieces.Add(selectedButton.Name.ToLower());
+
+                selectedButton.FlatAppearance.BorderSize = 0;
+                selectedButton = null;
+                playerNameTextBox.Clear();
             }
             else
             {
