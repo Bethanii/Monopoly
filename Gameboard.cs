@@ -11,6 +11,7 @@ namespace MonopolyGame
         private int currentPlayerIndex = 0;
         private Dictionary<Player, PictureBox> playerPieces = new Dictionary<Player, PictureBox>();
         private Dictionary<int, Property> boardPositionToPropertyMap;
+        Gameplay gameplay = new Gameplay();
 
         public Gameboard(List<Player> players)
         {
@@ -21,7 +22,7 @@ namespace MonopolyGame
             setColumnStylesForTableLayoutPanel();
             setPictureBoxProperties();
             setupPlayersOnBoard();
-            InitializeProperties();
+            initializeProperties();
             clearPropertyPanel();
         }
 
@@ -68,7 +69,6 @@ namespace MonopolyGame
             {
                 leftPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / numberOfRows));
             }
-
             for (int i = 0; i < numberOfColumns; i++)
             {
                 rightPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / numberOfRows));
@@ -203,21 +203,6 @@ namespace MonopolyGame
             pictureBox.BringToFront();
         }
 
-        private void movePiece(int total, Player currentPlayer)
-        {
-            int newBoardPosition = (currentPlayer.getBoardPosition() + total) % spaces.Length;
-            currentPlayer.setBoardPosition(newBoardPosition);
-
-            PictureBox pieceToMove = playerPieces[currentPlayer];
-            PictureBox currentSpace = spaces[newBoardPosition];
-
-            int targetX = (currentSpace.Width - pieceToMove.Width) / 2;
-            int targetY = (currentSpace.Height - pieceToMove.Height) / 2;
-
-            pieceToMove.Location = new Point(targetX, targetY);
-            currentSpace.Controls.Add(pieceToMove);
-        }
-
         private void setupPanelsOnGameBoardImage()
         {
             bottomPanel.Parent = gameBoardImage;
@@ -237,9 +222,7 @@ namespace MonopolyGame
                 diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
 
                 Player currentPlayer = players[currentPlayerIndex];
-                //  movePiece(total, currentPlayer);
-                // moving one increment for testing 
-                movePiece(1, currentPlayer);
+                gameplay.movePiece(currentPlayer, total, playerPieces, spaces);
             }
         }
 
@@ -304,7 +287,7 @@ namespace MonopolyGame
             propertyNameLabel.AutoSize = true;
             propertyNameLabel.MaximumSize = new Size(duplicatedPanel.Width - 10, 0);
             propertyNameLabel.Location = new Point(5, 5);
-            propertyNameLabel.Font = propertyNameLabel.Font; 
+            propertyNameLabel.Font = new Font(propertyNameLabel.Font, FontStyle.Bold); // Set font to bold
             duplicatedPanel.BackColor = GetColorFromColorGroup(property.getColorGroup());
 
             duplicatedPanel.Paint += (sender, e) =>
@@ -315,7 +298,6 @@ namespace MonopolyGame
             duplicatedPanel.Controls.Add(propertyNameLabel);
             return duplicatedPanel;
         }
-
 
         private Color GetColorFromColorGroup(string colorGroup)
         {
@@ -338,7 +320,7 @@ namespace MonopolyGame
             return Color.White;
         }
 
-        private void InitializeProperties()
+        private void initializeProperties()
         {
             boardPositionToPropertyMap = new Dictionary<int, Property>();
 

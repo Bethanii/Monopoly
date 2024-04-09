@@ -291,10 +291,10 @@ namespace MonopolyGame
             // 
             // getOutOfJailFreeCards
             // 
-            getOutOfJailFreeCards.Anchor = AnchorStyles.Left;
+            getOutOfJailFreeCards.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             getOutOfJailFreeCards.BackgroundImage = (Image)resources.GetObject("getOutOfJailFreeCards.BackgroundImage");
             getOutOfJailFreeCards.BackgroundImageLayout = ImageLayout.Stretch;
-            getOutOfJailFreeCards.Location = new Point(12, 465);
+            getOutOfJailFreeCards.Location = new Point(18, 488);
             getOutOfJailFreeCards.MaximumSize = new Size(218, 226);
             getOutOfJailFreeCards.Name = "getOutOfJailFreeCards";
             getOutOfJailFreeCards.Size = new Size(218, 116);
@@ -1276,7 +1276,6 @@ namespace MonopolyGame
         private PictureBox communityChest2;
         private PictureBox incomeTax;
         private PictureBox chance3;
-        private PictureBox connecticutAbe;
         private PictureBox mediterraneanAve;
         private PictureBox balticAve;
         private PictureBox readingRailroad;
