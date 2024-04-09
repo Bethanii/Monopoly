@@ -243,11 +243,29 @@ namespace MonopolyGame
             }
         }
 
+        private void updateCurrentPlayerProperties()
+        {
+            propertiesGroupBox.Controls.Clear();
+            Player currentPlayer = players[currentPlayerIndex];
+            int newY = 35;
+
+            foreach (Property property in currentPlayer.getProperties())
+            {
+                Panel newPropertyPanel = duplicatePropertyPanel(property);
+                newPropertyPanel.Location = new Point(propertyPanel.Location.X, newY);
+                propertiesGroupBox.Controls.Add(newPropertyPanel);
+                newPropertyPanel.BringToFront();
+                newY += newPropertyPanel.Height + 10;
+            }
+        }
+
         private void nextTurnButton_Click(object sender, EventArgs e)
         {
             currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
             string nextPlayerName = players[currentPlayerIndex].getName();
             playerLabel.Text = "Player: " + nextPlayerName;
+
+            updateCurrentPlayerProperties();
         }
 
         private void buyButton_Click(object sender, EventArgs e)
@@ -261,18 +279,11 @@ namespace MonopolyGame
                 {
                     if (currentProperty.getOwner() == null)
                     {
-                        propertyPanel.BackColor = GetColorFromColorGroup(currentProperty.getColorGroup());
                         propertyNameLabel.Text = currentProperty.getName();
                         propertyPanel.BringToFront();
                         boardPositionToPropertyMap[currentBoardPosition] = currentProperty;
-
                         currentPlayer.addProperties(currentProperty);
-
-                        Panel newPropertyPanel = duplicatePropertyPanel(currentProperty);
-                        int newY = propertiesGroupBox.Controls.Count * (propertyPanel.Height + 10) + 35;
-                        newPropertyPanel.Location = new Point(propertyPanel.Location.X, newY);
-                        propertiesGroupBox.Controls.Add(newPropertyPanel);
-                        newPropertyPanel.BringToFront();
+                        updateCurrentPlayerProperties();
                     }
                     else
                     {
@@ -282,11 +293,9 @@ namespace MonopolyGame
             }
         }
 
-
         private Panel duplicatePropertyPanel(Property property)
         {
             Panel duplicatedPanel = new Panel();
-            duplicatedPanel.BackColor = propertyPanel.BackColor;
             duplicatedPanel.Size = propertyPanel.Size;
             duplicatedPanel.Font = propertyPanel.Font;
 
@@ -295,19 +304,17 @@ namespace MonopolyGame
             propertyNameLabel.AutoSize = true;
             propertyNameLabel.MaximumSize = new Size(duplicatedPanel.Width - 10, 0);
             propertyNameLabel.Location = new Point(5, 5);
-            propertyNameLabel.Font = new Font(this.propertyNameLabel.Font, FontStyle.Bold);
+            propertyNameLabel.Font = propertyNameLabel.Font; 
+            duplicatedPanel.BackColor = GetColorFromColorGroup(property.getColorGroup());
 
-            // Draw custom border around the panel
             duplicatedPanel.Paint += (sender, e) =>
             {
                 e.Graphics.DrawRectangle(new Pen(Color.Black, 4), new Rectangle(0, 0, duplicatedPanel.Width - 1, duplicatedPanel.Height - 1));
             };
 
             duplicatedPanel.Controls.Add(propertyNameLabel);
-
             return duplicatedPanel;
         }
-
 
 
         private Color GetColorFromColorGroup(string colorGroup)
@@ -330,7 +337,6 @@ namespace MonopolyGame
             }
             return Color.White;
         }
-
 
         private void InitializeProperties()
         {
