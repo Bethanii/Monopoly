@@ -10,6 +10,7 @@ namespace MonopolyGame
         private List<Player> players;
         private int currentPlayerIndex = 0;
         private Dictionary<Player, PictureBox> playerPieces = new Dictionary<Player, PictureBox>();
+        private Dictionary<int, Property> boardPositionToPropertyMap;
 
 
         public Gameboard(string selectedPieceName)
@@ -31,6 +32,7 @@ namespace MonopolyGame
             setColumnStylesForTableLayoutPanel();
             setPictureBoxProperties();
             setupPlayersOnBoard();
+            InitializeProperties();
         }
 
         private void setupPlayersOnBoard()
@@ -203,12 +205,13 @@ namespace MonopolyGame
             pictureBox.BringToFront();
         }
 
-        private void movePiece(int total, PictureBox pieceToMove)
+        private void movePiece(int total, Player currentPlayer)
         {
-            currentSpaceIndex += total;
-            currentSpaceIndex %= spaces.Length;
+            int newBoardPosition = (currentPlayer.getBoardPosition() + total) % spaces.Length;
+            currentPlayer.setBoardPosition(newBoardPosition);
 
-            PictureBox currentSpace = spaces[currentSpaceIndex];
+            PictureBox pieceToMove = playerPieces[currentPlayer];
+            PictureBox currentSpace = spaces[newBoardPosition];
 
             int targetX = (currentSpace.Width - pieceToMove.Width) / 2;
             int targetY = (currentSpace.Height - pieceToMove.Height) / 2;
@@ -216,7 +219,6 @@ namespace MonopolyGame
             pieceToMove.Location = new Point(targetX, targetY);
             currentSpace.Controls.Add(pieceToMove);
         }
-
 
         private void setupPanelsOnGameBoardImage()
         {
@@ -228,17 +230,17 @@ namespace MonopolyGame
 
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
-            Gameplay gameplay = new Gameplay();
-            (int dice1, int dice2, int total) = gameplay.getDiceRollCount();
-
-            diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
-            diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
-
             if (players.Count > 0)
             {
+                Gameplay gameplay = new Gameplay();
+                (int dice1, int dice2, int total) = gameplay.getDiceRollCount();
+
+                diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
+                diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
+
                 Player currentPlayer = players[currentPlayerIndex];
-                PictureBox currentPlayerPiece = playerPieces[currentPlayer];
-                movePiece(total, currentPlayerPiece);
+                //  movePiece(total, currentPlayer);
+                movePiece(1, currentPlayer);
             }
         }
 
@@ -247,6 +249,139 @@ namespace MonopolyGame
             currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
             string nextPlayerName = players[currentPlayerIndex].getName();
             playerLabel.Text = "Player: " + nextPlayerName;
+        }
+
+        private void buyButton_Click(object sender, EventArgs e)
+        {
+            if (players.Count > 0)
+            {
+                Player currentPlayer = players[currentPlayerIndex];
+                int currentBoardPosition = currentPlayer.getBoardPosition();
+
+                if (boardPositionToPropertyMap.TryGetValue(currentBoardPosition, out Property currentProperty))
+                {
+                    if (currentProperty.getOwner() == null)
+                    {
+                        propertyPanel.BackColor = GetColorFromColorGroup(currentProperty.getColorGroup());
+                        propertyNameLabel.Text = currentProperty.getName();
+
+                        propertyPanel.BringToFront();
+                    }
+                    else
+                    {
+                        MessageBox.Show("This property is already owned.", "Purchase Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+        }
+
+        private Color GetColorFromColorGroup(string colorGroup)
+        {
+            var colorMap = new Dictionary<string, Color>
+            {
+                { "Brown", Color.SaddleBrown },
+                { "Light Blue", Color.LightSkyBlue },
+                { "Magenta", Color.MediumVioletRed },
+                { "Orange", Color.Orange },
+                { "Red", Color.Red },
+                { "Yellow", Color.Gold },
+                { "Green", Color.MediumSeaGreen },
+                { "Dark Blue", Color.DodgerBlue }
+            };
+
+            if (colorMap.TryGetValue(colorGroup, out Color color))
+            {
+                return color;
+            }
+            return Color.White;
+        }
+
+        private void InitializeProperties()
+        {
+            boardPositionToPropertyMap = new Dictionary<int, Property>();
+
+            //hard coding rent values for now
+            //------------- Brown ------------------
+            Property mediterraneanAvenue = new Property("Mediterranean Avenue", "Brown", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);
+            boardPositionToPropertyMap.Add(mediterraneanAvenue.getBoardPosition(), mediterraneanAvenue);
+
+            Property balticAvenue = new Property("Baltic Avenue", "Brown", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3);
+            boardPositionToPropertyMap.Add(balticAvenue.getBoardPosition(), balticAvenue);
+
+
+            //------------- Light Blue------------------
+            Property orientalAvenue = new Property("Oriental Avenue", "Light Blue", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6);
+            boardPositionToPropertyMap.Add(orientalAvenue.getBoardPosition(), orientalAvenue);
+
+            Property vermontAvenue = new Property("Vermont Avenue", "Light Blue", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
+            boardPositionToPropertyMap.Add(vermontAvenue.getBoardPosition(), vermontAvenue);
+
+            Property connecticutAvenue = new Property("Connecticut Avenue", "Light Blue", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9);
+            boardPositionToPropertyMap.Add(connecticutAvenue.getBoardPosition(), connecticutAvenue);
+
+
+            //------------- Magenta ------------------
+            Property stCharlesPlace = new Property("St. Charles Place", "Magenta", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11);
+            boardPositionToPropertyMap.Add(stCharlesPlace.getBoardPosition(), stCharlesPlace);
+
+            Property statesAve = new Property("States Avenue", "Magenta", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13);
+            boardPositionToPropertyMap.Add(statesAve.getBoardPosition(), statesAve);
+
+            Property virginiaAve = new Property("Virginia Avenue", "Magenta", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14);
+            boardPositionToPropertyMap.Add(virginiaAve.getBoardPosition(), virginiaAve);
+
+
+            //------------- Orange ------------------
+            Property stJamesPlace = new Property("St. James Place", "Orange", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16);
+            boardPositionToPropertyMap.Add(stJamesPlace.getBoardPosition(), stJamesPlace);
+
+            Property tennesseeAve = new Property("Tennessee Avenue", "Orange", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18);
+            boardPositionToPropertyMap.Add(tennesseeAve.getBoardPosition(), tennesseeAve);
+
+            Property newYorkAve = new Property("New York Avenue", "Orange", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19);
+            boardPositionToPropertyMap.Add(newYorkAve.getBoardPosition(), newYorkAve);
+
+
+            //------------- Red ------------------
+            Property kentuckyAve = new Property("Kentucky Avenue", "Red", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21);
+            boardPositionToPropertyMap.Add(kentuckyAve.getBoardPosition(), kentuckyAve);
+
+            Property indianaAve = new Property("Indiana Avenue", "Red", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23);
+            boardPositionToPropertyMap.Add(indianaAve.getBoardPosition(), indianaAve);
+
+            Property illinoisAve = new Property("Illinois Avenue", "Red", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24);
+            boardPositionToPropertyMap.Add(illinoisAve.getBoardPosition(), illinoisAve);
+
+
+            //------------- Yellow ------------------
+            Property atlanticAve = new Property("Atlantic Avenue", "Yellow", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26);
+            boardPositionToPropertyMap.Add(atlanticAve.getBoardPosition(), atlanticAve);
+
+            Property ventnorAve = new Property("Ventnor Avenue", "Yellow", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27);
+            boardPositionToPropertyMap.Add(ventnorAve.getBoardPosition(), ventnorAve);
+
+            Property marvinGardens = new Property("Marvin Gardens", "Yellow", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29);
+            boardPositionToPropertyMap.Add(marvinGardens.getBoardPosition(), marvinGardens);
+
+
+            //------------- Green ------------------
+            Property pacificAve = new Property("Pacific Avenue", "Green", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31);
+            boardPositionToPropertyMap.Add(pacificAve.getBoardPosition(), pacificAve);
+
+            Property northCarolinaAve = new Property("North Carolina Avenue", "Green", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32);
+            boardPositionToPropertyMap.Add(northCarolinaAve.getBoardPosition(), northCarolinaAve);
+
+            Property pennsylvaniaAve = new Property("Pennsylvania Avenue", "Green", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34);
+            boardPositionToPropertyMap.Add(pennsylvaniaAve.getBoardPosition(), pennsylvaniaAve);
+
+
+            //------------- Dark Blue ------------------
+            Property parkPlace = new Property("Park Place", "Dark Blue", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 37);
+            boardPositionToPropertyMap.Add(parkPlace.getBoardPosition(), parkPlace);
+
+            Property boardwalk = new Property("Boardwalk", "Dark Blue", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39);
+            boardPositionToPropertyMap.Add(boardwalk.getBoardPosition(), boardwalk);
+
         }
     }
 }

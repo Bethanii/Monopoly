@@ -112,7 +112,5 @@ namespace MonopolyGame
         {
             return boardPosition;
         }
-
-
     }
 }

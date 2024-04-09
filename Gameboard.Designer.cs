@@ -25,6 +25,9 @@ namespace MonopolyGame
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gameboard));
             propertiesGroupBox = new GroupBox();
+            propertyPanel = new Panel();
+            housePictureBox = new PictureBox();
+            propertyNameLabel = new Label();
             balanceLabel = new Label();
             balanceTextBox = new TextBox();
             buyButton = new Button();
@@ -102,6 +105,9 @@ namespace MonopolyGame
             pictureBox24 = new PictureBox();
             pictureBox25 = new PictureBox();
             playerLabel = new Label();
+            propertiesGroupBox.SuspendLayout();
+            propertyPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)housePictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)getOutOfJailFreeCards).BeginInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll2).BeginInit();
@@ -178,6 +184,7 @@ namespace MonopolyGame
             propertiesGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             propertiesGroupBox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             propertiesGroupBox.BackColor = Color.AliceBlue;
+            propertiesGroupBox.Controls.Add(propertyPanel);
             propertiesGroupBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             propertiesGroupBox.Location = new Point(939, 185);
             propertiesGroupBox.Name = "propertiesGroupBox";
@@ -185,6 +192,38 @@ namespace MonopolyGame
             propertiesGroupBox.TabIndex = 8;
             propertiesGroupBox.TabStop = false;
             propertiesGroupBox.Text = "Properties";
+            // 
+            // propertyPanel
+            // 
+            propertyPanel.BackColor = Color.Yellow;
+            propertyPanel.BorderStyle = BorderStyle.FixedSingle;
+            propertyPanel.Controls.Add(housePictureBox);
+            propertyPanel.Controls.Add(propertyNameLabel);
+            propertyPanel.Location = new Point(6, 43);
+            propertyPanel.Name = "propertyPanel";
+            propertyPanel.Size = new Size(282, 67);
+            propertyPanel.TabIndex = 0;
+            // 
+            // housePictureBox
+            // 
+            housePictureBox.BackgroundImage = Properties.Resources.house;
+            housePictureBox.BackgroundImageLayout = ImageLayout.Stretch;
+            housePictureBox.Image = Properties.Resources.house;
+            housePictureBox.Location = new Point(238, 17);
+            housePictureBox.Name = "housePictureBox";
+            housePictureBox.Size = new Size(39, 36);
+            housePictureBox.TabIndex = 1;
+            housePictureBox.TabStop = false;
+            // 
+            // propertyNameLabel
+            // 
+            propertyNameLabel.AutoSize = true;
+            propertyNameLabel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            propertyNameLabel.Location = new Point(3, 18);
+            propertyNameLabel.Name = "propertyNameLabel";
+            propertyNameLabel.Size = new Size(112, 28);
+            propertyNameLabel.TabIndex = 0;
+            propertyNameLabel.Text = "Boardwalk";
             // 
             // balanceLabel
             // 
@@ -222,6 +261,7 @@ namespace MonopolyGame
             buyButton.TabIndex = 12;
             buyButton.Text = "Buy";
             buyButton.UseVisualStyleBackColor = false;
+            buyButton.Click += buyButton_Click;
             // 
             // sellButton
             // 
@@ -1123,6 +1163,10 @@ namespace MonopolyGame
             Controls.Add(balanceLabel);
             Name = "Gameboard";
             Text = "Monopoly";
+            propertiesGroupBox.ResumeLayout(false);
+            propertyPanel.ResumeLayout(false);
+            propertyPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)housePictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)getOutOfJailFreeCards).EndInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll1).EndInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll2).EndInit();
@@ -1276,5 +1320,8 @@ namespace MonopolyGame
         private PictureBox pictureBox25;
         private PictureBox boardwalk;
         private Label playerLabel;
+        private Panel propertyPanel;
+        private Label propertyNameLabel;
+        private PictureBox housePictureBox;
     }
 }
