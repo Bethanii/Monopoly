@@ -25,8 +25,8 @@ namespace MonopolyGame
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gameboard));
             propertiesGroupBox = new GroupBox();
-            sellHouse = new Button();
-            buyHouse = new Button();
+            sellHouseButton = new Button();
+            buyHouseButton = new Button();
             propertyPanel = new Panel();
             housePictureBox = new PictureBox();
             propertyNameLabel = new Label();
@@ -187,27 +187,27 @@ namespace MonopolyGame
             // 
             resources.ApplyResources(propertiesGroupBox, "propertiesGroupBox");
             propertiesGroupBox.BackColor = Color.AliceBlue;
-            propertiesGroupBox.Controls.Add(sellHouse);
-            propertiesGroupBox.Controls.Add(buyHouse);
+            propertiesGroupBox.Controls.Add(sellHouseButton);
+            propertiesGroupBox.Controls.Add(buyHouseButton);
             propertiesGroupBox.Name = "propertiesGroupBox";
             propertiesGroupBox.TabStop = false;
             // 
-            // sellHouse
+            // sellHouseButton
             // 
-            resources.ApplyResources(sellHouse, "sellHouse");
-            sellHouse.BackColor = Color.Tomato;
-            sellHouse.ForeColor = SystemColors.ControlText;
-            sellHouse.Name = "sellHouse";
-            sellHouse.UseVisualStyleBackColor = false;
-            sellHouse.Click += sellHouse_Click;
+            resources.ApplyResources(sellHouseButton, "sellHouseButton");
+            sellHouseButton.BackColor = Color.Tomato;
+            sellHouseButton.ForeColor = SystemColors.ControlText;
+            sellHouseButton.Name = "sellHouseButton";
+            sellHouseButton.UseVisualStyleBackColor = false;
+            sellHouseButton.Click += sellHouseButton_Click;
             // 
-            // buyHouse
+            // buyHouseButton
             // 
-            resources.ApplyResources(buyHouse, "buyHouse");
-            buyHouse.BackColor = Color.Tomato;
-            buyHouse.Name = "buyHouse";
-            buyHouse.UseVisualStyleBackColor = false;
-            buyHouse.Click += button1_Click;
+            resources.ApplyResources(buyHouseButton, "buyHouseButton");
+            buyHouseButton.BackColor = Color.Tomato;
+            buyHouseButton.Name = "buyHouseButton";
+            buyHouseButton.UseVisualStyleBackColor = false;
+            buyHouseButton.Click += buyHouseButton_Click;
             // 
             // propertyPanel
             // 
@@ -217,11 +217,12 @@ namespace MonopolyGame
             propertyPanel.Controls.Add(propertyNameLabel);
             resources.ApplyResources(propertyPanel, "propertyPanel");
             propertyPanel.Name = "propertyPanel";
+            propertyPanel.Click += propertyPanel_Click;
             // 
             // housePictureBox
             // 
-            housePictureBox.BackgroundImage = Properties.Resources.house;
             resources.ApplyResources(housePictureBox, "housePictureBox");
+            housePictureBox.BackgroundImage = Properties.Resources.house;
             housePictureBox.Image = Properties.Resources.house;
             housePictureBox.Name = "housePictureBox";
             housePictureBox.TabStop = false;
@@ -243,7 +244,6 @@ namespace MonopolyGame
             resources.ApplyResources(balanceTextBox, "balanceTextBox");
             balanceTextBox.ForeColor = SystemColors.WindowText;
             balanceTextBox.Name = "balanceTextBox";
-            balanceTextBox.TextChanged += balanceTextBox_TextChanged;
             // 
             // buyButton
             // 
@@ -1008,7 +1008,7 @@ namespace MonopolyGame
         private Label propertyNameLabel;
         private PictureBox housePictureBox;
         private Panel propertiesPanel;
-        private Button buyHouse;
-        private Button sellHouse;
+        private Button buyHouseButton;
+        private Button sellHouseButton;
     }
 }

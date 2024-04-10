@@ -58,6 +58,7 @@ namespace MonopolyGame
         {
             AddPlayer();
 
+            // For testing, I updated this to at least one player, but we can update to 2 after coding 
             if (players.Count > 0)
             {
                 Gameboard gameBoard = new Gameboard(players);
@@ -66,7 +67,7 @@ namespace MonopolyGame
             }
             else
             {
-                MessageBox.Show("Please add at least one player to start the game.", "No Players Added", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please add at least 2 players to start playing.", "Not Enough Players", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
