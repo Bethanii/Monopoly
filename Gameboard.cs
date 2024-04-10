@@ -24,6 +24,9 @@ namespace MonopolyGame
             setupPlayersOnBoard();
             initializeProperties();
             clearPropertyPanel();
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void clearPropertyPanel()
@@ -226,9 +229,25 @@ namespace MonopolyGame
             }
         }
 
+        /*     private void updateCurrentPlayerProperties()
+             {
+                 propertiesGroupBox.Controls.Clear();
+                 Player currentPlayer = players[currentPlayerIndex];
+                 int newY = 35;
+
+                 foreach (Property property in currentPlayer.getProperties())
+                 {
+                     Panel newPropertyPanel = duplicatePropertyPanel(property);
+                     newPropertyPanel.Location = new Point(propertyPanel.Location.X, newY);
+                     propertiesGroupBox.Controls.Add(newPropertyPanel);
+                     newPropertyPanel.BringToFront();
+                     newY += newPropertyPanel.Height + 10;
+                 }
+             } */
+
         private void updateCurrentPlayerProperties()
         {
-            propertiesGroupBox.Controls.Clear();
+            propertiesPanel.Controls.Clear();
             Player currentPlayer = players[currentPlayerIndex];
             int newY = 35;
 
@@ -236,7 +255,7 @@ namespace MonopolyGame
             {
                 Panel newPropertyPanel = duplicatePropertyPanel(property);
                 newPropertyPanel.Location = new Point(propertyPanel.Location.X, newY);
-                propertiesGroupBox.Controls.Add(newPropertyPanel);
+                propertiesPanel.Controls.Add(newPropertyPanel);
                 newPropertyPanel.BringToFront();
                 newY += newPropertyPanel.Height + 10;
             }
@@ -267,6 +286,7 @@ namespace MonopolyGame
                         boardPositionToPropertyMap[currentBoardPosition] = currentProperty;
                         currentPlayer.addProperties(currentProperty);
                         updateCurrentPlayerProperties();
+                        AdjustGroupBoxSize();
                     }
                     else
                     {
@@ -274,6 +294,11 @@ namespace MonopolyGame
                     }
                 }
             }
+        }
+
+        private void AdjustGroupBoxSize()
+        {
+            propertiesPanel.AutoScroll = true;
         }
 
         private Panel duplicatePropertyPanel(Property property)
@@ -288,7 +313,7 @@ namespace MonopolyGame
             propertyNameLabel.MaximumSize = new Size(duplicatedPanel.Width - 10, 0);
             propertyNameLabel.Location = new Point(5, 5);
             propertyNameLabel.Font = new Font(propertyNameLabel.Font.FontFamily, propertyNameLabel.Font.Size + 2, propertyNameLabel.Font.Style);
-            propertyNameLabel.Font = new Font(propertyNameLabel.Font, FontStyle.Bold); 
+            propertyNameLabel.Font = new Font(propertyNameLabel.Font, FontStyle.Bold);
             duplicatedPanel.BackColor = GetColorFromColorGroup(property.getColorGroup());
 
             duplicatedPanel.Paint += (sender, e) =>
@@ -332,7 +357,6 @@ namespace MonopolyGame
 
             Property balticAvenue = new Property("Baltic Avenue", "Brown", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3);
             boardPositionToPropertyMap.Add(balticAvenue.getBoardPosition(), balticAvenue);
-
 
 
             //------------- Light Blue------------------
@@ -407,6 +431,21 @@ namespace MonopolyGame
 
             Property boardwalk = new Property("Boardwalk", "Dark Blue", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39);
             boardPositionToPropertyMap.Add(boardwalk.getBoardPosition(), boardwalk);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sellHouse_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void balanceTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

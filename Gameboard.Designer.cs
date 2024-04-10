@@ -25,6 +25,8 @@ namespace MonopolyGame
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gameboard));
             propertiesGroupBox = new GroupBox();
+            sellHouse = new Button();
+            buyHouse = new Button();
             propertyPanel = new Panel();
             housePictureBox = new PictureBox();
             propertyNameLabel = new Label();
@@ -105,6 +107,7 @@ namespace MonopolyGame
             pictureBox24 = new PictureBox();
             pictureBox25 = new PictureBox();
             playerLabel = new Label();
+            propertiesPanel = new Panel();
             propertiesGroupBox.SuspendLayout();
             propertyPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)housePictureBox).BeginInit();
@@ -177,21 +180,34 @@ namespace MonopolyGame
             tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox24).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox25).BeginInit();
+            propertiesPanel.SuspendLayout();
             SuspendLayout();
             // 
             // propertiesGroupBox
             // 
-            propertiesGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            propertiesGroupBox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(propertiesGroupBox, "propertiesGroupBox");
             propertiesGroupBox.BackColor = Color.AliceBlue;
-            propertiesGroupBox.Controls.Add(propertyPanel);
-            propertiesGroupBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            propertiesGroupBox.Location = new Point(939, 185);
+            propertiesGroupBox.Controls.Add(sellHouse);
+            propertiesGroupBox.Controls.Add(buyHouse);
             propertiesGroupBox.Name = "propertiesGroupBox";
-            propertiesGroupBox.Size = new Size(294, 422);
-            propertiesGroupBox.TabIndex = 8;
             propertiesGroupBox.TabStop = false;
-            propertiesGroupBox.Text = "Properties";
+            // 
+            // sellHouse
+            // 
+            resources.ApplyResources(sellHouse, "sellHouse");
+            sellHouse.BackColor = Color.Tomato;
+            sellHouse.ForeColor = SystemColors.ControlText;
+            sellHouse.Name = "sellHouse";
+            sellHouse.UseVisualStyleBackColor = false;
+            sellHouse.Click += sellHouse_Click;
+            // 
+            // buyHouse
+            // 
+            resources.ApplyResources(buyHouse, "buyHouse");
+            buyHouse.BackColor = Color.Tomato;
+            buyHouse.Name = "buyHouse";
+            buyHouse.UseVisualStyleBackColor = false;
+            buyHouse.Click += button1_Click;
             // 
             // propertyPanel
             // 
@@ -199,202 +215,121 @@ namespace MonopolyGame
             propertyPanel.BorderStyle = BorderStyle.FixedSingle;
             propertyPanel.Controls.Add(housePictureBox);
             propertyPanel.Controls.Add(propertyNameLabel);
-            propertyPanel.Location = new Point(6, 43);
+            resources.ApplyResources(propertyPanel, "propertyPanel");
             propertyPanel.Name = "propertyPanel";
-            propertyPanel.Size = new Size(282, 67);
-            propertyPanel.TabIndex = 0;
             // 
             // housePictureBox
             // 
             housePictureBox.BackgroundImage = Properties.Resources.house;
-            housePictureBox.BackgroundImageLayout = ImageLayout.Stretch;
+            resources.ApplyResources(housePictureBox, "housePictureBox");
             housePictureBox.Image = Properties.Resources.house;
-            housePictureBox.Location = new Point(238, 17);
             housePictureBox.Name = "housePictureBox";
-            housePictureBox.Size = new Size(39, 36);
-            housePictureBox.TabIndex = 1;
             housePictureBox.TabStop = false;
             // 
             // propertyNameLabel
             // 
-            propertyNameLabel.AutoSize = true;
-            propertyNameLabel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            propertyNameLabel.Location = new Point(3, 18);
+            resources.ApplyResources(propertyNameLabel, "propertyNameLabel");
             propertyNameLabel.Name = "propertyNameLabel";
-            propertyNameLabel.Size = new Size(112, 28);
-            propertyNameLabel.TabIndex = 0;
-            propertyNameLabel.Text = "Boardwalk";
             // 
             // balanceLabel
             // 
-            balanceLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            resources.ApplyResources(balanceLabel, "balanceLabel");
             balanceLabel.BackColor = Color.Transparent;
-            balanceLabel.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             balanceLabel.ForeColor = SystemColors.ButtonHighlight;
-            balanceLabel.Location = new Point(939, 78);
             balanceLabel.Name = "balanceLabel";
-            balanceLabel.Size = new Size(91, 28);
-            balanceLabel.TabIndex = 10;
-            balanceLabel.Text = "Balance:";
             // 
             // balanceTextBox
             // 
-            balanceTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            balanceTextBox.Enabled = false;
+            resources.ApplyResources(balanceTextBox, "balanceTextBox");
             balanceTextBox.ForeColor = SystemColors.WindowText;
-            balanceTextBox.Location = new Point(939, 109);
-            balanceTextBox.Multiline = true;
             balanceTextBox.Name = "balanceTextBox";
-            balanceTextBox.Size = new Size(294, 45);
-            balanceTextBox.TabIndex = 11;
-            balanceTextBox.Text = "\r\n";
-            balanceTextBox.TextAlign = HorizontalAlignment.Center;
+            balanceTextBox.TextChanged += balanceTextBox_TextChanged;
             // 
             // buyButton
             // 
-            buyButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(buyButton, "buyButton");
             buyButton.BackColor = Color.MediumSpringGreen;
-            buyButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buyButton.Location = new Point(12, 41);
             buyButton.Name = "buyButton";
-            buyButton.Size = new Size(224, 52);
-            buyButton.TabIndex = 12;
-            buyButton.Text = "Buy";
             buyButton.UseVisualStyleBackColor = false;
             buyButton.Click += buyButton_Click;
             // 
             // sellButton
             // 
-            sellButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(sellButton, "sellButton");
             sellButton.BackColor = Color.Yellow;
-            sellButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            sellButton.Location = new Point(12, 99);
             sellButton.Name = "sellButton";
-            sellButton.Size = new Size(224, 52);
-            sellButton.TabIndex = 15;
-            sellButton.Text = "Sell";
             sellButton.UseVisualStyleBackColor = false;
             // 
             // nextTurnButton
             // 
-            nextTurnButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(nextTurnButton, "nextTurnButton");
             nextTurnButton.BackColor = Color.LightSkyBlue;
-            nextTurnButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             nextTurnButton.ForeColor = SystemColors.ControlText;
-            nextTurnButton.Location = new Point(12, 157);
             nextTurnButton.Name = "nextTurnButton";
-            nextTurnButton.Size = new Size(224, 52);
-            nextTurnButton.TabIndex = 16;
-            nextTurnButton.Text = "Next Turn";
             nextTurnButton.UseVisualStyleBackColor = false;
             nextTurnButton.Click += nextTurnButton_Click;
             // 
             // getOutOfJailFreeCards
             // 
-            getOutOfJailFreeCards.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            getOutOfJailFreeCards.BackgroundImage = (Image)resources.GetObject("getOutOfJailFreeCards.BackgroundImage");
-            getOutOfJailFreeCards.BackgroundImageLayout = ImageLayout.Stretch;
-            getOutOfJailFreeCards.Location = new Point(18, 488);
-            getOutOfJailFreeCards.MaximumSize = new Size(218, 226);
+            resources.ApplyResources(getOutOfJailFreeCards, "getOutOfJailFreeCards");
             getOutOfJailFreeCards.Name = "getOutOfJailFreeCards";
-            getOutOfJailFreeCards.Size = new Size(218, 116);
-            getOutOfJailFreeCards.TabIndex = 17;
             getOutOfJailFreeCards.TabStop = false;
             // 
             // diceRoll1
             // 
             diceRoll1.BackColor = Color.Transparent;
-            diceRoll1.BackgroundImage = (Image)resources.GetObject("diceRoll1.BackgroundImage");
-            diceRoll1.BackgroundImageLayout = ImageLayout.Stretch;
-            diceRoll1.Location = new Point(26, 24);
+            resources.ApplyResources(diceRoll1, "diceRoll1");
             diceRoll1.Name = "diceRoll1";
-            diceRoll1.Size = new Size(83, 79);
-            diceRoll1.TabIndex = 18;
             diceRoll1.TabStop = false;
             // 
             // diceRoll2
             // 
             diceRoll2.BackColor = Color.Transparent;
-            diceRoll2.BackgroundImage = (Image)resources.GetObject("diceRoll2.BackgroundImage");
-            diceRoll2.BackgroundImageLayout = ImageLayout.Stretch;
-            diceRoll2.Location = new Point(115, 24);
+            resources.ApplyResources(diceRoll2, "diceRoll2");
             diceRoll2.Name = "diceRoll2";
-            diceRoll2.Size = new Size(83, 79);
-            diceRoll2.TabIndex = 19;
             diceRoll2.TabStop = false;
             // 
             // diceGroupBox
             // 
-            diceGroupBox.Anchor = AnchorStyles.Left;
+            resources.ApplyResources(diceGroupBox, "diceGroupBox");
             diceGroupBox.BackColor = Color.Transparent;
             diceGroupBox.Controls.Add(diceRoll2);
             diceGroupBox.Controls.Add(diceRoll1);
-            diceGroupBox.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             diceGroupBox.ForeColor = SystemColors.ButtonFace;
-            diceGroupBox.Location = new Point(12, 243);
             diceGroupBox.Name = "diceGroupBox";
-            diceGroupBox.Size = new Size(224, 119);
-            diceGroupBox.TabIndex = 20;
             diceGroupBox.TabStop = false;
             // 
             // rollDiceButton
             // 
-            rollDiceButton.Anchor = AnchorStyles.Left;
+            resources.ApplyResources(rollDiceButton, "rollDiceButton");
             rollDiceButton.BackColor = Color.Tomato;
-            rollDiceButton.BackgroundImageLayout = ImageLayout.Stretch;
-            rollDiceButton.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
             rollDiceButton.ForeColor = SystemColors.ControlText;
-            rollDiceButton.Location = new Point(56, 352);
             rollDiceButton.Name = "rollDiceButton";
-            rollDiceButton.Size = new Size(131, 43);
-            rollDiceButton.TabIndex = 21;
-            rollDiceButton.Text = "Roll Dice";
             rollDiceButton.UseVisualStyleBackColor = false;
             rollDiceButton.Click += rollDiceButton_Click;
             // 
             // gameBoardImage
             // 
-            gameBoardImage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            gameBoardImage.BackgroundImage = (Image)resources.GetObject("gameBoardImage.BackgroundImage");
-            gameBoardImage.BackgroundImageLayout = ImageLayout.Stretch;
+            resources.ApplyResources(gameBoardImage, "gameBoardImage");
+            gameBoardImage.BorderStyle = BorderStyle.FixedSingle;
             gameBoardImage.Cursor = Cursors.No;
-            gameBoardImage.Location = new Point(0, 0);
-            gameBoardImage.MinimumSize = new Size(565, 565);
             gameBoardImage.Name = "gameBoardImage";
-            gameBoardImage.Size = new Size(592, 575);
-            gameBoardImage.TabIndex = 2;
             gameBoardImage.TabStop = false;
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(topPanel);
             panel1.Controls.Add(bottomPanel);
             panel1.Controls.Add(rightPanel);
             panel1.Controls.Add(leftPanel);
             panel1.Controls.Add(gameBoardImage);
-            panel1.Location = new Point(292, 32);
             panel1.Name = "panel1";
-            panel1.Size = new Size(594, 575);
-            panel1.TabIndex = 23;
             // 
             // topPanel
             // 
-            topPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            resources.ApplyResources(topPanel, "topPanel");
             topPanel.BackColor = Color.Transparent;
-            topPanel.ColumnCount = 11;
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.901638F));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.098362F));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 56F));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 44F));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 43F));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 47F));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 39F));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 51F));
             topPanel.Controls.Add(goToJailSpace, 10, 0);
             topPanel.Controls.Add(marvinGardens, 9, 0);
             topPanel.Controls.Add(waterWorks, 8, 0);
@@ -406,137 +341,88 @@ namespace MonopolyGame
             topPanel.Controls.Add(chance1, 2, 0);
             topPanel.Controls.Add(kentuckyAve, 1, 0);
             topPanel.Controls.Add(freeParkingSpace, 0, 0);
-            topPanel.Location = new Point(42, 3);
-            topPanel.MinimumSize = new Size(320, 100);
             topPanel.Name = "topPanel";
-            topPanel.RowCount = 1;
-            topPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            topPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            topPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            topPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            topPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            topPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            topPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            topPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            topPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            topPanel.Size = new Size(519, 100);
-            topPanel.TabIndex = 43;
             // 
             // goToJailSpace
             // 
-            goToJailSpace.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            resources.ApplyResources(goToJailSpace, "goToJailSpace");
             goToJailSpace.BackColor = Color.Transparent;
-            goToJailSpace.Location = new Point(470, 3);
             goToJailSpace.Name = "goToJailSpace";
-            goToJailSpace.Size = new Size(46, 94);
-            goToJailSpace.TabIndex = 41;
             goToJailSpace.TabStop = false;
             // 
             // marvinGardens
             // 
             marvinGardens.BackColor = Color.Transparent;
-            marvinGardens.Location = new Point(431, 3);
+            resources.ApplyResources(marvinGardens, "marvinGardens");
             marvinGardens.Name = "marvinGardens";
-            marvinGardens.Size = new Size(33, 94);
-            marvinGardens.TabIndex = 38;
             marvinGardens.TabStop = false;
             // 
             // waterWorks
             // 
             waterWorks.BackColor = Color.Transparent;
-            waterWorks.Location = new Point(386, 3);
+            resources.ApplyResources(waterWorks, "waterWorks");
             waterWorks.Name = "waterWorks";
-            waterWorks.Size = new Size(39, 94);
-            waterWorks.TabIndex = 38;
             waterWorks.TabStop = false;
             // 
             // ventorAve
             // 
             ventorAve.BackColor = Color.Transparent;
-            ventorAve.Location = new Point(352, 3);
+            resources.ApplyResources(ventorAve, "ventorAve");
             ventorAve.Name = "ventorAve";
-            ventorAve.Size = new Size(28, 94);
-            ventorAve.TabIndex = 38;
             ventorAve.TabStop = false;
             // 
             // atlanticAve
             // 
             atlanticAve.BackColor = Color.Transparent;
-            atlanticAve.Location = new Point(305, 3);
+            resources.ApplyResources(atlanticAve, "atlanticAve");
             atlanticAve.Name = "atlanticAve";
-            atlanticAve.Size = new Size(41, 94);
-            atlanticAve.TabIndex = 38;
             atlanticAve.TabStop = false;
             // 
             // boRailroad
             // 
             boRailroad.BackColor = Color.Transparent;
-            boRailroad.Location = new Point(262, 3);
+            resources.ApplyResources(boRailroad, "boRailroad");
             boRailroad.Name = "boRailroad";
-            boRailroad.Size = new Size(37, 94);
-            boRailroad.TabIndex = 38;
             boRailroad.TabStop = false;
             // 
             // illinoisAve
             // 
             illinoisAve.BackColor = Color.Transparent;
-            illinoisAve.Location = new Point(218, 3);
+            resources.ApplyResources(illinoisAve, "illinoisAve");
             illinoisAve.Name = "illinoisAve";
-            illinoisAve.Size = new Size(38, 94);
-            illinoisAve.TabIndex = 42;
             illinoisAve.TabStop = false;
             // 
             // indianaAve
             // 
             indianaAve.BackColor = Color.Transparent;
-            indianaAve.Location = new Point(168, 3);
+            resources.ApplyResources(indianaAve, "indianaAve");
             indianaAve.Name = "indianaAve";
-            indianaAve.Size = new Size(44, 94);
-            indianaAve.TabIndex = 38;
             indianaAve.TabStop = false;
             // 
             // chance1
             // 
             chance1.BackColor = Color.Transparent;
-            chance1.Location = new Point(112, 3);
+            resources.ApplyResources(chance1, "chance1");
             chance1.Name = "chance1";
-            chance1.Size = new Size(50, 94);
-            chance1.TabIndex = 39;
             chance1.TabStop = false;
             // 
             // kentuckyAve
             // 
             kentuckyAve.BackColor = Color.Transparent;
-            kentuckyAve.Location = new Point(53, 3);
+            resources.ApplyResources(kentuckyAve, "kentuckyAve");
             kentuckyAve.Name = "kentuckyAve";
-            kentuckyAve.Size = new Size(53, 94);
-            kentuckyAve.TabIndex = 38;
             kentuckyAve.TabStop = false;
             // 
             // freeParkingSpace
             // 
-            freeParkingSpace.Location = new Point(3, 3);
+            resources.ApplyResources(freeParkingSpace, "freeParkingSpace");
             freeParkingSpace.Name = "freeParkingSpace";
-            freeParkingSpace.Size = new Size(44, 94);
-            freeParkingSpace.TabIndex = 38;
             freeParkingSpace.TabStop = false;
             // 
             // bottomPanel
             // 
-            bottomPanel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            resources.ApplyResources(bottomPanel, "bottomPanel");
             bottomPanel.BackColor = Color.Transparent;
-            bottomPanel.ColumnCount = 11;
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 44.242424F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55.757576F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 53F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 53F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 41F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 42F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 47F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 41F));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 51F));
             bottomPanel.Controls.Add(goSpace, 10, 0);
             bottomPanel.Controls.Add(mediterraneanAve, 9, 0);
             bottomPanel.Controls.Add(communityChest2, 8, 0);
@@ -548,126 +434,88 @@ namespace MonopolyGame
             bottomPanel.Controls.Add(vermontAve, 2, 0);
             bottomPanel.Controls.Add(connecticutAve, 1, 0);
             bottomPanel.Controls.Add(inJailSpace, 0, 0);
-            bottomPanel.Location = new Point(39, 460);
-            bottomPanel.MinimumSize = new Size(320, 100);
             bottomPanel.Name = "bottomPanel";
-            bottomPanel.RowCount = 1;
-            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            bottomPanel.Size = new Size(525, 115);
-            bottomPanel.TabIndex = 37;
             // 
             // goSpace
             // 
-            goSpace.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            resources.ApplyResources(goSpace, "goSpace");
             goSpace.BackColor = Color.Transparent;
-            goSpace.Location = new Point(476, 3);
             goSpace.Name = "goSpace";
-            goSpace.Size = new Size(46, 109);
-            goSpace.TabIndex = 41;
             goSpace.TabStop = false;
             // 
             // mediterraneanAve
             // 
             mediterraneanAve.BackColor = Color.Transparent;
-            mediterraneanAve.Location = new Point(435, 3);
+            resources.ApplyResources(mediterraneanAve, "mediterraneanAve");
             mediterraneanAve.Name = "mediterraneanAve";
-            mediterraneanAve.Size = new Size(35, 109);
-            mediterraneanAve.TabIndex = 38;
             mediterraneanAve.TabStop = false;
             // 
             // communityChest2
             // 
             communityChest2.BackColor = Color.Transparent;
-            communityChest2.Location = new Point(388, 3);
+            resources.ApplyResources(communityChest2, "communityChest2");
             communityChest2.Name = "communityChest2";
-            communityChest2.Size = new Size(41, 109);
-            communityChest2.TabIndex = 38;
             communityChest2.TabStop = false;
             // 
             // balticAve
             // 
             balticAve.BackColor = Color.Transparent;
-            balticAve.Location = new Point(346, 3);
+            resources.ApplyResources(balticAve, "balticAve");
             balticAve.Name = "balticAve";
-            balticAve.Size = new Size(36, 109);
-            balticAve.TabIndex = 38;
             balticAve.TabStop = false;
             // 
             // incomeTax
             // 
             incomeTax.BackColor = Color.Transparent;
-            incomeTax.Location = new Point(311, 3);
+            resources.ApplyResources(incomeTax, "incomeTax");
             incomeTax.Name = "incomeTax";
-            incomeTax.Size = new Size(29, 109);
-            incomeTax.TabIndex = 38;
             incomeTax.TabStop = false;
             // 
             // readingRailroad
             // 
             readingRailroad.BackColor = Color.Transparent;
-            readingRailroad.Location = new Point(270, 3);
+            resources.ApplyResources(readingRailroad, "readingRailroad");
             readingRailroad.Name = "readingRailroad";
-            readingRailroad.Size = new Size(35, 109);
-            readingRailroad.TabIndex = 38;
             readingRailroad.TabStop = false;
             // 
             // orientalAve
             // 
             orientalAve.BackColor = Color.Transparent;
-            orientalAve.Location = new Point(220, 3);
+            resources.ApplyResources(orientalAve, "orientalAve");
             orientalAve.Name = "orientalAve";
-            orientalAve.Size = new Size(44, 109);
-            orientalAve.TabIndex = 42;
             orientalAve.TabStop = false;
             // 
             // chance3
             // 
             chance3.BackColor = Color.Transparent;
-            chance3.Location = new Point(167, 3);
+            resources.ApplyResources(chance3, "chance3");
             chance3.Name = "chance3";
-            chance3.Size = new Size(47, 109);
-            chance3.TabIndex = 38;
             chance3.TabStop = false;
             // 
             // vermontAve
             // 
             vermontAve.BackColor = Color.Transparent;
-            vermontAve.Location = new Point(114, 3);
+            resources.ApplyResources(vermontAve, "vermontAve");
             vermontAve.Name = "vermontAve";
-            vermontAve.Size = new Size(47, 109);
-            vermontAve.TabIndex = 39;
             vermontAve.TabStop = false;
             // 
             // connecticutAve
             // 
             connecticutAve.BackColor = Color.Transparent;
-            connecticutAve.Location = new Point(52, 3);
+            resources.ApplyResources(connecticutAve, "connecticutAve");
             connecticutAve.Name = "connecticutAve";
-            connecticutAve.Size = new Size(56, 109);
-            connecticutAve.TabIndex = 38;
             connecticutAve.TabStop = false;
             // 
             // inJailSpace
             // 
-            inJailSpace.Location = new Point(3, 3);
+            resources.ApplyResources(inJailSpace, "inJailSpace");
             inJailSpace.Name = "inJailSpace";
-            inJailSpace.Size = new Size(43, 109);
-            inJailSpace.TabIndex = 38;
             inJailSpace.TabStop = false;
             // 
             // rightPanel
             // 
-            rightPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            resources.ApplyResources(rightPanel, "rightPanel");
             rightPanel.BackColor = Color.Transparent;
-            rightPanel.ColumnCount = 1;
-            rightPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             rightPanel.Controls.Add(parkPlace, 0, 6);
             rightPanel.Controls.Add(chance2, 0, 5);
             rightPanel.Controls.Add(luxuryTax, 0, 7);
@@ -677,108 +525,75 @@ namespace MonopolyGame
             rightPanel.Controls.Add(pacificAve, 0, 0);
             rightPanel.Controls.Add(northCarolinaAve, 0, 1);
             rightPanel.Controls.Add(boardwalk, 0, 8);
-            rightPanel.Location = new Point(453, 106);
             rightPanel.Name = "rightPanel";
-            rightPanel.RowCount = 8;
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 51.31579F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 48.68421F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            rightPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            rightPanel.Size = new Size(108, 351);
-            rightPanel.TabIndex = 35;
             // 
             // parkPlace
             // 
             parkPlace.BackColor = Color.Transparent;
-            parkPlace.Location = new Point(3, 266);
+            resources.ApplyResources(parkPlace, "parkPlace");
             parkPlace.Name = "parkPlace";
-            parkPlace.Size = new Size(102, 26);
-            parkPlace.TabIndex = 42;
             parkPlace.TabStop = false;
             // 
             // chance2
             // 
             chance2.BackColor = Color.Transparent;
-            chance2.Location = new Point(3, 228);
+            resources.ApplyResources(chance2, "chance2");
             chance2.Name = "chance2";
-            chance2.Size = new Size(102, 32);
-            chance2.TabIndex = 37;
             chance2.TabStop = false;
             // 
             // luxuryTax
             // 
             luxuryTax.BackColor = Color.Transparent;
-            luxuryTax.Location = new Point(3, 298);
+            resources.ApplyResources(luxuryTax, "luxuryTax");
             luxuryTax.Name = "luxuryTax";
-            luxuryTax.Size = new Size(102, 29);
-            luxuryTax.TabIndex = 36;
             luxuryTax.TabStop = false;
             // 
             // pennsylvaniaAve
             // 
             pennsylvaniaAve.BackColor = Color.Transparent;
-            pennsylvaniaAve.Location = new Point(3, 142);
+            resources.ApplyResources(pennsylvaniaAve, "pennsylvaniaAve");
             pennsylvaniaAve.Name = "pennsylvaniaAve";
-            pennsylvaniaAve.Size = new Size(102, 35);
-            pennsylvaniaAve.TabIndex = 38;
             pennsylvaniaAve.TabStop = false;
             // 
             // shortLine
             // 
             shortLine.BackColor = Color.Transparent;
-            shortLine.Location = new Point(3, 183);
+            resources.ApplyResources(shortLine, "shortLine");
             shortLine.Name = "shortLine";
-            shortLine.Size = new Size(102, 37);
-            shortLine.TabIndex = 38;
             shortLine.TabStop = false;
             // 
             // communityChest1
             // 
             communityChest1.BackColor = Color.Transparent;
-            communityChest1.Location = new Point(3, 108);
+            resources.ApplyResources(communityChest1, "communityChest1");
             communityChest1.Name = "communityChest1";
-            communityChest1.Size = new Size(102, 28);
-            communityChest1.TabIndex = 39;
             communityChest1.TabStop = false;
             // 
             // pacificAve
             // 
             pacificAve.BackColor = Color.Transparent;
-            pacificAve.Location = new Point(3, 3);
+            resources.ApplyResources(pacificAve, "pacificAve");
             pacificAve.Name = "pacificAve";
-            pacificAve.Size = new Size(102, 48);
-            pacificAve.TabIndex = 40;
             pacificAve.TabStop = false;
             // 
             // northCarolinaAve
             // 
             northCarolinaAve.BackColor = Color.Transparent;
-            northCarolinaAve.Location = new Point(3, 57);
+            resources.ApplyResources(northCarolinaAve, "northCarolinaAve");
             northCarolinaAve.Name = "northCarolinaAve";
-            northCarolinaAve.Size = new Size(102, 45);
-            northCarolinaAve.TabIndex = 39;
             northCarolinaAve.TabStop = false;
             // 
             // boardwalk
             // 
             boardwalk.BackColor = Color.Transparent;
-            boardwalk.Location = new Point(3, 333);
+            resources.ApplyResources(boardwalk, "boardwalk");
             boardwalk.Name = "boardwalk";
-            boardwalk.Size = new Size(102, 15);
-            boardwalk.TabIndex = 44;
             boardwalk.TabStop = false;
             // 
             // leftPanel
             // 
-            leftPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            resources.ApplyResources(leftPanel, "leftPanel");
             leftPanel.BackColor = Color.Transparent;
-            leftPanel.ColumnCount = 1;
-            leftPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             leftPanel.Controls.Add(stCharlesPlace, 0, 8);
             leftPanel.Controls.Add(virginiaAve, 0, 5);
             leftPanel.Controls.Add(newYorkAve, 0, 0);
@@ -788,146 +603,93 @@ namespace MonopolyGame
             leftPanel.Controls.Add(tennesseeAve, 0, 1);
             leftPanel.Controls.Add(pennsylvaniaRailroad, 0, 4);
             leftPanel.Controls.Add(electricCompany, 0, 7);
-            leftPanel.Location = new Point(18, 114);
             leftPanel.Name = "leftPanel";
-            leftPanel.RowCount = 9;
-            leftPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
-            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
-            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
-            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
-            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
-            leftPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
-            leftPanel.Size = new Size(107, 340);
-            leftPanel.TabIndex = 34;
             // 
             // stCharlesPlace
             // 
             stCharlesPlace.BackColor = Color.Transparent;
-            stCharlesPlace.Location = new Point(3, 307);
+            resources.ApplyResources(stCharlesPlace, "stCharlesPlace");
             stCharlesPlace.Name = "stCharlesPlace";
-            stCharlesPlace.Size = new Size(101, 30);
-            stCharlesPlace.TabIndex = 42;
             stCharlesPlace.TabStop = false;
             // 
             // virginiaAve
             // 
             virginiaAve.BackColor = Color.Transparent;
-            virginiaAve.Location = new Point(3, 182);
+            resources.ApplyResources(virginiaAve, "virginiaAve");
             virginiaAve.Name = "virginiaAve";
-            virginiaAve.Size = new Size(101, 36);
-            virginiaAve.TabIndex = 37;
             virginiaAve.TabStop = false;
             // 
             // newYorkAve
             // 
             newYorkAve.BackColor = Color.Transparent;
-            newYorkAve.Location = new Point(3, 3);
+            resources.ApplyResources(newYorkAve, "newYorkAve");
             newYorkAve.Name = "newYorkAve";
-            newYorkAve.Size = new Size(101, 26);
-            newYorkAve.TabIndex = 0;
             newYorkAve.TabStop = false;
             // 
             // stJamesPlace
             // 
             stJamesPlace.BackColor = Color.Transparent;
-            stJamesPlace.Location = new Point(3, 104);
+            resources.ApplyResources(stJamesPlace, "stJamesPlace");
             stJamesPlace.Name = "stJamesPlace";
-            stJamesPlace.Size = new Size(101, 28);
-            stJamesPlace.TabIndex = 36;
             stJamesPlace.TabStop = false;
             // 
             // communityChest3
             // 
             communityChest3.BackColor = Color.Transparent;
-            communityChest3.Location = new Point(3, 68);
+            resources.ApplyResources(communityChest3, "communityChest3");
             communityChest3.Name = "communityChest3";
-            communityChest3.Size = new Size(101, 30);
-            communityChest3.TabIndex = 2;
             communityChest3.TabStop = false;
             // 
             // statesAve
             // 
             statesAve.BackColor = Color.Transparent;
-            statesAve.Location = new Point(3, 224);
+            resources.ApplyResources(statesAve, "statesAve");
             statesAve.Name = "statesAve";
-            statesAve.Size = new Size(101, 35);
-            statesAve.TabIndex = 38;
             statesAve.TabStop = false;
             // 
             // tennesseeAve
             // 
             tennesseeAve.BackColor = Color.Transparent;
-            tennesseeAve.Location = new Point(3, 35);
+            resources.ApplyResources(tennesseeAve, "tennesseeAve");
             tennesseeAve.Name = "tennesseeAve";
-            tennesseeAve.Size = new Size(101, 27);
-            tennesseeAve.TabIndex = 1;
             tennesseeAve.TabStop = false;
             // 
             // pennsylvaniaRailroad
             // 
             pennsylvaniaRailroad.BackColor = Color.Transparent;
-            pennsylvaniaRailroad.Location = new Point(3, 138);
+            resources.ApplyResources(pennsylvaniaRailroad, "pennsylvaniaRailroad");
             pennsylvaniaRailroad.Name = "pennsylvaniaRailroad";
-            pennsylvaniaRailroad.Size = new Size(101, 38);
-            pennsylvaniaRailroad.TabIndex = 35;
             pennsylvaniaRailroad.TabStop = false;
             // 
             // electricCompany
             // 
             electricCompany.BackColor = Color.Transparent;
-            electricCompany.Location = new Point(3, 265);
+            resources.ApplyResources(electricCompany, "electricCompany");
             electricCompany.Name = "electricCompany";
-            electricCompany.Size = new Size(101, 36);
-            electricCompany.TabIndex = 42;
             electricCompany.TabStop = false;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(0, 0);
+            resources.ApplyResources(pictureBox1, "pictureBox1");
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(100, 50);
-            pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.Location = new Point(0, 0);
+            resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.Size = new Size(200, 100);
-            tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel3
             // 
-            tableLayoutPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            resources.ApplyResources(tableLayoutPanel3, "tableLayoutPanel3");
             tableLayoutPanel3.BackColor = Color.Transparent;
-            tableLayoutPanel3.ColumnCount = 1;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.Controls.Add(tableLayoutPanel4, 0, 9);
-            tableLayoutPanel3.Location = new Point(0, 0);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 10;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new Size(200, 100);
-            tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
             // 
-            tableLayoutPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            resources.ApplyResources(tableLayoutPanel4, "tableLayoutPanel4");
             tableLayoutPanel4.BackColor = Color.Transparent;
-            tableLayoutPanel4.ColumnCount = 1;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.Controls.Add(pictureBox11, 0, 6);
             tableLayoutPanel4.Controls.Add(pictureBox12, 0, 7);
             tableLayoutPanel4.Controls.Add(pictureBox13, 0, 5);
@@ -937,219 +699,141 @@ namespace MonopolyGame
             tableLayoutPanel4.Controls.Add(pictureBox18, 0, 0);
             tableLayoutPanel4.Controls.Add(pictureBox19, 0, 1);
             tableLayoutPanel4.Controls.Add(pictureBox20, 0, 8);
-            tableLayoutPanel4.Location = new Point(95, 183);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 9;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 51.31579F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 48.68421F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 42F));
-            tableLayoutPanel4.Size = new Size(102, 14);
-            tableLayoutPanel4.TabIndex = 43;
             // 
             // pictureBox11
             // 
             pictureBox11.BackColor = Color.Transparent;
-            pictureBox11.Location = new Point(3, -91);
+            resources.ApplyResources(pictureBox11, "pictureBox11");
             pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(96, 26);
-            pictureBox11.TabIndex = 42;
             pictureBox11.TabStop = false;
             // 
             // pictureBox12
             // 
             pictureBox12.BackColor = Color.Transparent;
-            pictureBox12.Location = new Point(3, -59);
+            resources.ApplyResources(pictureBox12, "pictureBox12");
             pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(96, 29);
-            pictureBox12.TabIndex = 36;
             pictureBox12.TabStop = false;
             // 
             // pictureBox13
             // 
             pictureBox13.BackColor = Color.Transparent;
-            pictureBox13.Location = new Point(3, -129);
+            resources.ApplyResources(pictureBox13, "pictureBox13");
             pictureBox13.Name = "pictureBox13";
-            pictureBox13.Size = new Size(96, 32);
-            pictureBox13.TabIndex = 37;
             pictureBox13.TabStop = false;
             // 
             // pictureBox14
             // 
             pictureBox14.BackColor = Color.Transparent;
-            pictureBox14.Location = new Point(3, -215);
+            resources.ApplyResources(pictureBox14, "pictureBox14");
             pictureBox14.Name = "pictureBox14";
-            pictureBox14.Size = new Size(96, 35);
-            pictureBox14.TabIndex = 38;
             pictureBox14.TabStop = false;
             // 
             // pictureBox15
             // 
             pictureBox15.BackColor = Color.Transparent;
-            pictureBox15.Location = new Point(3, -174);
+            resources.ApplyResources(pictureBox15, "pictureBox15");
             pictureBox15.Name = "pictureBox15";
-            pictureBox15.Size = new Size(96, 37);
-            pictureBox15.TabIndex = 38;
             pictureBox15.TabStop = false;
             // 
             // pictureBox17
             // 
             pictureBox17.BackColor = Color.Transparent;
-            pictureBox17.Location = new Point(3, -249);
+            resources.ApplyResources(pictureBox17, "pictureBox17");
             pictureBox17.Name = "pictureBox17";
-            pictureBox17.Size = new Size(96, 28);
-            pictureBox17.TabIndex = 39;
             pictureBox17.TabStop = false;
             // 
             // pictureBox18
             // 
             pictureBox18.BackColor = Color.Transparent;
-            pictureBox18.Location = new Point(3, 3);
+            resources.ApplyResources(pictureBox18, "pictureBox18");
             pictureBox18.Name = "pictureBox18";
-            pictureBox18.Size = new Size(96, 1);
-            pictureBox18.TabIndex = 40;
             pictureBox18.TabStop = false;
             // 
             // pictureBox19
             // 
             pictureBox19.BackColor = Color.Transparent;
-            pictureBox19.Location = new Point(3, -126);
+            resources.ApplyResources(pictureBox19, "pictureBox19");
             pictureBox19.Name = "pictureBox19";
-            pictureBox19.Size = new Size(96, 1);
-            pictureBox19.TabIndex = 39;
             pictureBox19.TabStop = false;
             // 
             // pictureBox20
             // 
             pictureBox20.BackColor = Color.Transparent;
-            pictureBox20.Location = new Point(3, -24);
+            resources.ApplyResources(pictureBox20, "pictureBox20");
             pictureBox20.Name = "pictureBox20";
-            pictureBox20.Size = new Size(96, 36);
-            pictureBox20.TabIndex = 38;
             pictureBox20.TabStop = false;
             // 
             // pictureBox21
             // 
             pictureBox21.BackColor = Color.Transparent;
-            pictureBox21.Location = new Point(3, 3);
+            resources.ApplyResources(pictureBox21, "pictureBox21");
             pictureBox21.Name = "pictureBox21";
-            pictureBox21.Size = new Size(102, 26);
-            pictureBox21.TabIndex = 42;
             pictureBox21.TabStop = false;
             // 
             // tableLayoutPanel5
             // 
-            tableLayoutPanel5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            resources.ApplyResources(tableLayoutPanel5, "tableLayoutPanel5");
             tableLayoutPanel5.BackColor = Color.Transparent;
-            tableLayoutPanel5.ColumnCount = 11;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.901638F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.098362F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 31F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 31F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 57F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel5.Controls.Add(pictureBox22, 10, 0);
-            tableLayoutPanel5.Location = new Point(0, 0);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 1;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel5.Size = new Size(200, 100);
-            tableLayoutPanel5.TabIndex = 0;
             // 
             // pictureBox22
             // 
-            pictureBox22.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            resources.ApplyResources(pictureBox22, "pictureBox22");
             pictureBox22.BackColor = Color.Transparent;
-            pictureBox22.Location = new Point(184, 3);
             pictureBox22.Name = "pictureBox22";
-            pictureBox22.Size = new Size(14, 94);
-            pictureBox22.TabIndex = 41;
             pictureBox22.TabStop = false;
             // 
             // pictureBox23
             // 
             pictureBox23.BackColor = Color.Transparent;
-            pictureBox23.Location = new Point(164, 3);
+            resources.ApplyResources(pictureBox23, "pictureBox23");
             pictureBox23.Name = "pictureBox23";
-            pictureBox23.Size = new Size(14, 94);
-            pictureBox23.TabIndex = 38;
             pictureBox23.TabStop = false;
             // 
             // tableLayoutPanel6
             // 
-            tableLayoutPanel6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            resources.ApplyResources(tableLayoutPanel6, "tableLayoutPanel6");
             tableLayoutPanel6.BackColor = Color.Transparent;
-            tableLayoutPanel6.ColumnCount = 11;
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.901638F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.098362F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 31F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 31F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 57F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel6.Controls.Add(pictureBox24, 10, 0);
-            tableLayoutPanel6.Location = new Point(0, 0);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
-            tableLayoutPanel6.RowCount = 1;
-            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel6.Size = new Size(200, 100);
-            tableLayoutPanel6.TabIndex = 0;
             // 
             // pictureBox24
             // 
-            pictureBox24.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            resources.ApplyResources(pictureBox24, "pictureBox24");
             pictureBox24.BackColor = Color.Transparent;
-            pictureBox24.Location = new Point(184, 3);
             pictureBox24.Name = "pictureBox24";
-            pictureBox24.Size = new Size(14, 94);
-            pictureBox24.TabIndex = 41;
             pictureBox24.TabStop = false;
             // 
             // pictureBox25
             // 
             pictureBox25.BackColor = Color.Transparent;
-            pictureBox25.Location = new Point(164, 3);
+            resources.ApplyResources(pictureBox25, "pictureBox25");
             pictureBox25.Name = "pictureBox25";
-            pictureBox25.Size = new Size(14, 94);
-            pictureBox25.TabIndex = 38;
             pictureBox25.TabStop = false;
             // 
             // playerLabel
             // 
-            playerLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            resources.ApplyResources(playerLabel, "playerLabel");
             playerLabel.BackColor = Color.Transparent;
             playerLabel.FlatStyle = FlatStyle.Flat;
-            playerLabel.Font = new Font("Segoe UI Black", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             playerLabel.ForeColor = SystemColors.ButtonHighlight;
-            playerLabel.Location = new Point(939, 32);
             playerLabel.Name = "playerLabel";
-            playerLabel.Size = new Size(214, 44);
-            playerLabel.TabIndex = 24;
-            playerLabel.Text = "Player: ";
+            // 
+            // propertiesPanel
+            // 
+            resources.ApplyResources(propertiesPanel, "propertiesPanel");
+            propertiesPanel.BackColor = Color.AliceBlue;
+            propertiesPanel.BorderStyle = BorderStyle.FixedSingle;
+            propertiesPanel.Controls.Add(propertyPanel);
+            propertiesPanel.Name = "propertiesPanel";
             // 
             // Gameboard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
-            AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1245, 637);
+            Controls.Add(propertiesPanel);
             Controls.Add(propertiesGroupBox);
             Controls.Add(playerLabel);
             Controls.Add(panel1);
@@ -1161,8 +845,8 @@ namespace MonopolyGame
             Controls.Add(buyButton);
             Controls.Add(balanceTextBox);
             Controls.Add(balanceLabel);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Gameboard";
-            Text = "Monopoly";
             propertiesGroupBox.ResumeLayout(false);
             propertyPanel.ResumeLayout(false);
             propertyPanel.PerformLayout();
@@ -1236,6 +920,7 @@ namespace MonopolyGame
             tableLayoutPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox24).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox25).EndInit();
+            propertiesPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1322,5 +1007,8 @@ namespace MonopolyGame
         private Panel propertyPanel;
         private Label propertyNameLabel;
         private PictureBox housePictureBox;
+        private Panel propertiesPanel;
+        private Button buyHouse;
+        private Button sellHouse;
     }
 }
