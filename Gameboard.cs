@@ -5,15 +5,12 @@ namespace MonopolyGame
     public partial class Gameboard : Form
     {
         private PictureBox[] spaces;
-        private int currentSpaceIndex = 0;
         private PictureBox pictureBox;
         private List<Player> players;
         private int currentPlayerIndex = 0;
         private Dictionary<Player, PictureBox> playerPieces = new Dictionary<Player, PictureBox>();
         private Dictionary<int, Property> boardPositionToPropertyMap;
         private Dictionary<Panel, Property> panelToPropertyMap = new Dictionary<Panel, Property>();
-        Gameplay gameplay = new Gameplay();
-        private int houseCount = 0;
         private Panel lastClickedPanel;
 
         public Gameboard(List<Player> players)
@@ -27,9 +24,6 @@ namespace MonopolyGame
             setupPlayersOnBoard();
             initializeProperties();
             clearPropertyPanel();
-            this.MinimizeBox = false;
-            this.MaximizeBox = false;
-            this.WindowState = FormWindowState.Maximized;
         }
 
         private void clearPropertyPanel()
@@ -255,7 +249,7 @@ namespace MonopolyGame
                     newHousePictureBox.BackgroundImageLayout = ImageLayout.Stretch;
 
                     int x = (newPropertyPanel.Controls.Count - 1) * (newHousePictureBox.Width + 5);
-                    int y = 5;
+                    int y = 40;
 
                     newHousePictureBox.Location = new Point(x, y);
                     newPropertyPanel.Controls.Add(newHousePictureBox);
@@ -264,7 +258,6 @@ namespace MonopolyGame
                 newY += newPropertyPanel.Height + 10;
             }
         }
-
 
         private void nextTurnButton_Click(object sender, EventArgs e)
         {
@@ -335,7 +328,6 @@ namespace MonopolyGame
 
             return duplicatedPanel;
         }
-
 
         private Color GetColorFromColorGroup(string colorGroup)
         {
@@ -471,12 +463,12 @@ namespace MonopolyGame
             }
         }
 
-
         private void buyHouseButton_Click(object sender, EventArgs e)
         {
             if (lastClickedPanel != null && panelToPropertyMap.ContainsKey(lastClickedPanel))
             {
                 Property property = panelToPropertyMap[lastClickedPanel];
+                property.setHouseCount(property.getHouseCount() + 1);
                 PictureBox newHousePictureBox = new PictureBox();
                 newHousePictureBox.BackgroundImage = Properties.Resources.house;
                 newHousePictureBox.Size = new Size(50, 50);
@@ -491,7 +483,7 @@ namespace MonopolyGame
             }
         }
 
-
+        //placeholder for now
         private void sellHouseButton_Click(object sender, EventArgs e)
         {
 
