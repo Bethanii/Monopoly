@@ -22,7 +22,6 @@ namespace MonopolyGame
         public StartMenu()
         {
             InitializeComponent();
-            InitializePieceSelection();
         }
 
         private void StartMenu_Load(object sender, EventArgs e)
@@ -35,37 +34,11 @@ namespace MonopolyGame
 
         }
 
-        private void InitializePieceSelection()
-        {
-            shipButton.Click += PieceSelection_Click;
-            dogButton.Click += PieceSelection_Click;
-            hatButton.Click += PieceSelection_Click;
-            ironButton.Click += PieceSelection_Click;
-            carButton.Click += PieceSelection_Click;
-            shoeButton.Click += PieceSelection_Click;
-            thimbleButton.Click += PieceSelection_Click;
-            wheelbarrowButton.Click += PieceSelection_Click;
-        }
-
-        private void PieceSelection_Click(object sender, EventArgs e)
-        {
-            Button clickedButton = (Button)sender;
-
-            if (selectedButton != null)
-            {
-                selectedButton.FlatAppearance.BorderSize = 0;
-            }
-
-            clickedButton.FlatAppearance.BorderColor = Color.Blue;
-            clickedButton.FlatAppearance.BorderSize = 3;
-            selectedButton = clickedButton;
-        }
-
         private void startGameButton_Click(object sender, EventArgs e)
         {
-            if (selectedButton != null)
+            if (playerList[0] != null)
             {
-                Gameboard gameBoard = new Gameboard(selectedButton.Name.ToLower(), playerList);
+                Gameboard gameBoard = new Gameboard(playerList);
                 this.Hide();
                 gameBoard.Show();
             }
