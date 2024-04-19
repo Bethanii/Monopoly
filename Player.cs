@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame
 {
-    internal class Player
+    public class Player
     {
         private String name;
         private string piece;

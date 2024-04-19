@@ -15,7 +15,7 @@ namespace MonopolyGame
         public string playerName;
         public string playerColor;
         public string playerPiece;
-        List<Player> playerList = new List<Player>();
+        public List<Player> playerList = new List<Player>();
 
 
         private Button selectedButton;
@@ -65,7 +65,7 @@ namespace MonopolyGame
         {
             if (selectedButton != null)
             {
-                Gameboard gameBoard = new Gameboard(selectedButton.Name.ToLower());
+                Gameboard gameBoard = new Gameboard(selectedButton.Name.ToLower(), playerList);
                 this.Hide();
                 gameBoard.Show();
             }

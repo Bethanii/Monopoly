@@ -101,6 +101,7 @@ namespace MonopolyGame
             tableLayoutPanel6 = new TableLayoutPanel();
             pictureBox24 = new PictureBox();
             pictureBox25 = new PictureBox();
+            PlayerTurnLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)getOutOfJailFreeCards).BeginInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)diceRoll2).BeginInit();
@@ -246,6 +247,7 @@ namespace MonopolyGame
             nextTurnButton.TabIndex = 16;
             nextTurnButton.Text = "Next Turn";
             nextTurnButton.UseVisualStyleBackColor = false;
+            nextTurnButton.Click += nextTurnButton_Click;
             // 
             // getOutOfJailFreeCards
             // 
@@ -1086,6 +1088,16 @@ namespace MonopolyGame
             pictureBox25.TabIndex = 38;
             pictureBox25.TabStop = false;
             // 
+            // PlayerTurnLabel
+            // 
+            PlayerTurnLabel.AutoSize = true;
+            PlayerTurnLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            PlayerTurnLabel.Location = new Point(941, 579);
+            PlayerTurnLabel.Name = "PlayerTurnLabel";
+            PlayerTurnLabel.Size = new Size(69, 30);
+            PlayerTurnLabel.TabIndex = 24;
+            PlayerTurnLabel.Text = "Player";
+            // 
             // Gameboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1095,6 +1107,7 @@ namespace MonopolyGame
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1245, 637);
+            Controls.Add(PlayerTurnLabel);
             Controls.Add(panel1);
             Controls.Add(rollDiceButton);
             Controls.Add(diceGroupBox);
@@ -1260,5 +1273,6 @@ namespace MonopolyGame
         private PictureBox pictureBox24;
         private PictureBox pictureBox25;
         private PictureBox boardwalk;
+        private Label PlayerTurnLabel;
     }
 }

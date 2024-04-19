@@ -4,10 +4,13 @@ namespace MonopolyGame
 {
     public partial class Gameboard : Form
     {
+        private List<Player> playerList;
+        private int currentPlayerIndex = 0;
+
         private PictureBox[] spaces;
         private int currentSpaceIndex = 0;
         private PictureBox pictureBox;
-        public Gameboard(string selectedPieceName)
+        public Gameboard(string selectedPieceName, List<Player> players)
         {
             InitializeComponent();
             this.pictureBox = getPictureBox(selectedPieceName);
@@ -15,6 +18,9 @@ namespace MonopolyGame
             setupPanelsOnGameBoardImage();
             setColumnStylesForTableLayoutPanel();
             setPictureBoxProperties();
+
+            this.playerList = players;
+            UpdatePlayerTurnLabel();
         }
 
         private void setColumnStylesForTableLayoutPanel()
@@ -211,6 +217,17 @@ namespace MonopolyGame
             diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
 
             movePiece(total);
+        }
+
+        private void nextTurnButton_Click(object sender, EventArgs e)
+        {
+            currentPlayerIndex = (currentPlayerIndex + 1) % playerList.Count;
+            UpdatePlayerTurnLabel();
+        }
+
+        private void UpdatePlayerTurnLabel()
+        {
+            PlayerTurnLabel.Text = playerList[currentPlayerIndex].getName() +"'s Turn!";
         }
     }
 }
