@@ -451,13 +451,13 @@ namespace MonopolyGame
                     {
                         using (Graphics g = panel.CreateGraphics())
                         {
-                            Pen pen = new Pen(Color.Blue, 6); 
+                            Pen pen = new Pen(Color.Blue, 6);
                             g.DrawRectangle(pen, 0, 0, panel.Width - 1, panel.Height - 1);
                         }
                     }
                     else
                     {
-                        panel.Refresh(); 
+                        panel.Refresh();
                     }
                 }
             }
@@ -481,12 +481,6 @@ namespace MonopolyGame
                 newHousePictureBox.Location = new Point(x, y);
                 lastClickedPanel.Controls.Add(newHousePictureBox);
             }
-        }
-
-        //placeholder for now
-        private void sellHouseButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
