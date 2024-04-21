@@ -44,6 +44,9 @@ namespace MonopolyGame
         {
             return "";
         }
-
+        public virtual int getRent(int roll)
+        {
+            return 0;
+        }
     }
 }

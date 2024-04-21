@@ -202,11 +202,19 @@ namespace MonopolyGame
             this.pictureBox.Location = new Point(targetX, targetY);
             currentSpace.Controls.Add(this.pictureBox);
 
-
+            //allow player to purchase available property
             (int propertyCost, Property propertyForSale) = gameplay.turnOptions(currentSpaceIndex, propertyList);
-            if (propertyCost > 0)
+            if (propertyForSale.getOwner() == null)
             {
                 buyButton.Text = "Buy " + propertyForSale.getName() + "\r\n for " + (propertyCost.ToString());
+            }
+            //charge rent when landing on owned property
+            else if (propertyForSale.getOwner() != playerList[currentPlayerIndex])
+            {
+                
+                propertyForSale.getOwner().setMoneyBalance(propertyForSale.getOwner().getMoneyBalance() + propertyForSale.getRent(total));
+                playerList[currentPlayerIndex].setMoneyBalance(playerList[currentPlayerIndex].getMoneyBalance() - propertyForSale.getRent(total));
+                MessageBox.Show("You paid " + propertyForSale.getOwner().getName() + " $" + propertyForSale.getRent(total).ToString() + " for rent.");
             }
 
         }

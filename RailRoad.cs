@@ -15,7 +15,7 @@ namespace MonopolyGame
             this.boardPosition = boardPosition;
             this.type = "RailRoad";
         }
-        public int getRent()
+        public override int getRent(int roll)
         {
             int railRoadsOwned = 0;
             foreach (Property property in owner.getProperties())

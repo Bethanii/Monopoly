@@ -25,13 +25,12 @@ namespace MonopolyGame
             Property propertyForSale = new Property();
             foreach(Property property in properties.getProperties())
             {
-                Console.WriteLine(playerPosition + " " + property.getBoardPosition());
                 if (property.getBoardPosition() == playerPosition)
                 {
+                    propertyForSale = property;
                     if (property.getOwner() == null)
                     {
                         propertyCost = property.getCost();
-                        propertyForSale = property;
                         break;
                     }
                 }

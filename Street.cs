@@ -44,7 +44,7 @@ namespace MonopolyGame
             return colorGroup;
         }
 
-        public int getRent()
+        public override int getRent(int roll)
         {
             int colorGroupOwned = 0;
 

@@ -16,7 +16,7 @@ namespace MonopolyGame
             this.type = "utility";
         }
 
-        public int getRent(int roll)
+        public override int getRent(int roll)
         {
             int utilitiesOwned = 0;
             int rent = 0;
