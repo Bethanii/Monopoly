@@ -18,5 +18,25 @@ namespace MonopolyGame
 
             return (dice1, dice2, total);
         }
+        // pay rent, buy property, or draw card
+        public (int propertyCost, Property propertyForSale) turnOptions(int playerPosition, PropertyList properties)
+        {
+            int propertyCost = 0;
+            Property propertyForSale = new Property();
+            foreach(Property property in properties.getProperties())
+            {
+                Console.WriteLine(playerPosition + " " + property.getBoardPosition());
+                if (property.getBoardPosition() == playerPosition)
+                {
+                    if (property.getOwner() == null)
+                    {
+                        propertyCost = property.getCost();
+                        propertyForSale = property;
+                        break;
+                    }
+                }
+            }
+            return (propertyCost, propertyForSale);
+        }
     }
 }

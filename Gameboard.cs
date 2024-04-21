@@ -1,3 +1,4 @@
+using Monopoly_Start;
 using System.Windows.Forms;
 
 namespace MonopolyGame
@@ -9,6 +10,7 @@ namespace MonopolyGame
         private int currentPlayerIndex = 0;
         private int rollCount = 0;
         private int doublesCount = 0;
+        private Gameplay gameplay = new Gameplay();
 
         private PictureBox[] spaces;
         private int currentSpaceIndex = 0;
@@ -199,6 +201,14 @@ namespace MonopolyGame
 
             this.pictureBox.Location = new Point(targetX, targetY);
             currentSpace.Controls.Add(this.pictureBox);
+
+
+            (int propertyCost, Property propertyForSale) = gameplay.turnOptions(currentSpaceIndex, propertyList);
+            if (propertyCost > 0)
+            {
+                buyButton.Text = "Buy " + propertyForSale.getName() + "\r\n for " + (propertyCost.ToString());
+            }
+
         }
 
 
@@ -215,8 +225,6 @@ namespace MonopolyGame
         {
             if (rollCount == 0)
             {
-                Gameplay gameplay = new Gameplay();
-
                 (int dice1, int dice2, int total) = gameplay.getDiceRollCount();
 
                 diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
@@ -252,6 +260,7 @@ namespace MonopolyGame
                 currentPlayerIndex = (currentPlayerIndex + 1) % playerList.Count;
                 UpdatePlayerTurnLabel();
                 rollCount = 0;
+                doublesCount = 0;
             }
             else
             {
@@ -263,14 +272,36 @@ namespace MonopolyGame
                 {
                     MessageBox.Show("You rolled doubles. You get to roll again!");
                 }
-                
+
             }
         }
 
         private void UpdatePlayerTurnLabel()
         {
             PlayerTurnLabel.Text = playerList[currentPlayerIndex].getName();
+            balanceTextBox.Text = playerList[currentPlayerIndex].getMoneyBalance().ToString();
+            buyButton.Text = "Buy";
         }
 
+        private void buyButton_Click(object sender, EventArgs e)
+        {
+            (int propertyCost, Property propertyForSale) = gameplay.turnOptions(currentSpaceIndex, propertyList);
+
+            if (propertyCost > 0)
+            {    
+                if (playerList[currentPlayerIndex].getMoneyBalance() > propertyCost)
+                {
+                    playerList[currentPlayerIndex].setMoneyBalance(playerList[currentPlayerIndex].getMoneyBalance() - propertyCost);
+                    playerList[currentPlayerIndex].addProperties(propertyForSale);
+
+                    balanceTextBox.Text = playerList[currentPlayerIndex].getMoneyBalance().ToString();
+                    buyButton.Text = "Cougradulations you purchased " + propertyForSale.getName();
+                }
+                else
+                {
+                    MessageBox.Show("You cannot afford that property");
+                }
+            }
+        }
     }
 }

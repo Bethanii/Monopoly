@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame
 {
-    internal class PropertyList
+    public class PropertyList
     {
         private List<Property> properties = new List<Property>();
 

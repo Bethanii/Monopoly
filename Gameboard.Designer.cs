@@ -222,6 +222,7 @@ namespace MonopolyGame
             buyButton.TabIndex = 12;
             buyButton.Text = "Buy";
             buyButton.UseVisualStyleBackColor = false;
+            buyButton.Click += buyButton_Click;
             // 
             // sellButton
             // 
