@@ -191,6 +191,7 @@ namespace MonopolyGame
 
         private void movePiece(int total)
         {
+            int previousSpaceIndex = currentSpaceIndex;
             currentSpaceIndex += total;
             currentSpaceIndex %= spaces.Length;
 
@@ -201,7 +202,13 @@ namespace MonopolyGame
 
             this.pictureBox.Location = new Point(targetX, targetY);
             currentSpace.Controls.Add(this.pictureBox);
-
+            // pay 200 for passing go
+            if (previousSpaceIndex > currentSpaceIndex)
+            {
+                playerList[currentPlayerIndex].setMoneyBalance(playerList[currentPlayerIndex].getMoneyBalance() + 200);
+                MessageBox.Show("You collected $200 for passign go!");
+                balanceTextBox.Text = playerList[currentPlayerIndex].getMoneyBalance().ToString();
+            }
             //allow player to purchase available property
             (int propertyCost, Property propertyForSale) = gameplay.turnOptions(currentSpaceIndex, propertyList);
             if (propertyForSale.getOwner() == null)
@@ -210,11 +217,11 @@ namespace MonopolyGame
             }
             //charge rent when landing on owned property
             else if (propertyForSale.getOwner() != playerList[currentPlayerIndex])
-            {
-                
+            { 
                 propertyForSale.getOwner().setMoneyBalance(propertyForSale.getOwner().getMoneyBalance() + propertyForSale.getRent(total));
                 playerList[currentPlayerIndex].setMoneyBalance(playerList[currentPlayerIndex].getMoneyBalance() - propertyForSale.getRent(total));
                 MessageBox.Show("You paid " + propertyForSale.getOwner().getName() + " $" + propertyForSale.getRent(total).ToString() + " for rent.");
+                balanceTextBox.Text = playerList[currentPlayerIndex].getMoneyBalance().ToString();
             }
 
         }
