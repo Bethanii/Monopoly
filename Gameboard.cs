@@ -5,7 +5,9 @@ namespace MonopolyGame
     public partial class Gameboard : Form
     {
         private List<Player> playerList;
+        private PropertyList propertyList = new PropertyList();
         private int currentPlayerIndex = 0;
+        private String propertyLandedOn;
 
         private PictureBox[] spaces;
         private int currentSpaceIndex = 0;
@@ -227,7 +229,8 @@ namespace MonopolyGame
 
         private void UpdatePlayerTurnLabel()
         {
-            PlayerTurnLabel.Text = playerList[currentPlayerIndex].getPiece() +"'s Turn!";
+            PlayerTurnLabel.Text = playerList[currentPlayerIndex].getName();
         }
+
     }
 }

@@ -342,7 +342,7 @@
             button17.Name = "button17";
             button17.Size = new Size(233, 40);
             button17.TabIndex = 21;
-            button17.Text = "Add Another Player";
+            button17.Text = "Add Player";
             button17.TextAlign = ContentAlignment.TopCenter;
             button17.UseVisualStyleBackColor = false;
             button17.Click += button17_Click;
