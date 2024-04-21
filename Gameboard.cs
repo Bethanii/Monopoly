@@ -7,7 +7,8 @@ namespace MonopolyGame
         private List<Player> playerList;
         private PropertyList propertyList = new PropertyList();
         private int currentPlayerIndex = 0;
-        private String propertyLandedOn;
+        private int rollCount = 0;
+        private int doublesCount = 0;
 
         private PictureBox[] spaces;
         private int currentSpaceIndex = 0;
@@ -212,19 +213,58 @@ namespace MonopolyGame
 
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
-            Gameplay gameplay = new Gameplay();
-            (int dice1, int dice2, int total) = gameplay.getDiceRollCount();
+            if (rollCount == 0)
+            {
+                Gameplay gameplay = new Gameplay();
 
-            diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
-            diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
+                (int dice1, int dice2, int total) = gameplay.getDiceRollCount();
 
-            movePiece(total);
+                diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
+                diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
+
+                rollCount++;
+
+                movePiece(total);
+
+                if (dice1 == dice2)
+                {
+                    doublesCount++;
+                    if (doublesCount < 3)
+                    {
+                        rollCount = 0;
+                    }
+                    else
+                    {
+                        //put go to jail logic here
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("You are only alowed to move once per turn.");
+            }
         }
 
         private void nextTurnButton_Click(object sender, EventArgs e)
         {
-            currentPlayerIndex = (currentPlayerIndex + 1) % playerList.Count;
-            UpdatePlayerTurnLabel();
+            if (rollCount > 0)
+            {
+                currentPlayerIndex = (currentPlayerIndex + 1) % playerList.Count;
+                UpdatePlayerTurnLabel();
+                rollCount = 0;
+            }
+            else
+            {
+                if (doublesCount == 0)
+                {
+                    MessageBox.Show("Please roll the dice before ending your turn.");
+                }
+                else
+                {
+                    MessageBox.Show("You rolled doubles. You get to roll again!");
+                }
+                
+            }
         }
 
         private void UpdatePlayerTurnLabel()
