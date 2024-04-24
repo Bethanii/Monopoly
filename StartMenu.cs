@@ -7,59 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic;
 
 namespace MonopolyGame
 {
     public partial class StartMenu : Form
     {
+        public string playerName;
+        public string playerColor;
+        public string playerPiece;
+        public List<Player> players = new List<Player>();
+
+
         private Button selectedButton;
-        private List<Player> players = new List<Player>();
-        private List<string> selectedPieces = new List<string>();
-        private const int MaxPlayers = 8;
         public StartMenu()
         {
             InitializeComponent();
-            InitializePieceSelection();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void InitializePieceSelection()
-        {
-            shipButton.Click += pieceSelection_Click;
-            dogButton.Click += pieceSelection_Click;
-            hatButton.Click += pieceSelection_Click;
-            ironButton.Click += pieceSelection_Click;
-            carButton.Click += pieceSelection_Click;
-            shoeButton.Click += pieceSelection_Click;
-            thimbleButton.Click += pieceSelection_Click;
-            wheelbarrowButton.Click += pieceSelection_Click;
-        }
-
-        private void pieceSelection_Click(object sender, EventArgs e)
-        {
-            Button clickedButton = (Button)sender;
-
-            if (selectedButton != null)
-            {
-                selectedButton.FlatAppearance.BorderSize = 0;
-            }
-
-            clickedButton.FlatAppearance.BorderColor = Color.Blue;
-            clickedButton.FlatAppearance.BorderSize = 3;
-            selectedButton = clickedButton;
-        }
-
         private void startGameButton_Click(object sender, EventArgs e)
         {
-            AddPlayer();
-
-            // For testing, I updated this to at least one player, but we can update to 2 after coding 
-            if (players.Count > 0)
+            if (players.Count > 2)
             {
                 Gameboard gameBoard = new Gameboard(players);
                 this.Hide();
@@ -70,43 +36,179 @@ namespace MonopolyGame
                 MessageBox.Show("Please add at least 2 players to start playing.", "Not Enough Players", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        private void addAnotherPlayerButton_Click(object sender, EventArgs e)
+        //sets player parameters
+        private void playerNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            AddPlayer();
-            InitializePieceSelection();
+            playerName = playerNameTextBox.Text;
+        }
+        private void red_Click(object sender, EventArgs e)
+        {
+            playerColor = "Red";
+        }
+        private void orange_Click(object sender, EventArgs e)
+        {
+            playerColor = "Orange";
         }
 
-
-        private void AddPlayer()
+        private void yellow_Click(object sender, EventArgs e)
         {
-            if (selectedButton != null) 
+            playerColor = "Yellow";
+        }
+
+        private void green_Click(object sender, EventArgs e)
+        {
+            playerColor = "Green";
+        }
+
+        private void lightBlue_Click(object sender, EventArgs e)
+        {
+            playerColor = "Light Blue";
+        }
+
+        private void darkBlue_Click(object sender, EventArgs e)
+        {
+            playerColor = "Dark Blue";
+        }
+
+        private void purple_Click(object sender, EventArgs e)
+        {
+            playerColor = "Purple";
+        }
+
+        private void black_Click(object sender, EventArgs e)
+        {
+            playerColor = "Black";
+        }
+        private void shipButton_Click(object sender, EventArgs e)
+        {
+            playerPiece = "ship";
+        }
+
+        private void dogButton_Click(object sender, EventArgs e)
+        {
+            playerPiece = "dog";
+        }
+
+        private void hatButton_Click(object sender, EventArgs e)
+        {
+            playerPiece = "hat";
+        }
+
+        private void ironButton_Click(object sender, EventArgs e)
+        {
+            playerPiece = "iron";
+        }
+
+        private void carButton_Click(object sender, EventArgs e)
+        {
+            playerPiece = "car";
+        }
+
+        private void shoeButton_Click(object sender, EventArgs e)
+        {
+            playerPiece = "shoe";
+        }
+
+        private void thimbleButton_Click(object sender, EventArgs e)
+        {
+            playerPiece = "thimble";
+        }
+
+        private void wheelbarrowButton_Click(object sender, EventArgs e)
+        {
+            playerPiece = "wheelbarrow";
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            //ensures players select all requirements
+            if (playerName == "")
             {
-                string playerName = playerNameTextBox.Text.Trim();
-
-                if (string.IsNullOrEmpty(playerName))
-                {
-                    MessageBox.Show("Please enter a valid name", "Invalid Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                //setting as static for now
-                string defaultColor = "Red";
-                int defaultBoardPosition = 0;
-                int defaultMoneyBalance = 1500;
-                int defaultInJailCounter = 0;
-
-                Player newPlayer = new Player(playerName, selectedButton.Name.ToLower(), defaultColor, defaultBoardPosition, defaultMoneyBalance, defaultInJailCounter);
-                players.Add(newPlayer);
-                selectedPieces.Add(selectedButton.Name.ToLower());
-
-                selectedButton.FlatAppearance.BorderSize = 0;
-                selectedButton = null;
-                playerNameTextBox.Clear();
+                MessageBox.Show("Please select your player name", "No Name Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            else if (playerColor == "") 
+            {
+                MessageBox.Show("Please choose a color.", "No Color Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (playerPiece == "")
+            {
+                MessageBox.Show("Please choose your piece.", "No Piece Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            //hides colors and pieces ghat have already been chosen
             else
             {
-                MessageBox.Show("Please select a game piece", "No Piece Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                switch (playerColor)
+                {
+                    case "Red":
+                        red.Visible = false;
+                        break;
+                    case "Orange":
+                        orange.Visible = false;
+                        break;
+                    case "Yellow":
+                        yellow.Visible = false;
+                        break;
+                    case "Green":
+                        green.Visible = false;
+                        break;
+                    case "Light Blue":
+                        lightBlue.Visible = false;
+                        break;
+                    case "Dark Blue":
+                        darkBlue.Visible = false;
+                        break;
+                    case "Purple":
+                        purple.Visible = false;
+                        break;
+                    case "Black":
+                        black.Visible = false;
+                        break;
+                    default:
+                        break;
+                }
+
+                switch (playerPiece)
+                {
+                    case "ship":
+                        shipButton.Visible = false;
+                        break;
+                    case "dog":
+                        dogButton.Visible = false;
+                        break;
+                    case "hat":
+                        hatButton.Visible = false;
+                        break;
+                    case "iron":
+                        ironButton.Visible = false;
+                        break;
+                    case "car":
+                        carButton.Visible = false;
+                        break;
+                    case "shoe":
+                        shoeButton.Visible = false;
+                        break;
+                    case "thimble":
+                        thimbleButton.Visible = false;
+                        break;
+                    case "wheelbarrow":
+                        wheelbarrowButton.Visible = false;
+                        break;
+                    default: break;
+                }
+
+                players.Add(new Player(playerName, playerPiece, playerColor));
+                //Starts game if max players are picked
+                if (players.Count > 7)
+                {
+                    Gameboard gameBoard = new Gameboard(players);
+                    this.Hide();
+                    gameBoard.Show();
+                }
+
+                playerName = "";
+                playerColor = "";
+                playerPiece = "";
+                playerNameTextBox.Clear();
             }
         }
     }

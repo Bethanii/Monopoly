@@ -139,49 +139,49 @@ namespace MonopolyGame
 
             switch (pictureName.ToLower())
             {
-                case "hatbutton":
+                case "hat":
                     character = Properties.Resources.hat;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "carbutton":
+                case "car":
                     character = Properties.Resources.raceCar;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "thimblebutton":
+                case "thimble":
                     character = Properties.Resources.thimble;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "shoebutton":
+                case "shoe":
                     character = Properties.Resources.shoe;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "wheelbarrowbutton":
+                case "wheelbarrow":
                     character = Properties.Resources.wheelbarrow;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "ironbutton":
+                case "iron":
                     character = Properties.Resources.iron;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "shipbutton":
+                case "ship":
                     character = Properties.Resources.battleShip;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "dogbutton":
+                case "dog":
                     character = Properties.Resources.dog;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
