@@ -25,7 +25,7 @@ namespace MonopolyGame
         }
         private void startGameButton_Click(object sender, EventArgs e)
         {
-            if (players.Count > 2)
+            if (players.Count > 1)
             {
                 Gameboard gameBoard = new Gameboard(players);
                 this.Hide();

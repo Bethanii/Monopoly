@@ -13,6 +13,8 @@ namespace MonopolyGame
         private Dictionary<Panel, Property> panelToPropertyMap = new Dictionary<Panel, Property>();
         private Panel lastClickedPanel;
 
+        private int rollCount = 0;
+        int doublesCount = 0;
         public Gameboard(List<Player> players)
         {
             InitializeComponent();
@@ -36,6 +38,10 @@ namespace MonopolyGame
 
         private void setupPlayersOnBoard()
         {
+            //populates first players information
+            playerLabel.Text = "Player: " + players[0].getName();
+            balanceTextBox.Text = "$" + players[0].getMoneyBalance();
+
             foreach (var player in players)
             {
                 PictureBox playerPictureBox = getPictureBox(player.getPiece());
@@ -213,7 +219,7 @@ namespace MonopolyGame
 
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
-            if (players.Count > 0)
+            if (rollCount == 0)
             {
                 Gameplay gameplay = new Gameplay();
                 (int dice1, int dice2, int total) = gameplay.getDiceRollCount();
@@ -223,8 +229,28 @@ namespace MonopolyGame
 
                 Player currentPlayer = players[currentPlayerIndex];
                 gameplay.movePiece(currentPlayer, total, playerPieces, spaces);
+
+                rollCount++;
+
+                if (dice1 == dice2)
+                {
+                    doublesCount++;
+                    if (doublesCount < 3)
+                    {
+                        rollCount = 0;
+                    }
+                    else
+                    {
+                        //put go to jail logic here
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("You are only alowed to move once per turn.");
             }
         }
+        
 
         private void updateCurrentPlayerProperties()
         {
@@ -261,11 +287,29 @@ namespace MonopolyGame
 
         private void nextTurnButton_Click(object sender, EventArgs e)
         {
-            currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
-            string nextPlayerName = players[currentPlayerIndex].getName();
-            playerLabel.Text = "Player: " + nextPlayerName;
+            if (rollCount > 0)
+            {
+                currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
+                string nextPlayerName = players[currentPlayerIndex].getName();
+                playerLabel.Text = "Player: " + nextPlayerName;
+                balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
 
-            updateCurrentPlayerProperties();
+                updateCurrentPlayerProperties();
+
+                rollCount = 0;
+            }
+            else
+            {
+                if (doublesCount == 0)
+                {
+                    MessageBox.Show("Please roll the dice before ending your turn.");
+                }
+                else
+                {
+                    MessageBox.Show("You rolled doubles. You get to roll again!");
+                }
+
+            }
         }
 
         private void buyButton_Click(object sender, EventArgs e)
