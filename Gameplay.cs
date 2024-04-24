@@ -21,6 +21,7 @@ namespace MonopolyGame
 
         public void movePiece(Player currentPlayer, int total, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces)
         {
+            int previousBoardPosition = currentPlayer.getBoardPosition();
             int newBoardPosition = (currentPlayer.getBoardPosition() + total) % spaces.Length;
             currentPlayer.setBoardPosition(newBoardPosition);
 
@@ -32,6 +33,11 @@ namespace MonopolyGame
 
             pieceToMove.Location = new System.Drawing.Point(targetX, targetY);
             currentSpace.Controls.Add(pieceToMove);
+
+            if (previousBoardPosition > newBoardPosition)
+            {
+                currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 200);
+            }
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Diagnostics.Eventing.Reader;
 using System.Windows.Forms;
 
 namespace MonopolyGame
@@ -9,10 +10,12 @@ namespace MonopolyGame
         private List<Player> players;
         private int currentPlayerIndex = 0;
         private Dictionary<Player, PictureBox> playerPieces = new Dictionary<Player, PictureBox>();
-        private Dictionary<int, Property> boardPositionToPropertyMap;
         private Dictionary<Panel, Property> panelToPropertyMap = new Dictionary<Panel, Property>();
         private Panel lastClickedPanel;
+        private PropertyList propertyList = new PropertyList();
 
+        private int rollCount = 0;
+        int doublesCount = 0;
         public Gameboard(List<Player> players)
         {
             InitializeComponent();
@@ -36,6 +39,10 @@ namespace MonopolyGame
 
         private void setupPlayersOnBoard()
         {
+            //populates first players information
+            playerLabel.Text = "Player: " + players[0].getName();
+            balanceTextBox.Text = "$" + players[0].getMoneyBalance();
+
             foreach (var player in players)
             {
                 PictureBox playerPictureBox = getPictureBox(player.getPiece());
@@ -139,49 +146,49 @@ namespace MonopolyGame
 
             switch (pictureName.ToLower())
             {
-                case "hatbutton":
+                case "hat":
                     character = Properties.Resources.hat;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "carbutton":
+                case "car":
                     character = Properties.Resources.raceCar;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "thimblebutton":
+                case "thimble":
                     character = Properties.Resources.thimble;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "shoebutton":
+                case "shoe":
                     character = Properties.Resources.shoe;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "wheelbarrowbutton":
+                case "wheelbarrow":
                     character = Properties.Resources.wheelbarrow;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "ironbutton":
+                case "iron":
                     character = Properties.Resources.iron;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "shipbutton":
+                case "ship":
                     character = Properties.Resources.battleShip;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
                     break;
 
-                case "dogbutton":
+                case "dog":
                     character = Properties.Resources.dog;
                     pictureBox = createPictureBox(character);
                     startOnGoSpace(pictureBox);
@@ -213,7 +220,7 @@ namespace MonopolyGame
 
         private void rollDiceButton_Click(object sender, EventArgs e)
         {
-            if (players.Count > 0)
+            if (rollCount == 0)
             {
                 Gameplay gameplay = new Gameplay();
                 (int dice1, int dice2, int total) = gameplay.getDiceRollCount();
@@ -223,8 +230,33 @@ namespace MonopolyGame
 
                 Player currentPlayer = players[currentPlayerIndex];
                 gameplay.movePiece(currentPlayer, total, playerPieces, spaces);
+                //updates money display if passing go
+                balanceTextBox.Text = "$" + players[0].getMoneyBalance();
+
+                //checks for doubles
+                if (dice1 == dice2)
+                {
+                    doublesCount++;
+                    if (doublesCount < 3)
+                    {
+                        rollCount = 0;
+                    }
+                    else
+                    {
+                        //put go to jail logic here
+                    }
+                }
+                else
+                {
+                    rollCount++;
+                }
+            }
+            else
+            {
+                MessageBox.Show("You are only alowed to move once per turn.");
             }
         }
+        
 
         private void updateCurrentPlayerProperties()
         {
@@ -261,11 +293,25 @@ namespace MonopolyGame
 
         private void nextTurnButton_Click(object sender, EventArgs e)
         {
-            currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
-            string nextPlayerName = players[currentPlayerIndex].getName();
-            playerLabel.Text = "Player: " + nextPlayerName;
+            if (rollCount > 0)
+            {
+                currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
+                string nextPlayerName = players[currentPlayerIndex].getName();
+                playerLabel.Text = "Player: " + nextPlayerName;
+                balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
 
-            updateCurrentPlayerProperties();
+                updateCurrentPlayerProperties();
+
+                rollCount = 0;
+            }
+            else if (doublesCount > 0)
+            {
+                MessageBox.Show("You rolled doubles. You get to roll again!");
+            }
+            else
+            {
+                MessageBox.Show("Please roll the dice before ending your turn.");
+            }
         }
 
         private void buyButton_Click(object sender, EventArgs e)
@@ -275,16 +321,27 @@ namespace MonopolyGame
                 Player currentPlayer = players[currentPlayerIndex];
                 int currentBoardPosition = currentPlayer.getBoardPosition();
 
-                if (boardPositionToPropertyMap.TryGetValue(currentBoardPosition, out Property currentProperty))
+                if (propertyList.getProperties().TryGetValue(currentBoardPosition, out Property currentProperty))
                 {
                     if (currentProperty.getOwner() == null)
                     {
-                        propertyNameLabel.Text = currentProperty.getName();
-                        propertyPanel.BringToFront();
-                        boardPositionToPropertyMap[currentBoardPosition] = currentProperty;
-                        currentPlayer.addProperties(currentProperty);
-                        updateCurrentPlayerProperties();
-                        AdjustGroupBoxSize();
+                        if (currentPlayer.getMoneyBalance() > currentProperty.getCost())
+                        {
+                            propertyNameLabel.Text = currentProperty.getName();
+                            propertyPanel.BringToFront();
+                            propertyList.getProperties()[currentBoardPosition] = currentProperty;
+                            currentPlayer.addProperties(currentProperty);
+                            updateCurrentPlayerProperties();
+                            AdjustGroupBoxSize();
+
+                            //Charge player cost of prioperty
+                            currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - currentProperty.getCost());
+                            balanceTextBox.Text = "$" + players[0].getMoneyBalance();
+                        }
+                        else
+                        {
+                            MessageBox.Show("You can not afford this property.", "Property Too Expensive", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     else
                     {
@@ -333,14 +390,14 @@ namespace MonopolyGame
         {
             var colorMap = new Dictionary<string, Color>
             {
-                { "Brown", Color.SaddleBrown },
-                { "Light Blue", Color.LightSkyBlue },
-                { "Magenta", Color.MediumVioletRed },
-                { "Orange", Color.Orange },
-                { "Red", Color.Red },
-                { "Yellow", Color.Gold },
-                { "Green", Color.MediumSeaGreen },
-                { "Dark Blue", Color.DodgerBlue }
+                { "brown", Color.SaddleBrown },
+                { "lightBlue", Color.LightSkyBlue },
+                { "pink", Color.MediumVioletRed },
+                { "orange", Color.Orange },
+                { "red", Color.Red },
+                { "yellow", Color.Gold },
+                { "green", Color.MediumSeaGreen },
+                { "darkBlue", Color.DodgerBlue }
             };
 
             if (colorMap.TryGetValue(colorGroup, out Color color))
@@ -352,89 +409,7 @@ namespace MonopolyGame
 
         private void initializeProperties()
         {
-            boardPositionToPropertyMap = new Dictionary<int, Property>();
-
-            //hard coding rent values for now
-            //------------- Brown ------------------
-            Property mediterraneanAvenue = new Property("Mediterranean Avenue", "Brown", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1);
-            boardPositionToPropertyMap.Add(mediterraneanAvenue.getBoardPosition(), mediterraneanAvenue);
-
-            Property balticAvenue = new Property("Baltic Avenue", "Brown", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3);
-            boardPositionToPropertyMap.Add(balticAvenue.getBoardPosition(), balticAvenue);
-
-
-            //------------- Light Blue------------------
-            Property orientalAvenue = new Property("Oriental Avenue", "Light Blue", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6);
-            boardPositionToPropertyMap.Add(orientalAvenue.getBoardPosition(), orientalAvenue);
-
-            Property vermontAvenue = new Property("Vermont Avenue", "Light Blue", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8);
-            boardPositionToPropertyMap.Add(vermontAvenue.getBoardPosition(), vermontAvenue);
-
-            Property connecticutAvenue = new Property("Connecticut Avenue", "Light Blue", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9);
-            boardPositionToPropertyMap.Add(connecticutAvenue.getBoardPosition(), connecticutAvenue);
-
-
-            //------------- Magenta ------------------
-            Property stCharlesPlace = new Property("St. Charles Place", "Magenta", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11);
-            boardPositionToPropertyMap.Add(stCharlesPlace.getBoardPosition(), stCharlesPlace);
-
-            Property statesAve = new Property("States Avenue", "Magenta", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13);
-            boardPositionToPropertyMap.Add(statesAve.getBoardPosition(), statesAve);
-
-            Property virginiaAve = new Property("Virginia Avenue", "Magenta", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14);
-            boardPositionToPropertyMap.Add(virginiaAve.getBoardPosition(), virginiaAve);
-
-
-            //------------- Orange ------------------
-            Property stJamesPlace = new Property("St. James Place", "Orange", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16);
-            boardPositionToPropertyMap.Add(stJamesPlace.getBoardPosition(), stJamesPlace);
-
-            Property tennesseeAve = new Property("Tennessee Avenue", "Orange", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18);
-            boardPositionToPropertyMap.Add(tennesseeAve.getBoardPosition(), tennesseeAve);
-
-            Property newYorkAve = new Property("New York Avenue", "Orange", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19);
-            boardPositionToPropertyMap.Add(newYorkAve.getBoardPosition(), newYorkAve);
-
-
-            //------------- Red ------------------
-            Property kentuckyAve = new Property("Kentucky Avenue", "Red", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21);
-            boardPositionToPropertyMap.Add(kentuckyAve.getBoardPosition(), kentuckyAve);
-
-            Property indianaAve = new Property("Indiana Avenue", "Red", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23);
-            boardPositionToPropertyMap.Add(indianaAve.getBoardPosition(), indianaAve);
-
-            Property illinoisAve = new Property("Illinois Avenue", "Red", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24);
-            boardPositionToPropertyMap.Add(illinoisAve.getBoardPosition(), illinoisAve);
-
-
-            //------------- Yellow ------------------
-            Property atlanticAve = new Property("Atlantic Avenue", "Yellow", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26);
-            boardPositionToPropertyMap.Add(atlanticAve.getBoardPosition(), atlanticAve);
-
-            Property ventnorAve = new Property("Ventnor Avenue", "Yellow", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27);
-            boardPositionToPropertyMap.Add(ventnorAve.getBoardPosition(), ventnorAve);
-
-            Property marvinGardens = new Property("Marvin Gardens", "Yellow", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29);
-            boardPositionToPropertyMap.Add(marvinGardens.getBoardPosition(), marvinGardens);
-
-
-            //------------- Green ------------------
-            Property pacificAve = new Property("Pacific Avenue", "Green", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31);
-            boardPositionToPropertyMap.Add(pacificAve.getBoardPosition(), pacificAve);
-
-            Property northCarolinaAve = new Property("North Carolina Avenue", "Green", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32);
-            boardPositionToPropertyMap.Add(northCarolinaAve.getBoardPosition(), northCarolinaAve);
-
-            Property pennsylvaniaAve = new Property("Pennsylvania Avenue", "Green", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34);
-            boardPositionToPropertyMap.Add(pennsylvaniaAve.getBoardPosition(), pennsylvaniaAve);
-
-
-            //------------- Dark Blue ------------------
-            Property parkPlace = new Property("Park Place", "Dark Blue", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 37);
-            boardPositionToPropertyMap.Add(parkPlace.getBoardPosition(), parkPlace);
-
-            Property boardwalk = new Property("Boardwalk", "Dark Blue", 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 39);
-            boardPositionToPropertyMap.Add(boardwalk.getBoardPosition(), boardwalk);
+            
         }
 
         private void propertyPanel_Click(object? sender, EventArgs e)

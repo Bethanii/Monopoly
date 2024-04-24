@@ -16,14 +16,14 @@ namespace MonopolyGame
         private List<Property> properties = new List<Property>();
         private int inJailCounter;
 
-        public Player(string name, string piece, string color, int boardPosition, int moneyBalance, int inJailCounter)
+        public Player(string name, string piece, string color)
         {
             this.name = name;
             this.piece = piece;
             this.color = color;
-            this.boardPosition = boardPosition;
-            this.moneyBalance = moneyBalance;
-            this.inJailCounter = inJailCounter;
+            this.boardPosition = 0;
+            this.moneyBalance = 1500;
+            this.inJailCounter = 0;
         }
 
         public string getName()
