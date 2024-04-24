@@ -1,3 +1,4 @@
+using System.Diagnostics.Eventing.Reader;
 using System.Windows.Forms;
 
 namespace MonopolyGame
@@ -230,8 +231,6 @@ namespace MonopolyGame
                 Player currentPlayer = players[currentPlayerIndex];
                 gameplay.movePiece(currentPlayer, total, playerPieces, spaces);
 
-                rollCount++;
-
                 if (dice1 == dice2)
                 {
                     doublesCount++;
@@ -243,6 +242,10 @@ namespace MonopolyGame
                     {
                         //put go to jail logic here
                     }
+                }
+                else
+                {
+                    rollCount++;
                 }
             }
             else
@@ -298,17 +301,13 @@ namespace MonopolyGame
 
                 rollCount = 0;
             }
+            else if (doublesCount > 0)
+            {
+                MessageBox.Show("You rolled doubles. You get to roll again!");
+            }
             else
             {
-                if (doublesCount == 0)
-                {
-                    MessageBox.Show("Please roll the dice before ending your turn.");
-                }
-                else
-                {
-                    MessageBox.Show("You rolled doubles. You get to roll again!");
-                }
-
+                MessageBox.Show("Please roll the dice before ending your turn.");
             }
         }
 
