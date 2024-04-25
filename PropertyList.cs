@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonopolyGame
 {
-    internal class PropertyList
+    public class PropertyList
     {
         private Dictionary<int, Property> boardPositionToPropertyMap = new Dictionary<int, Property>();
         public PropertyList() 

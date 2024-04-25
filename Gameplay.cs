@@ -19,7 +19,7 @@ namespace MonopolyGame
             return (dice1, dice2, total);
         }
 
-        public void movePiece(Player currentPlayer, int total, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces)
+        public void movePiece(Player currentPlayer, int total, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces, PropertyList propertyList)
         {
             int previousBoardPosition = currentPlayer.getBoardPosition();
             int newBoardPosition = (currentPlayer.getBoardPosition() + total) % spaces.Length;
@@ -34,6 +34,30 @@ namespace MonopolyGame
             pieceToMove.Location = new System.Drawing.Point(targetX, targetY);
             currentSpace.Controls.Add(pieceToMove);
 
+            // Charge player rent if they land on square owned by other players
+            if (propertyList.getProperties().TryGetValue(newBoardPosition, out Property currentProperty))
+            {
+                if (currentProperty.getOwner() != null)
+                {
+                    if(currentProperty.getOwner().getPiece() != currentPlayer.getPiece())    
+                    {
+                        if (currentProperty.getRent(total) < currentPlayer.getMoneyBalance())
+                        {
+                            int rentDue = currentProperty.getRent(total);
+                            currentProperty.getOwner().setMoneyBalance(currentProperty.getOwner().getMoneyBalance() + rentDue);
+                            currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - rentDue);
+                            MessageBox.Show("You paid " + currentProperty.getOwner().getName() + " $" + currentProperty.getRent(total) + " for rent.");
+                        }
+                        else
+                        {
+                            // add bankrupcy logic here
+                        }
+                    }
+                }
+            }
+
+
+            // pay player for passing go
             if (previousBoardPosition > newBoardPosition)
             {
                 currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 200);

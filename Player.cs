@@ -74,6 +74,7 @@ namespace MonopolyGame
         public void removeProperties(Property property)
         {
             properties.Remove(property);
+            property.setOwner(null);
         }
     }
 }
