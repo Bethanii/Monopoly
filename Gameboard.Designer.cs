@@ -258,6 +258,7 @@ namespace MonopolyGame
             sellButton.BackColor = Color.Yellow;
             sellButton.Name = "sellButton";
             sellButton.UseVisualStyleBackColor = false;
+            sellButton.Click += sellButton_Click;
             // 
             // nextTurnButton
             // 

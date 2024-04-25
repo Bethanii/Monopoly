@@ -227,11 +227,23 @@ namespace MonopolyGame
 
                 diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
                 diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
+                // changes button text in case of doubles
+                buyButton.Text = "Buy";
+                sellButton.Text = "Sell";
 
                 Player currentPlayer = players[currentPlayerIndex];
-                gameplay.movePiece(currentPlayer, total, playerPieces, spaces);
+                gameplay.movePiece(currentPlayer, total, playerPieces, spaces, propertyList);
+
+                //display property price on buy button
+                if (propertyList.getProperties().TryGetValue(currentPlayer.getBoardPosition(), out Property currentProperty))
+                {
+                    if (currentProperty.getOwner() == null)
+                    {
+                        buyButton.Text = "Buy " + currentProperty.getName() + "\r\nfor $" + currentProperty.getCost();
+                    }
+                }
                 //updates money display if passing go
-                balanceTextBox.Text = "$" + players[0].getMoneyBalance();
+                balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
 
                 //checks for doubles
                 if (dice1 == dice2)
@@ -256,7 +268,7 @@ namespace MonopolyGame
                 MessageBox.Show("You are only alowed to move once per turn.");
             }
         }
-        
+
 
         private void updateCurrentPlayerProperties()
         {
@@ -299,6 +311,8 @@ namespace MonopolyGame
                 string nextPlayerName = players[currentPlayerIndex].getName();
                 playerLabel.Text = "Player: " + nextPlayerName;
                 balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
+                buyButton.Text = "Buy";
+                sellButton.Text = "Sell";
 
                 updateCurrentPlayerProperties();
 
@@ -336,7 +350,9 @@ namespace MonopolyGame
 
                             //Charge player cost of prioperty
                             currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - currentProperty.getCost());
-                            balanceTextBox.Text = "$" + players[0].getMoneyBalance();
+                            balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
+
+                            buyButton.Text = "Congradulations on your purchase!";
                         }
                         else
                         {
@@ -350,7 +366,6 @@ namespace MonopolyGame
                 }
             }
         }
-
         private void AdjustGroupBoxSize()
         {
             propertiesPanel.AutoScroll = true;
@@ -409,7 +424,7 @@ namespace MonopolyGame
 
         private void initializeProperties()
         {
-            
+
         }
 
         private void propertyPanel_Click(object? sender, EventArgs e)
@@ -428,6 +443,9 @@ namespace MonopolyGame
                         {
                             Pen pen = new Pen(Color.Blue, 6);
                             g.DrawRectangle(pen, 0, 0, panel.Width - 1, panel.Height - 1);
+
+                            //resets sell buton if property was sold this turn
+                            sellButton.Text = "Sell";
                         }
                     }
                     else
@@ -456,6 +474,36 @@ namespace MonopolyGame
                 newHousePictureBox.Location = new Point(x, y);
                 lastClickedPanel.Controls.Add(newHousePictureBox);
             }
+        }
+
+        private void sellButton_Click(object sender, EventArgs e)
+        {
+            if (lastClickedPanel != null && panelToPropertyMap.ContainsKey(lastClickedPanel))
+            {
+                Property property = panelToPropertyMap[lastClickedPanel];
+                if (players[currentPlayerIndex].getProperties().Contains(property))
+                {
+                    if (property.getHouseCount() == 0)
+                    {
+                        players[currentPlayerIndex].setMoneyBalance(players[currentPlayerIndex].getMoneyBalance() + property.getCost());
+                        players[currentPlayerIndex].removeProperties(property);
+                        sellButton.Text = "Transaction Complete!";
+                        updateCurrentPlayerProperties();
+                        balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("You can not sell a property with houses or hotels on it.");
+                    }
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Please select the property you would like to sell.");
+            }
+
         }
     }
 }
