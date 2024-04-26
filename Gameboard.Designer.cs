@@ -199,6 +199,7 @@ namespace MonopolyGame
             sellHouseButton.ForeColor = SystemColors.ControlText;
             sellHouseButton.Name = "sellHouseButton";
             sellHouseButton.UseVisualStyleBackColor = false;
+            sellHouseButton.Click += sellHouseButton_Click;
             // 
             // buyHouseButton
             // 
