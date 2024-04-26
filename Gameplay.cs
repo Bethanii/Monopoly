@@ -23,7 +23,7 @@ namespace MonopolyGame
         public void movePiece(Player currentPlayer, int total, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces, PropertyList propertyList)
         {
             int previousBoardPosition = currentPlayer.getBoardPosition();
-            int newBoardPosition = (currentPlayer.getBoardPosition() + 1) % spaces.Length;
+            int newBoardPosition = (currentPlayer.getBoardPosition() + total) % spaces.Length;
             currentPlayer.setBoardPosition(newBoardPosition);
 
             PictureBox pieceToMove = playerPieces[currentPlayer];
