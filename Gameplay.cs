@@ -84,6 +84,22 @@ namespace MonopolyGame
             {
                 currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 200);
             }
+
+            Cards cards = new Cards();
+            //if lands on chest space
+            if (currentPlayer.getBoardPosition() == 2 || currentPlayer.getBoardPosition() == 17 || currentPlayer.getBoardPosition() == 33)
+            {
+                cards.DrawChestCard(currentPlayer);
+
+            }
+
+            //if lands on chance space
+            if (currentPlayer.getBoardPosition() == 7 || currentPlayer.getBoardPosition() == 22 || currentPlayer.getBoardPosition() == 36)
+            {
+                Console.WriteLine("chance");
+                cards.DrawChanceCard(currentPlayer);
+
+            }
         }
     }
 }
