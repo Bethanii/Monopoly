@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,7 +34,28 @@ namespace MonopolyGame
 
             pieceToMove.Location = new System.Drawing.Point(targetX, targetY);
             currentSpace.Controls.Add(pieceToMove);
-
+            //income tax
+            if(newBoardPosition == 4)
+            {
+                currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - 200);
+                MessageBox.Show("You paid $200 in income tax.");
+            }
+            //luxury tax
+            if (newBoardPosition == 38)
+            {
+                currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - 100);
+                MessageBox.Show("You paid $200 in luxury tax.");
+            }
+            //Comunity Chest
+            if (newBoardPosition == 2 || newBoardPosition ==  17 || newBoardPosition == 33) 
+            {
+                //call comunity chest method here
+            }
+            //Chance Card
+            if (newBoardPosition == 7 || newBoardPosition == 22 || newBoardPosition == 36)
+            {
+                //call chance card method here
+            }
             // Charge player rent if they land on square owned by other players
             if (propertyList.getProperties().TryGetValue(newBoardPosition, out Property currentProperty))
             {

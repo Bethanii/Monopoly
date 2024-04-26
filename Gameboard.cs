@@ -1,4 +1,5 @@
 using System.Diagnostics.Eventing.Reader;
+using System.DirectoryServices.ActiveDirectory;
 using System.Windows.Forms;
 
 namespace MonopolyGame
@@ -461,18 +462,69 @@ namespace MonopolyGame
             if (lastClickedPanel != null && panelToPropertyMap.ContainsKey(lastClickedPanel))
             {
                 Property property = panelToPropertyMap[lastClickedPanel];
-                property.setHouseCount(property.getHouseCount() + 1);
-                PictureBox newHousePictureBox = new PictureBox();
-                newHousePictureBox.BackgroundImage = Properties.Resources.house;
-                newHousePictureBox.Size = new Size(50, 50);
-                newHousePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                newHousePictureBox.BackgroundImageLayout = ImageLayout.Stretch;
 
-                int x = (lastClickedPanel.Controls.Count - 1) * newHousePictureBox.Width + 5;
-                int y = 40;
+                if (property.getType() == "street")
+                {
+                    int propertyCount = 0;
 
-                newHousePictureBox.Location = new Point(x, y);
-                lastClickedPanel.Controls.Add(newHousePictureBox);
+                    foreach (Property prop in players[currentPlayerIndex].getProperties())
+                    {
+                        if (prop.getColorGroup() == property.getColorGroup())
+                        {
+                            propertyCount++;
+                        }
+                    }
+
+                    if (property.getColorGroupSize() == propertyCount)
+                    {
+                        if (players[currentPlayerIndex].getMoneyBalance() > property.getHousePrice())
+                        {
+                            if (property.getHouseCount() < 4)
+                            {
+                                PictureBox newHousePictureBox = new PictureBox();
+                                newHousePictureBox.BackgroundImage = Properties.Resources.house;
+                                newHousePictureBox.Size = new Size(50, 50);
+                                newHousePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                                newHousePictureBox.BackgroundImageLayout = ImageLayout.Stretch;
+
+                                int x = (lastClickedPanel.Controls.Count - 1) * newHousePictureBox.Width + 5;
+                                int y = 40;
+
+                                newHousePictureBox.Location = new Point(x, y);
+                                lastClickedPanel.Controls.Add(newHousePictureBox);
+
+                                property.setHouseCount(property.getHouseCount() + 1);
+                                players[currentPlayerIndex].setMoneyBalance(players[currentPlayerIndex].getMoneyBalance() - property.getHousePrice());
+                                balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
+                            }
+                            else if (property.getHouseCount() == 4)
+                            {
+                                //remove house images and add hotel image
+
+                                property.setHouseCount(property.getHouseCount() + 1);
+                                players[currentPlayerIndex].setMoneyBalance(players[currentPlayerIndex].getMoneyBalance() - property.getHousePrice());
+                                balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
+                            }
+                            else
+                            {
+                                MessageBox.Show("You can not build anymore on this property");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("You can not afford to build on this property.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("You must own all properties of this type before you can purchase houses");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("You can not add houses to this property.");
+                }
+
             }
         }
 
@@ -497,13 +549,30 @@ namespace MonopolyGame
                         MessageBox.Show("You can not sell a property with houses or hotels on it.");
                     }
                 }
-                
+
             }
             else
             {
                 MessageBox.Show("Please select the property you would like to sell.");
             }
 
+        }
+
+        private void sellHouseButton_Click(object sender, EventArgs e)
+        {
+            if (lastClickedPanel != null && panelToPropertyMap.ContainsKey(lastClickedPanel))
+            {
+                Property property = panelToPropertyMap[lastClickedPanel];
+                
+                if(property.getHouseCount() > 0)
+                {
+                    property.setHouseCount(property.getHouseCount() - 1);
+                    players[currentPlayerIndex].setMoneyBalance(players[currentPlayerIndex].getMoneyBalance() + property.getHousePrice());
+                    balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
+                    updateCurrentPlayerProperties();
+                }
+
+            }
         }
     }
 }

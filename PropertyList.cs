@@ -12,8 +12,6 @@ namespace MonopolyGame
         public PropertyList() 
         {
             
-
-            //hard coding rent values for now
             //------------- Brown ------------------
             Property mediterraneanAvenue = new Street("Mediteranean Avenue", "brown", 2, 60, 2, 4, 10, 30, 90, 160, 250, 50, 1);
             boardPositionToPropertyMap.Add(mediterraneanAvenue.getBoardPosition(), mediterraneanAvenue);

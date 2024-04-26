@@ -61,5 +61,9 @@ namespace MonopolyGame
         {
             
         }
+        public virtual int getColorGroupSize()
+        {
+            return 0;
+        }
     }
 }
