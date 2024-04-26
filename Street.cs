@@ -69,6 +69,8 @@ namespace MonopolyGame
                         return threeHouseRent;
                     case 4:
                         return fourHouseRent;
+                    case 5:
+                        return hotelRent;
                     default:
                         return wholeGroupRent;
                 }
@@ -90,7 +92,9 @@ namespace MonopolyGame
         {
             this.houseCount = houseCount;
         }
+        public override int getColorGroupSize()
+        {
+            return colorGroupSize;
+        }
     }
-
-
 }
