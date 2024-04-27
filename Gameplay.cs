@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace MonopolyGame
 {
@@ -44,17 +45,12 @@ namespace MonopolyGame
             if (newBoardPosition == 38)
             {
                 currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - 100);
-                MessageBox.Show("You paid $200 in luxury tax.");
+                MessageBox.Show("You paid $100 in luxury tax.");
             }
-            //Comunity Chest
-            if (newBoardPosition == 2 || newBoardPosition ==  17 || newBoardPosition == 33) 
+            //Go to jail
+            if (newBoardPosition == 30)
             {
-                //call comunity chest method here
-            }
-            //Chance Card
-            if (newBoardPosition == 7 || newBoardPosition == 22 || newBoardPosition == 36)
-            {
-                //call chance card method here
+                goToJail(currentPlayer, playerPieces, spaces);
             }
             // Charge player rent if they land on square owned by other players
             if (propertyList.getProperties().TryGetValue(newBoardPosition, out Property currentProperty))
@@ -99,6 +95,58 @@ namespace MonopolyGame
                 Console.WriteLine("chance");
                 cards.DrawChanceCard(currentPlayer);
 
+            }
+        }
+        public void goToJail(Player currentPlayer, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces)
+        {
+            MessageBox.Show("Go to Jail!");
+
+            int newBoardPosition = (10) % spaces.Length;
+            currentPlayer.setBoardPosition(newBoardPosition);
+
+            PictureBox pieceToMove = playerPieces[currentPlayer];
+            PictureBox currentSpace = spaces[newBoardPosition];
+
+            int targetX = (currentSpace.Width - pieceToMove.Width) / 2;
+            int targetY = (currentSpace.Height - pieceToMove.Height) / 2;
+
+            pieceToMove.Location = new System.Drawing.Point(targetX, targetY);
+            currentSpace.Controls.Add(pieceToMove);
+
+            currentPlayer.setInJailCounter(3);
+        }
+
+        public void jailCounter(Player currentPlayer, int dice1, int dice2, Gameboard gameBoard, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces, PropertyList propertyList)
+        {
+            gameBoard.rollCount = 1;
+
+            if (dice1 == dice2)
+            {
+                MessageBox.Show("Congradulations you rolled doubles and escaped from jail.");
+                (dice1, dice2, int total) = getDiceRollCount();
+
+                gameBoard.diceRoll1.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice1}");
+                gameBoard.diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
+
+                currentPlayer.setInJailCounter(0);
+                movePiece(currentPlayer, total, playerPieces, spaces, propertyList);
+            }
+            else
+            {
+                currentPlayer.setInJailCounter(currentPlayer.getInJailCounter() - 1);
+
+                if (currentPlayer.getInJailCounter() > 1)
+                {
+                    MessageBox.Show("You still have " + currentPlayer.getInJailCounter() + " turns left in jail.");
+                }
+                else if (currentPlayer.getInJailCounter() == 1)
+                {
+                    MessageBox.Show("You still have " + currentPlayer.getInJailCounter() + " turn left in jail.");
+                }
+                else
+                {
+                    MessageBox.Show("This is your last turn in jail.");
+                }
             }
         }
     }
