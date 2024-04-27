@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.DirectoryServices.ActiveDirectory;
 using System.Windows.Forms;
@@ -15,7 +16,7 @@ namespace MonopolyGame
         private Panel lastClickedPanel;
         private PropertyList propertyList = new PropertyList();
 
-        private int rollCount = 0;
+        public int rollCount = 0;
         int doublesCount = 0;
         public Gameboard(List<Player> players)
         {
@@ -233,40 +234,48 @@ namespace MonopolyGame
                 sellButton.Text = "Sell";
 
                 Player currentPlayer = players[currentPlayerIndex];
-                gameplay.movePiece(currentPlayer, total, playerPieces, spaces, propertyList);
 
-                //display property price on buy button
-                if (propertyList.getProperties().TryGetValue(currentPlayer.getBoardPosition(), out Property currentProperty))
+                if (currentPlayer.getInJailCounter() == 0)
                 {
-                    if (currentProperty.getOwner() == null)
+                    gameplay.movePiece(currentPlayer, total, playerPieces, spaces, propertyList);
+
+                    //display property price on buy button
+                    if (propertyList.getProperties().TryGetValue(currentPlayer.getBoardPosition(), out Property currentProperty))
                     {
-                        buyButton.Text = "Buy " + currentProperty.getName() + "\r\nfor $" + currentProperty.getCost();
+                        if (currentProperty.getOwner() == null)
+                        {
+                            buyButton.Text = "Buy " + currentProperty.getName() + "\r\nfor $" + currentProperty.getCost();
+                        }
                     }
-                }
-                //updates money display if passing go
-                balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
+                    //updates money display if passing go
+                    balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
 
-                //checks for doubles
-                if (dice1 == dice2)
-                {
-                    doublesCount++;
-                    if (doublesCount < 3)
+                    //checks for doubles
+                    if (dice1 == dice2)
                     {
-                        rollCount = 0;
+                        doublesCount++;
+                        if (doublesCount < 3)
+                        {
+                            rollCount = 0;
+                        }
+                        else
+                        {
+                            gameplay.goToJail(players[currentPlayerIndex], playerPieces, spaces);
+                        }
                     }
                     else
                     {
-                        //put go to jail logic here
+                        rollCount++;
                     }
                 }
                 else
                 {
-                    rollCount++;
+                    gameplay.jailCounter(players[currentPlayerIndex], dice1, dice2, this, playerPieces, spaces, propertyList);
                 }
             }
             else
             {
-                MessageBox.Show("You are only alowed to move once per turn.");
+                MessageBox.Show("You are only alowed to roll once per turn.");
             }
         }
 
@@ -318,6 +327,7 @@ namespace MonopolyGame
                 updateCurrentPlayerProperties();
 
                 rollCount = 0;
+                doublesCount = 0;
             }
             else if (doublesCount > 0)
             {

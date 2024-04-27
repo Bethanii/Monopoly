@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
 
@@ -934,8 +935,8 @@ namespace MonopolyGame
         private Button sellButton;
         private Button nextTurnButton;
         private PictureBox getOutOfJailFreeCards;
-        private PictureBox diceRoll1;
-        private PictureBox diceRoll2;
+        public PictureBox diceRoll1;
+        public PictureBox diceRoll2;
         private GroupBox diceGroupBox;
         private Button rollDiceButton;
         private PictureBox gameBoardImage;
