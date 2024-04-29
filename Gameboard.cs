@@ -313,7 +313,7 @@ namespace MonopolyGame
             }
         }
 
-        public void nextTurnButton_Click(object sender, EventArgs e)
+        private void nextTurnButton_Click(object sender, EventArgs e)
         {
             if (players[currentPlayerIndex].getMoneyBalance() >= 0)
             {
