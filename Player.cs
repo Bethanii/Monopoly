@@ -15,6 +15,8 @@ namespace MonopolyGame
         private int moneyBalance;
         private List<Property> properties = new List<Property>();
         private int inJailCounter;
+        private bool getOutOfJailFree;
+   
 
         public Player(string name, string piece, string color)
         {
@@ -24,6 +26,7 @@ namespace MonopolyGame
             this.boardPosition = 0;
             this.moneyBalance = 1500;
             this.inJailCounter = 0;
+            this.getOutOfJailFree = false;
         }
 
         public string getName()
@@ -61,6 +64,14 @@ namespace MonopolyGame
         public void setInJailCounter(int counter)
         {
             inJailCounter = counter;
+        }
+        public bool getJailCardValue()
+        {
+            return getOutOfJailFree;
+        }
+        public void setJailCardValue(bool value)
+        {
+            getOutOfJailFree = value;
         }
         public List<Property> getProperties()
         {

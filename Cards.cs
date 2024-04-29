@@ -8,12 +8,10 @@ namespace MonopolyGame
 {
     public class Cards
     {
-
-
-
-        public void DrawChestCard(Player currentPlayer)
+        Gameplay gameplay = new Gameplay();
+        public void DrawChestCard(Player currentPlayer, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces, PropertyList propertyList, Gameboard gameboard)
         {
-
+            int pos = 0;
             int DrawnCard = 0;
             List<Action> chestCards = new List<Action> { AdvToGO, BankError, DrFee, StockSale, FreeJailEscape, GoToJail, HolodayFund, TaxRefund, InsuranceMatures, HospitalFee, SchoolFee, Consultancy, StreetRepair, BeautyContest, Inherit };
 
@@ -26,15 +24,14 @@ namespace MonopolyGame
             //chest cards
             void AdvToGO()
             {
-
-                //need way to move Icon
-
                 MessageBox.Show("Advance to Go (Collect $200)");
-                currentPlayer.setBoardPosition(0);
-                currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 200);
+                pos = 40;
+                if (currentPlayer.getBoardPosition() > pos)
+                    {
+                    pos += 40;
+                    }
 
-
-
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
             }
 
             void BankError()
@@ -62,12 +59,13 @@ namespace MonopolyGame
             {
                 //need to know proper variable to check to give a get out of jail free card to
                 MessageBox.Show("Get Out of Jail Free Card");
+                currentPlayer.setJailCardValue(true);
             }
 
             void GoToJail()
             {
-                //need to know the proper method to set player in jail
                 MessageBox.Show("Go to Jail. Go directly to jail, do not pass Go, do not collect $200");
+                gameplay.goToJail(currentPlayer, playerPieces, spaces, gameboard);
             }
 
             void HolodayFund()
@@ -146,9 +144,9 @@ namespace MonopolyGame
 
 
         //chance cards
-        public void DrawChanceCard(Player currentPlayer)
+        public void DrawChanceCard(Player currentPlayer, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces, PropertyList propertyList, Gameboard gameboard)
         {
-
+            int pos = 0;
             int DrawnCard = 0;
             List<Action> chanceCards = new List<Action> { AdvToBoardwalk, AdvToGO, AdvToIllinosis, AdvToStCharles, AdvToNxtRailroad, AdvToNxtUtility, Dividend, FreeJailEscape, BackTrack, GoToJail, GeneralRepairs, SpeedTicket, AdvToReadingRailRoad, LoanMatures };
 
@@ -161,115 +159,146 @@ namespace MonopolyGame
             void AdvToBoardwalk()
             {
                 MessageBox.Show("Advance to Boardwalk");
-                //need way to move icon
 
-                if (currentPlayer.getBoardPosition() > 39)
+                pos = 39;
+                if (currentPlayer.getBoardPosition() > pos)
                 {
-                    currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 200);
+                    pos += 40;
                 }
-                currentPlayer.setBoardPosition(39);
+
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
             }
 
             void AdvToGO()
             {
                 MessageBox.Show("Advance to Go (Collect $200)");
-                //need way to move icon
-                currentPlayer.setBoardPosition(0);
-                currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 200);
+
+                pos = 40;
+                if (currentPlayer.getBoardPosition() > pos)
+                {
+                    pos += 40;
+                }
+
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
             }
 
             void AdvToIllinosis()
             {
                 MessageBox.Show("Advance to Illinois Avenue. If you pass Go, collect $200");
-                //need way to move icon
 
-
-                if (currentPlayer.getBoardPosition() > 24)
+                pos = 24;
+                if (currentPlayer.getBoardPosition() > pos)
                 {
-                    currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 200);
+                    pos += 40;
                 }
-                currentPlayer.setBoardPosition(24);
+
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
             }
 
             void AdvToStCharles()
             {
                 MessageBox.Show("Advance to St. Charles Place. If you pass Go, collect $200");
-                //need way to move icon
 
-
-                if (currentPlayer.getBoardPosition() > 11)
+                pos = 11;
+                if (currentPlayer.getBoardPosition() > pos)
                 {
-                    currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 200);
+                    pos += 40;
                 }
-                currentPlayer.setBoardPosition(11);
+
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
             }
 
             void AdvToNxtRailroad()
             {
                 MessageBox.Show("Advance to the nearest Railroad. If unowned, you may buy it from the Bank. \nIf owned, pay wonder twice the rental to which they are otherwise entitled");
-                //need way to move icon and buy
+                //need way to pay owner
 
-                if (currentPlayer.getBoardPosition() < 5)
+                if (currentPlayer.getBoardPosition() < 5 || currentPlayer.getBoardPosition() > 35)
                 {
-                    currentPlayer.setBoardPosition(5);
+
+                    pos = 5;
+                    if (currentPlayer.getBoardPosition() > pos)
+                    {
+                        pos += 40;
+                    }
+
+                    gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
                 }
 
                 else if (currentPlayer.getBoardPosition() < 15)
                 {
-                    currentPlayer.setBoardPosition(15);
+
+                    pos = 15;
+                    if (currentPlayer.getBoardPosition() > pos)
+                    {
+                        pos += 40;
+                    }
+
+                    gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
                 }
 
                 else if (currentPlayer.getBoardPosition() < 25)
                 {
-                    currentPlayer.setBoardPosition(25);
+
+                    pos = 25;
+                    if (currentPlayer.getBoardPosition() > pos)
+                    {
+                        pos += 40;
+                    }
+
+                    gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
                 }
 
                 else if (currentPlayer.getBoardPosition() < 35)
                 {
-                    currentPlayer.setBoardPosition(35);
-                }
 
-                else
-                {
-                    currentPlayer.setBoardPosition(5);
-                    currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 200);
+                    pos = 35;
+                    if (currentPlayer.getBoardPosition() > pos)
+                    {
+                        pos += 40;
+                    }
+
+                    gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
                 }
             }
 
             void AdvToNxtUtility()
             {
                 MessageBox.Show("Advance to the nearest Utility. If unowned, you may buy it from the Bank. \nIf owned, throw dice and pay owner a total ten times amount thrown.");
-                //need way to move icon and buy
+                //need way to pay owner
 
                 int TotalRoll = 0;
                 TotalRoll += RandomNumberGenerator.GetInt32(5) + 1;
                 TotalRoll += RandomNumberGenerator.GetInt32(5) + 1;
 
 
-                if (currentPlayer.getBoardPosition() < 12)
+                if (currentPlayer.getBoardPosition() < 12 || currentPlayer.getBoardPosition() > 28)
                 {
-                    currentPlayer.setBoardPosition(12);
+                    pos = 12;
+                    if (currentPlayer.getBoardPosition() > pos)
+                    {
+                        pos += 40;
+                    }
+
+                    gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
+                   
                 }
 
                 else if (currentPlayer.getBoardPosition() < 28)
                 {
-                    currentPlayer.setBoardPosition(28);
+                    pos = 28;
+                    if (currentPlayer.getBoardPosition() > pos)
+                    {
+                        pos += 40;
+                    }
+
+                    gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
                 }
-
-                else
-                {
-                    currentPlayer.setBoardPosition(12);
-                    currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 200);
-                }
-
-                currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - (TotalRoll * 10));
-
             }
 
             void Dividend()
             {
                 MessageBox.Show("Bank pays you dividend of $50");
-
 
                 currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 50);
 
@@ -279,19 +308,20 @@ namespace MonopolyGame
             {
                 MessageBox.Show("Get Out of Jail Free Card");
                 //need to know proper variable to check to give a get out of jail free card to
+                currentPlayer.setJailCardValue(true);
             }
 
             void BackTrack()
             {
                 MessageBox.Show("Go Back 3 Spaces");
-                //need way to move icon
-                currentPlayer.setBoardPosition(currentPlayer.getBoardPosition() - 3);
+
+                gameplay.movePiece(currentPlayer, currentPlayer.getBoardPosition() - (currentPlayer.getBoardPosition() + 3), playerPieces, spaces, propertyList, gameboard);
             }
 
             void GoToJail()
             {
                 MessageBox.Show("Go to Jail. Go directly to Jail, do not pass Go, do not collect $200");
-                //need to know the proper methods to call to move player position
+                gameplay.goToJail(currentPlayer, playerPieces, spaces, gameboard);
             }
 
 
@@ -321,13 +351,14 @@ namespace MonopolyGame
             void AdvToReadingRailRoad()
             {
                 MessageBox.Show("Take a trip to Reading Railroad. If you pass Go, collect $200");
-                //need way to move Icon
 
-                if (currentPlayer.getBoardPosition() > 5)
+                pos = 5;
+                if (currentPlayer.getBoardPosition() > pos)
                 {
-                    currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 200);
+                    pos += 40;
                 }
-                currentPlayer.setBoardPosition(5);
+
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
             }
 
 
