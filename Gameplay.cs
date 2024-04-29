@@ -21,7 +21,7 @@ namespace MonopolyGame
             return (dice1, dice2, total);
         }
 
-        public void movePiece(Player currentPlayer, int total, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces, PropertyList propertyList)
+        public void movePiece(Player currentPlayer, int total, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces, PropertyList propertyList, Gameboard gameboard)
         {
             int previousBoardPosition = currentPlayer.getBoardPosition();
             int newBoardPosition = (currentPlayer.getBoardPosition() + total) % spaces.Length;
@@ -36,7 +36,7 @@ namespace MonopolyGame
             pieceToMove.Location = new System.Drawing.Point(targetX, targetY);
             currentSpace.Controls.Add(pieceToMove);
             //income tax
-            if(newBoardPosition == 4)
+            if (newBoardPosition == 4)
             {
                 currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - 200);
                 MessageBox.Show("You paid $200 in income tax.");
@@ -50,43 +50,33 @@ namespace MonopolyGame
             //Go to jail
             if (newBoardPosition == 30)
             {
-                goToJail(currentPlayer, playerPieces, spaces);
+                goToJail(currentPlayer, playerPieces, spaces,gameboard);
             }
             // Charge player rent if they land on square owned by other players
             if (propertyList.getProperties().TryGetValue(newBoardPosition, out Property currentProperty))
             {
                 if (currentProperty.getOwner() != null)
                 {
-                    if(currentProperty.getOwner().getPiece() != currentPlayer.getPiece())    
+                    if (currentProperty.getOwner().getPiece() != currentPlayer.getPiece())
                     {
-                        if (currentProperty.getRent(total) < currentPlayer.getMoneyBalance())
-                        {
-                            int rentDue = currentProperty.getRent(total);
-                            currentProperty.getOwner().setMoneyBalance(currentProperty.getOwner().getMoneyBalance() + rentDue);
-                            currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - rentDue);
-                            MessageBox.Show("You paid " + currentProperty.getOwner().getName() + " $" + currentProperty.getRent(total) + " for rent.");
-                        }
-                        else
-                        {
-                            // add bankrupcy logic here
-                        }
+
+                        int rentDue = currentProperty.getRent(total);
+                        currentProperty.getOwner().setMoneyBalance(currentProperty.getOwner().getMoneyBalance() + rentDue);
+                        currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - rentDue);
+                        MessageBox.Show("You paid " + currentProperty.getOwner().getName() + " $" + currentProperty.getRent(total) + " for rent.");
                     }
                 }
             }
-
-
             // pay player for passing go
             if (previousBoardPosition > newBoardPosition)
             {
                 currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() + 200);
             }
-
             Cards cards = new Cards();
             //if lands on chest space
             if (currentPlayer.getBoardPosition() == 2 || currentPlayer.getBoardPosition() == 17 || currentPlayer.getBoardPosition() == 33)
             {
                 cards.DrawChestCard(currentPlayer);
-
             }
 
             //if lands on chance space
@@ -94,11 +84,11 @@ namespace MonopolyGame
             {
                 Console.WriteLine("chance");
                 cards.DrawChanceCard(currentPlayer);
-
             }
         }
-        public void goToJail(Player currentPlayer, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces)
+        public void goToJail(Player currentPlayer, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces, Gameboard gameboard)
         {
+            gameboard.doublesCount = 0;
             MessageBox.Show("Go to Jail!");
 
             int newBoardPosition = (10) % spaces.Length;
@@ -129,7 +119,7 @@ namespace MonopolyGame
                 gameBoard.diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
 
                 currentPlayer.setInJailCounter(0);
-                movePiece(currentPlayer, total, playerPieces, spaces, propertyList);
+                movePiece(currentPlayer, total, playerPieces, spaces, propertyList, gameBoard);
             }
             else
             {

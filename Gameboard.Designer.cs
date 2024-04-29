@@ -245,6 +245,7 @@ namespace MonopolyGame
             resources.ApplyResources(balanceTextBox, "balanceTextBox");
             balanceTextBox.ForeColor = SystemColors.WindowText;
             balanceTextBox.Name = "balanceTextBox";
+            balanceTextBox.TextChanged += balanceTextBox_TextChanged;
             // 
             // buyButton
             // 

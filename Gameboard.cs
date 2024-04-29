@@ -17,7 +17,7 @@ namespace MonopolyGame
         private PropertyList propertyList = new PropertyList();
 
         public int rollCount = 0;
-        int doublesCount = 0;
+        public int doublesCount = 0;
         public Gameboard(List<Player> players)
         {
             InitializeComponent();
@@ -237,7 +237,7 @@ namespace MonopolyGame
 
                 if (currentPlayer.getInJailCounter() == 0)
                 {
-                    gameplay.movePiece(currentPlayer, total, playerPieces, spaces, propertyList);
+                    gameplay.movePiece(currentPlayer, total, playerPieces, spaces, propertyList, this);
 
                     //display property price on buy button
                     if (propertyList.getProperties().TryGetValue(currentPlayer.getBoardPosition(), out Property currentProperty))
@@ -260,7 +260,7 @@ namespace MonopolyGame
                         }
                         else
                         {
-                            gameplay.goToJail(players[currentPlayerIndex], playerPieces, spaces);
+                            gameplay.goToJail(players[currentPlayerIndex], playerPieces, spaces, this);
                         }
                     }
                     else
@@ -315,28 +315,65 @@ namespace MonopolyGame
 
         private void nextTurnButton_Click(object sender, EventArgs e)
         {
-            if (rollCount > 0)
+            if (players[currentPlayerIndex].getMoneyBalance() >= 0)
             {
-                currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
+                if (rollCount > 0)
+                {
+                    currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
+                    string nextPlayerName = players[currentPlayerIndex].getName();
+                    playerLabel.Text = "Player: " + nextPlayerName;
+                    balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
+                    buyButton.Text = "Buy";
+                    sellButton.Text = "Sell";
+
+                    updateCurrentPlayerProperties();
+
+                    rollCount = 0;
+                    doublesCount = 0;
+                }
+                else if (doublesCount > 0)
+                {
+                    MessageBox.Show("You rolled doubles. You get to roll again!");
+                }
+                else
+                {
+                    MessageBox.Show("Please roll the dice before ending your turn.");
+                }
+            }
+            //Bankrupcy
+            else
+            {
+                MessageBox.Show("You have gone bankrupt. Better luck next time.");
+
+                foreach (Property property in players[currentPlayerIndex].getProperties())
+                {
+                    property.setOwner(null);
+                }
+
+                players.Remove(players[currentPlayerIndex]);
+
+                currentPlayerIndex = (currentPlayerIndex) % players.Count;
                 string nextPlayerName = players[currentPlayerIndex].getName();
                 playerLabel.Text = "Player: " + nextPlayerName;
                 balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
                 buyButton.Text = "Buy";
                 sellButton.Text = "Sell";
+                nextTurnButton.Text = "Next Turn";
 
                 updateCurrentPlayerProperties();
 
                 rollCount = 0;
                 doublesCount = 0;
+                // Winner
+                if (players.Count() == 1)
+                {
+                    MessageBox.Show("Congradulations You Win!");
+                    StartMenu startMenu = new StartMenu();
+                    this.Hide();
+                    startMenu.Show();
+                }
             }
-            else if (doublesCount > 0)
-            {
-                MessageBox.Show("You rolled doubles. You get to roll again!");
-            }
-            else
-            {
-                MessageBox.Show("Please roll the dice before ending your turn.");
-            }
+
         }
 
         private void buyButton_Click(object sender, EventArgs e)
@@ -573,8 +610,8 @@ namespace MonopolyGame
             if (lastClickedPanel != null && panelToPropertyMap.ContainsKey(lastClickedPanel))
             {
                 Property property = panelToPropertyMap[lastClickedPanel];
-                
-                if(property.getHouseCount() > 0)
+
+                if (property.getHouseCount() > 0)
                 {
                     property.setHouseCount(property.getHouseCount() - 1);
                     players[currentPlayerIndex].setMoneyBalance(players[currentPlayerIndex].getMoneyBalance() + property.getHousePrice());
@@ -582,6 +619,20 @@ namespace MonopolyGame
                     updateCurrentPlayerProperties();
                 }
 
+            }
+        }
+
+        private void balanceTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (players[currentPlayerIndex].getMoneyBalance() < 0)
+            {
+                balanceTextBox.Text = "$" + players[currentPlayerIndex].getMoneyBalance();
+                MessageBox.Show("You are " + Math.Abs(players[currentPlayerIndex].getMoneyBalance()) + " in debt. You must sell property to avoid bankrupcy");
+                nextTurnButton.Text = "Declare Bankrupcy";
+            }
+            else
+            {
+                nextTurnButton.Text = "Next Turn";
             }
         }
     }
