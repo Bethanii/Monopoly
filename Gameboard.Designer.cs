@@ -277,6 +277,7 @@ namespace MonopolyGame
             resources.ApplyResources(getOutOfJailFreeCards, "getOutOfJailFreeCards");
             getOutOfJailFreeCards.Name = "getOutOfJailFreeCards";
             getOutOfJailFreeCards.TabStop = false;
+            getOutOfJailFreeCards.Click += getOutOfJailFreeCards_Click;
             // 
             // diceRoll1
             // 
