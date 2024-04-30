@@ -635,5 +635,18 @@ namespace MonopolyGame
                 nextTurnButton.Text = "Next Turn";
             }
         }
+
+        private void getOutOfJailFreeCards_Click(object sender, EventArgs e)
+        {
+            if (players[currentPlayerIndex].getInJailCounter() > 0)
+            {
+                if (players[currentPlayerIndex].getJailCardValue())
+                {
+                    players[currentPlayerIndex].setInJailCounter(0);
+                    players[currentPlayerIndex].setJailCardValue(false);
+                    MessageBox.Show("You used your get out of jail free card.");
+                }
+            }
+        }
     }
 }
