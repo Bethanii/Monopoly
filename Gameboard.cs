@@ -237,7 +237,7 @@ namespace MonopolyGame
 
                 if (currentPlayer.getInJailCounter() == 0)
                 {
-                    gameplay.movePiece(currentPlayer, total, playerPieces, spaces, propertyList, this);
+                    gameplay.movePiece(currentPlayer, total, playerPieces, spaces, propertyList, this, 1);
 
                     //display property price on buy button
                     if (propertyList.getProperties().TryGetValue(currentPlayer.getBoardPosition(), out Property currentProperty))

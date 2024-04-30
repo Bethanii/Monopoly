@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
@@ -21,7 +22,7 @@ namespace MonopolyGame
             return (dice1, dice2, total);
         }
 
-        public void movePiece(Player currentPlayer, int total, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces, PropertyList propertyList, Gameboard gameboard)
+        public void movePiece(Player currentPlayer, int total, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces, PropertyList propertyList, Gameboard gameboard, int rentMultiplier)
         {
             int previousBoardPosition = currentPlayer.getBoardPosition();
             int newBoardPosition = (currentPlayer.getBoardPosition() + total) % spaces.Length;
@@ -59,11 +60,28 @@ namespace MonopolyGame
                 {
                     if (currentProperty.getOwner().getPiece() != currentPlayer.getPiece())
                     {
+                        int rentDue = currentProperty.getRent(total) * rentMultiplier;
 
-                        int rentDue = currentProperty.getRent(total);
-                        currentProperty.getOwner().setMoneyBalance(currentProperty.getOwner().getMoneyBalance() + rentDue);
-                        currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - rentDue);
-                        MessageBox.Show("You paid " + currentProperty.getOwner().getName() + " $" + currentProperty.getRent(total) + " for rent.");
+                        // used for cards ulitity card
+                        if (rentDue != 0)
+                        {
+                            int TotalRoll = (RandomNumberGenerator.GetInt32(5) + 1) + (RandomNumberGenerator.GetInt32(5) + 1);
+
+                            rentDue = TotalRoll * 10;
+                            currentProperty.getOwner().setMoneyBalance(currentProperty.getOwner().getMoneyBalance() + rentDue);
+                            currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - rentDue);
+
+                        }
+                        // used every other time
+                        else
+                        {
+                            currentProperty.getOwner().setMoneyBalance(currentProperty.getOwner().getMoneyBalance() + rentDue);
+                            currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - rentDue);
+                        }
+                        
+
+                        
+                        MessageBox.Show("You paid " + currentProperty.getOwner().getName() + " $" + rentDue + " for rent.");
                     }
                 }
             }
@@ -121,7 +139,7 @@ namespace MonopolyGame
                 gameBoard.diceRoll2.BackgroundImage = (Bitmap)Properties.Resources.ResourceManager.GetObject($"dice_{dice2}");
 
                 currentPlayer.setInJailCounter(0);
-                movePiece(currentPlayer, total, playerPieces, spaces, propertyList, gameBoard);
+                movePiece(currentPlayer, total, playerPieces, spaces, propertyList, gameBoard, 1);
             }
             else
             {
