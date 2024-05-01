@@ -932,7 +932,7 @@ namespace MonopolyGame
         #endregion
         private GroupBox propertiesGroupBox;
         private Label balanceLabel;
-        private TextBox balanceTextBox;
+        public TextBox balanceTextBox;
         private Button buyButton;
         private Button sellButton;
         private Button nextTurnButton;

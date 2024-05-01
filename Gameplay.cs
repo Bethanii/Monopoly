@@ -85,6 +85,8 @@ namespace MonopolyGame
                 Console.WriteLine("chance");
                 cards.DrawChanceCard(currentPlayer, playerPieces, spaces, propertyList, gameboard);
             }
+            gameboard.balanceTextBox.Text = "$" + currentPlayer.getMoneyBalance();
+
         }
         public void goToJail(Player currentPlayer, Dictionary<Player, PictureBox> playerPieces, PictureBox[] spaces, Gameboard gameboard)
         {
