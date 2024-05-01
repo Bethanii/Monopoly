@@ -31,7 +31,7 @@ namespace MonopolyGame
                     pos += 40;
                     }
 
-                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard, 1);
             }
 
             void BankError()
@@ -57,7 +57,6 @@ namespace MonopolyGame
 
             void FreeJailEscape()
             {
-                //need to know proper variable to check to give a get out of jail free card to
                 MessageBox.Show("Get Out of Jail Free Card");
                 currentPlayer.setJailCardValue(true);
             }
@@ -112,7 +111,6 @@ namespace MonopolyGame
 
             void StreetRepair()
             {
-                //need to find hotel count
                 int totalHouse = 0;
                 int totalHotel = 0;
 
@@ -120,9 +118,17 @@ namespace MonopolyGame
 
                 foreach (Property property in currentPlayer.getProperties())
                 {
-                    totalHouse = totalHouse + property.getHouseCount();
+                    if (property.getHouseCount() == 5)
+                    {
+                        totalHotel = totalHotel + 1;
+                    }
+                    else
+                    {
+                        totalHouse = totalHouse + property.getHouseCount();
+                    }
+                   
                 }
-                currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - (totalHouse * 40));
+                currentPlayer.setMoneyBalance((currentPlayer.getMoneyBalance() - (totalHouse * 40)) - (totalHotel * 115));
             }
 
             void BeautyContest()
@@ -166,7 +172,7 @@ namespace MonopolyGame
                     pos += 40;
                 }
 
-                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard, 1);
             }
 
             void AdvToGO()
@@ -179,7 +185,7 @@ namespace MonopolyGame
                     pos += 40;
                 }
 
-                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard, 1);
             }
 
             void AdvToIllinosis()
@@ -192,7 +198,7 @@ namespace MonopolyGame
                     pos += 40;
                 }
 
-                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard, 1);
             }
 
             void AdvToStCharles()
@@ -205,95 +211,59 @@ namespace MonopolyGame
                     pos += 40;
                 }
 
-                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard, 1);
             }
 
             void AdvToNxtRailroad()
             {
                 MessageBox.Show("Advance to the nearest Railroad. If unowned, you may buy it from the Bank. \nIf owned, pay wonder twice the rental to which they are otherwise entitled");
-                //need way to pay owner
 
                 if (currentPlayer.getBoardPosition() < 5 || currentPlayer.getBoardPosition() > 35)
                 {
-
                     pos = 5;
-                    if (currentPlayer.getBoardPosition() > pos)
-                    {
-                        pos += 40;
-                    }
-
-                    gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
                 }
-
                 else if (currentPlayer.getBoardPosition() < 15)
                 {
-
-                    pos = 15;
-                    if (currentPlayer.getBoardPosition() > pos)
-                    {
-                        pos += 40;
-                    }
-
-                    gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
+                    pos = 15; 
                 }
-
                 else if (currentPlayer.getBoardPosition() < 25)
                 {
-
                     pos = 25;
-                    if (currentPlayer.getBoardPosition() > pos)
-                    {
-                        pos += 40;
-                    }
-
-                    gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
                 }
-
                 else if (currentPlayer.getBoardPosition() < 35)
                 {
-
                     pos = 35;
-                    if (currentPlayer.getBoardPosition() > pos)
-                    {
-                        pos += 40;
-                    }
-
-                    gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
                 }
+
+                if (currentPlayer.getBoardPosition() > pos)
+                {
+                    pos += 40;
+                }
+
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard, 2);
             }
 
             void AdvToNxtUtility()
             {
                 MessageBox.Show("Advance to the nearest Utility. If unowned, you may buy it from the Bank. \nIf owned, throw dice and pay owner a total ten times amount thrown.");
-                //need way to pay owner
-
-                int TotalRoll = 0;
-                TotalRoll += RandomNumberGenerator.GetInt32(5) + 1;
-                TotalRoll += RandomNumberGenerator.GetInt32(5) + 1;
-
 
                 if (currentPlayer.getBoardPosition() < 12 || currentPlayer.getBoardPosition() > 28)
                 {
                     pos = 12;
-                    if (currentPlayer.getBoardPosition() > pos)
-                    {
-                        pos += 40;
-                    }
-
-                    gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
-                   
                 }
 
                 else if (currentPlayer.getBoardPosition() < 28)
                 {
                     pos = 28;
-                    if (currentPlayer.getBoardPosition() > pos)
-                    {
-                        pos += 40;
-                    }
-
-                    gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
                 }
+
+
+                if (currentPlayer.getBoardPosition() > pos)
+                {
+                    pos += 40;
+                }
+
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard, 0);
             }
 
             void Dividend()
@@ -315,7 +285,7 @@ namespace MonopolyGame
             {
                 MessageBox.Show("Go Back 3 Spaces");
 
-                gameplay.movePiece(currentPlayer, currentPlayer.getBoardPosition() - (currentPlayer.getBoardPosition() + 3), playerPieces, spaces, propertyList, gameboard);
+                gameplay.movePiece(currentPlayer, currentPlayer.getBoardPosition() - (currentPlayer.getBoardPosition() + 3), playerPieces, spaces, propertyList, gameboard, 1);
             }
 
             void GoToJail()
@@ -327,7 +297,6 @@ namespace MonopolyGame
 
             void GeneralRepairs()
             {
-                //need to find hotel count
                 int totalHouse = 0;
                 int totalHotel = 0;
 
@@ -335,9 +304,17 @@ namespace MonopolyGame
 
                 foreach (Property property in currentPlayer.getProperties())
                 {
-                    totalHouse = totalHouse + property.getHouseCount();
+                    if (property.getHouseCount() == 5)
+                    {
+                        totalHotel = totalHotel + 1;
+                    }
+                    else
+                    {
+                        totalHouse = totalHouse + property.getHouseCount();
+                    }
+
                 }
-                currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - (totalHouse * 25));
+                currentPlayer.setMoneyBalance((currentPlayer.getMoneyBalance() - (totalHouse * 25)) - (totalHotel * 100));
             }
 
             void SpeedTicket()
@@ -358,7 +335,7 @@ namespace MonopolyGame
                     pos += 40;
                 }
 
-                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard);
+                gameplay.movePiece(currentPlayer, pos - currentPlayer.getBoardPosition(), playerPieces, spaces, propertyList, gameboard, 1);
             }
 
 
