@@ -38,35 +38,22 @@
             hatButton = new Button();
             dogButton = new Button();
             shipButton = new Button();
-            colorSelector = new Panel();
-            lightBlue = new Button();
-            darkBlue = new Button();
-            purple = new Button();
-            black = new Button();
-            green = new Button();
-            yellow = new Button();
-            orange = new Button();
-            red = new Button();
             startGameButton = new Button();
             button17 = new Button();
             label3 = new Label();
-            label2 = new Label();
             label1 = new Label();
             playerNameTextBox = new TextBox();
             Panel1.SuspendLayout();
             panel2.SuspendLayout();
-            colorSelector.SuspendLayout();
             SuspendLayout();
             // 
             // Panel1
             // 
             Panel1.BackColor = Color.Transparent;
             Panel1.Controls.Add(panel2);
-            Panel1.Controls.Add(colorSelector);
             Panel1.Controls.Add(startGameButton);
             Panel1.Controls.Add(button17);
             Panel1.Controls.Add(label3);
-            Panel1.Controls.Add(label2);
             Panel1.Controls.Add(label1);
             Panel1.Controls.Add(playerNameTextBox);
             Panel1.Location = new Point(10, 10);
@@ -85,7 +72,7 @@
             panel2.Controls.Add(hatButton);
             panel2.Controls.Add(dogButton);
             panel2.Controls.Add(shipButton);
-            panel2.Location = new Point(43, 317);
+            panel2.Location = new Point(44, 192);
             panel2.Name = "panel2";
             panel2.Size = new Size(272, 100);
             panel2.TabIndex = 26;
@@ -214,115 +201,12 @@
             shipButton.UseVisualStyleBackColor = false;
             shipButton.Click += shipButton_Click;
             // 
-            // colorSelector
-            // 
-            colorSelector.Controls.Add(lightBlue);
-            colorSelector.Controls.Add(darkBlue);
-            colorSelector.Controls.Add(purple);
-            colorSelector.Controls.Add(black);
-            colorSelector.Controls.Add(green);
-            colorSelector.Controls.Add(yellow);
-            colorSelector.Controls.Add(orange);
-            colorSelector.Controls.Add(red);
-            colorSelector.Location = new Point(43, 163);
-            colorSelector.Name = "colorSelector";
-            colorSelector.Size = new Size(272, 102);
-            colorSelector.TabIndex = 25;
-            // 
-            // lightBlue
-            // 
-            lightBlue.BackColor = Color.DeepSkyBlue;
-            lightBlue.Location = new Point(24, 58);
-            lightBlue.Name = "lightBlue";
-            lightBlue.RightToLeft = RightToLeft.No;
-            lightBlue.Size = new Size(40, 40);
-            lightBlue.TabIndex = 10;
-            lightBlue.UseVisualStyleBackColor = false;
-            lightBlue.Click += lightBlue_Click;
-            // 
-            // darkBlue
-            // 
-            darkBlue.BackColor = Color.Navy;
-            darkBlue.Location = new Point(79, 58);
-            darkBlue.Name = "darkBlue";
-            darkBlue.RightToLeft = RightToLeft.No;
-            darkBlue.Size = new Size(40, 40);
-            darkBlue.TabIndex = 9;
-            darkBlue.UseVisualStyleBackColor = false;
-            darkBlue.Click += darkBlue_Click;
-            // 
-            // purple
-            // 
-            purple.BackColor = Color.Purple;
-            purple.Location = new Point(144, 58);
-            purple.Name = "purple";
-            purple.RightToLeft = RightToLeft.No;
-            purple.Size = new Size(40, 40);
-            purple.TabIndex = 7;
-            purple.UseVisualStyleBackColor = false;
-            purple.Click += purple_Click;
-            // 
-            // black
-            // 
-            black.BackColor = Color.Black;
-            black.Location = new Point(207, 58);
-            black.Name = "black";
-            black.RightToLeft = RightToLeft.No;
-            black.Size = new Size(40, 40);
-            black.TabIndex = 8;
-            black.UseVisualStyleBackColor = false;
-            black.Click += black_Click;
-            // 
-            // green
-            // 
-            green.BackColor = Color.Green;
-            green.Location = new Point(207, 0);
-            green.Name = "green";
-            green.RightToLeft = RightToLeft.No;
-            green.Size = new Size(40, 40);
-            green.TabIndex = 6;
-            green.UseVisualStyleBackColor = false;
-            green.Click += green_Click;
-            // 
-            // yellow
-            // 
-            yellow.BackColor = Color.Yellow;
-            yellow.Location = new Point(144, 0);
-            yellow.Name = "yellow";
-            yellow.RightToLeft = RightToLeft.No;
-            yellow.Size = new Size(40, 40);
-            yellow.TabIndex = 5;
-            yellow.UseVisualStyleBackColor = false;
-            yellow.Click += yellow_Click;
-            // 
-            // orange
-            // 
-            orange.BackColor = Color.Orange;
-            orange.Location = new Point(79, 0);
-            orange.Name = "orange";
-            orange.RightToLeft = RightToLeft.No;
-            orange.Size = new Size(40, 40);
-            orange.TabIndex = 4;
-            orange.UseVisualStyleBackColor = false;
-            orange.Click += orange_Click;
-            // 
-            // red
-            // 
-            red.BackColor = Color.Red;
-            red.Location = new Point(24, 0);
-            red.Name = "red";
-            red.RightToLeft = RightToLeft.No;
-            red.Size = new Size(40, 40);
-            red.TabIndex = 3;
-            red.UseVisualStyleBackColor = false;
-            red.Click += red_Click;
-            // 
             // startGameButton
             // 
             startGameButton.BackColor = Color.Navy;
             startGameButton.Font = new Font("Sitka Banner", 18F, FontStyle.Bold, GraphicsUnit.Point);
             startGameButton.ForeColor = Color.Gold;
-            startGameButton.Location = new Point(95, 493);
+            startGameButton.Location = new Point(96, 368);
             startGameButton.Margin = new Padding(0);
             startGameButton.Name = "startGameButton";
             startGameButton.Size = new Size(155, 40);
@@ -337,7 +221,7 @@
             button17.BackColor = Color.Navy;
             button17.Font = new Font("Sitka Banner", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point);
             button17.ForeColor = Color.Goldenrod;
-            button17.Location = new Point(57, 447);
+            button17.Location = new Point(58, 322);
             button17.Margin = new Padding(0);
             button17.Name = "button17";
             button17.Size = new Size(233, 40);
@@ -352,24 +236,12 @@
             label3.AutoSize = true;
             label3.Font = new Font("Sitka Banner", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.Goldenrod;
-            label3.Location = new Point(93, 284);
+            label3.Location = new Point(94, 159);
             label3.Name = "label3";
             label3.Size = new Size(157, 30);
             label3.TabIndex = 11;
             label3.Text = "Select Your Piece";
             label3.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Sitka Banner", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.Goldenrod;
-            label2.Location = new Point(93, 130);
-            label2.Name = "label2";
-            label2.Size = new Size(160, 30);
-            label2.TabIndex = 2;
-            label2.Text = "Select Your Color";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
@@ -398,7 +270,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.ForestGreen;
-            ClientSize = new Size(384, 561);
+            ClientSize = new Size(384, 480);
             Controls.Add(Panel1);
             MaximizeBox = false;
             MdiChildrenMinimizedAnchorBottom = false;
@@ -411,7 +283,6 @@
             Panel1.ResumeLayout(false);
             Panel1.PerformLayout();
             panel2.ResumeLayout(false);
-            colorSelector.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -420,7 +291,6 @@
         private Panel Panel1;
         private Label label1;
         private TextBox playerNameTextBox;
-        private Label label2;
         private Label label3;
         private Button carButton;
         private Button shoeButton;
@@ -432,15 +302,6 @@
         private Button shipButton;
         private Button startGameButton;
         private Button button17;
-        private Button red;
-        private Button orange;
-        private Button yellow;
-        private Button green;
-        private Button black;
-        private Button purple;
-        private Button darkBlue;
-        private Button lightBlue;
         private Panel panel2;
-        private Panel colorSelector;
     }
 }

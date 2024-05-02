@@ -279,7 +279,6 @@ namespace MonopolyGame
             }
         }
 
-
         private void updateCurrentPlayerProperties()
         {
             Player currentPlayer = players[currentPlayerIndex];
@@ -294,24 +293,37 @@ namespace MonopolyGame
                 propertiesPanel.Controls.Add(newPropertyPanel);
                 newPropertyPanel.BringToFront();
 
-                for (int i = 0; i < property.getHouseCount(); i++)
+                if (property.getHouseCount() == 5)
                 {
-                    PictureBox newHousePictureBox = new PictureBox();
-                    newHousePictureBox.BackgroundImage = Properties.Resources.house;
-                    newHousePictureBox.Size = new Size(50, 50);
-                    newHousePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                    newHousePictureBox.BackgroundImageLayout = ImageLayout.Stretch;
-
-                    int x = (newPropertyPanel.Controls.Count - 1) * (newHousePictureBox.Width + 5);
-                    int y = 40;
-
-                    newHousePictureBox.Location = new Point(x, y);
-                    newPropertyPanel.Controls.Add(newHousePictureBox);
+                    PictureBox newHotelPictureBox = new PictureBox();
+                    newHotelPictureBox.BackgroundImage = Properties.Resources.hotel;
+                    newHotelPictureBox.Size = new Size(70, 70); 
+                    newHotelPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    newHotelPictureBox.BackgroundImageLayout = ImageLayout.Stretch;
+                    newHotelPictureBox.Location = new Point((newPropertyPanel.Width - newHotelPictureBox.Width) / 2, 40); 
+                    newPropertyPanel.Controls.Add(newHotelPictureBox);
                 }
+                else
+                {
+                    for (int i = 0; i < property.getHouseCount(); i++)
+                    {
+                        PictureBox newHousePictureBox = new PictureBox();
+                        newHousePictureBox.BackgroundImage = Properties.Resources.house;
+                        newHousePictureBox.Size = new Size(50, 50);
+                        newHousePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                        newHousePictureBox.BackgroundImageLayout = ImageLayout.Stretch;
 
+                        int x = i * (newHousePictureBox.Width + 5);
+                        int y = 40;
+
+                        newHousePictureBox.Location = new Point(x, y);
+                        newPropertyPanel.Controls.Add(newHousePictureBox);
+                    }
+                }
                 newY += newPropertyPanel.Height + 10;
             }
         }
+
 
         private void nextTurnButton_Click(object sender, EventArgs e)
         {
@@ -546,7 +558,22 @@ namespace MonopolyGame
                             }
                             else if (property.getHouseCount() == 4)
                             {
-                                //remove house images and add hotel image
+                                for (int i = lastClickedPanel.Controls.Count - 1; i >= 0; i--)
+                                {
+                                    if (lastClickedPanel.Controls[i] is PictureBox)
+                                    {
+                                        lastClickedPanel.Controls.RemoveAt(i);
+                                    }
+                                }
+
+                                PictureBox newHotelPictureBox = new PictureBox();
+                                newHotelPictureBox.BackgroundImage = Properties.Resources.hotel;
+                                newHotelPictureBox.Size = new Size(70, 70);
+                                newHotelPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                                newHotelPictureBox.BackgroundImageLayout = ImageLayout.Stretch;
+
+                                newHotelPictureBox.Location = new Point((lastClickedPanel.Width - newHotelPictureBox.Width) / 2, (lastClickedPanel.Height - newHotelPictureBox.Height) / 2);
+                                lastClickedPanel.Controls.Add(newHotelPictureBox);
 
                                 property.setHouseCount(property.getHouseCount() + 1);
                                 players[currentPlayerIndex].setMoneyBalance(players[currentPlayerIndex].getMoneyBalance() - property.getHousePrice());
