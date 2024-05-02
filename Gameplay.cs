@@ -62,25 +62,9 @@ namespace MonopolyGame
                     {
                         int rentDue = currentProperty.getRent(total) * rentMultiplier;
 
-                        // used for cards ulitity card
-                        if (rentDue != 0)
-                        {
-                            int TotalRoll = (RandomNumberGenerator.GetInt32(5) + 1) + (RandomNumberGenerator.GetInt32(5) + 1);
+                        currentProperty.getOwner().setMoneyBalance(currentProperty.getOwner().getMoneyBalance() + rentDue);
+                        currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - rentDue);
 
-                            rentDue = TotalRoll * 10;
-                            currentProperty.getOwner().setMoneyBalance(currentProperty.getOwner().getMoneyBalance() + rentDue);
-                            currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - rentDue);
-
-                        }
-                        // used every other time
-                        else
-                        {
-                            currentProperty.getOwner().setMoneyBalance(currentProperty.getOwner().getMoneyBalance() + rentDue);
-                            currentPlayer.setMoneyBalance(currentPlayer.getMoneyBalance() - rentDue);
-                        }
-                        
-
-                        
                         MessageBox.Show("You paid " + currentProperty.getOwner().getName() + " $" + rentDue + " for rent.");
                     }
                 }
